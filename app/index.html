@@ -23,13 +23,55 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <script src="js/app.js"></script>
 
   </head>
+      <style>
+    body{
+        background-image: url(https://lh3.googleusercontent.com/CJBZDp-M47Hebk06CZsvNJF-Ppv0IThw_ZB9vT-3rgFt1No6g7qqLnjqfJq_HnwNvSdhaPxJ56G9DYmF93oh5w=s0);
+        background-size: cover;
+    }
+    #header {
+        background-color: rgba(60, 73, 70,0.5);
+        color: white;
+        height: 15vh;
+        text-align: center;
+        font-family: 'Jura', sans-serif;
+        padding-bottom: 10px;
+
+    }
+
+    #title {
+        color: white;
+        font-weight: bold;
+        font-size: 50pt;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #section
+    {
+        color: rgb(50,50,55);
+        font-family: 'Jura', sans-serif;
+        height: 80vh;
+    }
+
+    #footer {
+        background: rgba(60, 73, 70,0.5);
+        color: white;
+        clear:both;
+        text-align: center;
+        vertical-align: middle;
+        height: 5vh;
+    }
+    </style>
+
+  </head>
   <body>
-    <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
-    ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
-
-    <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
-    where you specify which partial should be loaded when. -->
-    <div ng-view></div>
-
+        <div id="header">
+            <span id="title">PROFESSIONAL MEETING PLANNER<br></span>
+        </div>
+        <div id="section" ng-view>
+        </div>
+        <div id="footer">
+            Made by: Jakob, Johannes, Oscar and Tobias
+        </div>
   </body>
 </html>
