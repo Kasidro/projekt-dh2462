@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource']);
+var meetingPlanner = angular.module('meetingPlanner', ['ngRoute','ngResource']);
 
 
 // Here we configure our application module and more specifically our $routeProvider. 
@@ -37,17 +37,6 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource'])
 dinnerPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/home', {
-        templateUrl: 'partials/home.html'
-      }).
-      when('/search', {
-        templateUrl: 'partials/search.html',
-        controller: 'SearchCtrl'
-      }).
-      when('/dish/:dishId', {
-        templateUrl: 'partials/dish.html',
-        controller: 'DishCtrl'
-      }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/home'
