@@ -37,6 +37,9 @@ var meetingPlanner = angular.module('meetingPlanner', ['ngRoute','ngResource']);
 dinnerPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
+    when('/home', {
+        templateUrl: 'partials/home.html'
+      }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/home'
