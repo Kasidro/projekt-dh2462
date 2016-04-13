@@ -1,6 +1,6 @@
-var meetingPlannerApp = angular.module('meetingPlanner', ['ngRoute','ngResource']);
+var meetingPlanner = angular.module('meetingPlanner', ['ngRoute', 'ngResource']);
 
-meetingPlannerApp.config(['$routeProvider',
+meetingPlanner.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/home', {
@@ -17,3 +17,5 @@ meetingPlannerApp.config(['$routeProvider',
 			});
 	}
 ]);
+
+console.log('core.js loaded')
