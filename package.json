@@ -15,6 +15,6 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server app/ -a 0.0.0.0 -p 8000"
+    "start": "http-server public/ -a 0.0.0.0 -p 8000"
   }
 }
