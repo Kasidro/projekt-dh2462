@@ -1,17 +1,16 @@
 {
   "name": "meeting-planner",
+  "version": "1.0.0",
   "description": "This project contains the amazing code for an even more amazing meeting planner",
-  "version": "0.0.0",
-  "homepage": "https://github.com/Kasidro/projekt-dh2462",
+  "repository": "https://github.com/Kasidro/projekt-dh2462",
   "license": "MIT",
-  "private": true,
   "dependencies": {
-    "angular": "1.3.x",
-    "angular-mocks": "1.3.x",
-    "jquery": "~2.1.1",
-    "bootstrap": "~3.1.1",
-    "angular-route": "1.3.x",
-    "angular-resource": "1.3.x",
-    "angular-animate": "1.3.x"
+    "angular": "^1.5.3",
+    "angular-animate": "^1.5.3",
+    "angular-mocks": "^1.5.3",
+    "angular-resource": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3"
   }
 }
