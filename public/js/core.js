@@ -9,6 +9,9 @@ meetingPlannerApp.config(['$routeProvider',
 			when('/planner', {
 				templateUrl: 'partials/planner.html'
 			}).
+			when('/start_menu', {
+				templateUrl: 'partials/start_menu.html'
+			}).
 			otherwise({
 				redirectTo: '/home'
 			});

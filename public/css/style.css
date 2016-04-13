@@ -1,26 +1,18 @@
-#header_start {
-	display: inline-block;
+#header_start { /*Formating for header of start page */
+	padding-top: 15vh;
     font-family: 'Audiowide', cursive;
-    line-height: 100pt;
-    height: 110pt;
     text-align: center;
     font-size: 100pt;
     color:white;
+    text-shadow: 0 0 15px #FF00FF;
 }
 
-#sub_header_start {
-    font-family: 'Jura', sans-serif;
-    text-align: center;
-    font-size: 40pt;
-    color:white;
-}
-
-#content {
+#content { /*Holds the rest of the application*/
 	width: 100vw;
 	height: 95vh;
     text-align: center;
 }
-#footer {
+#footer { /*Footer that are used on all pages thru the website */
 	font-family: 'Jura', sans-serif;
 	padding-top: 1vh;
 	width: 100vw;
@@ -29,4 +21,29 @@
 	background-color: rgba(47,36,44,0.4); 
 	text-align: center;
 	height: 5vh;
+}
+
+#corny_quote {
+	color: white;
+	font-size: 20pt;
+	font-family: 'Jura', sans-serif;
+	text-align: center;
+	font-weight: bold;
+}
+
+#fb_login_btn {
+	background-color: #3b5998;
+	color: white;
+	font-family: Tahoma, sans-serif;
+	border: 0;
+	font-size: 10pt;
+	margin-top: 10vh;
+	width: 10vw;
+	transition: 0.5s;
+	transition-timing-function: ease-out; 	
+}
+
+#fb_login_btn:hover {
+	width: 15vw;
+	font-size: 20pt;
 }
