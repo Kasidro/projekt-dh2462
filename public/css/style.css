@@ -1,17 +1,32 @@
-body {
-    background-image: url(http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/background_2_zpsmtz7jgo7.jpg);
-    background-size: cover;
-}
-#header {
+#header_start {
+	display: inline-block;
     font-family: 'Audiowide', cursive;
-    height: 20vh;
+    line-height: 100pt;
+    height: 110pt;
     text-align: center;
     font-size: 100pt;
     color:white;
 }
+
+#sub_header_start {
+    font-family: 'Jura', sans-serif;
+    text-align: center;
+    font-size: 40pt;
+    color:white;
+}
+
 #content {
+	width: 100vw;
+	height: 95vh;
     text-align: center;
 }
 #footer {
-    text-align: center;
+	font-family: 'Jura', sans-serif;
+	padding-top: 1vh;
+	width: 100vw;
+	color: white;
+	font-size: 2vh;
+	background-color: rgba(47,36,44,0.4); 
+	text-align: center;
+	height: 5vh;
 }
