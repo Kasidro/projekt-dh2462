@@ -1,0 +1,17 @@
+body {
+    background-image: url(http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/background_2_zpsmtz7jgo7.jpg);
+    background-size: cover;
+}
+#header {
+    font-family: 'Audiowide', cursive;
+    height: 20vh;
+    text-align: center;
+    font-size: 100pt;
+    color:white;
+}
+#content {
+    text-align: center;
+}
+#footer {
+    text-align: center;
+}

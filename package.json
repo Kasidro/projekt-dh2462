@@ -6,6 +6,7 @@
   "repository": "https://github.com/Kasidro/projekt-dh2462",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.13.4",
     "mongoose": "^4.4.12"
   },
   "devDependencies": {

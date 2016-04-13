@@ -1,52 +1,35 @@
 <!DOCTYPE html>
-<!-- Notice the ng-app Angular directive. This tells Angular where the application starts and also
-which module to associate the app with. In app.js we create the "dinnerPlanner" module. -->
 <html lang="en" ng-app="meetingPlanner">
-  <head>
-    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meeting Planner</title>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Meeting Planner</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Angular JavaScript including routing and resource modules  -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    
-    <!-- The application JavaScript code -->
-    <script src="js/core.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- jQuery -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Angular JavaScript including routing and resource modules  -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
 
-  </head>
-      <style>
-    body{
-        background-image: url(http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/background_2_zpsmtz7jgo7.jpg);
-        background-size: cover;
-    }
-    #header
-    {
-        font-family: 'Audiowide', cursive;
-        height: 20vh;
-        text-align: center;
-        vertical-align: middle;
-        font-size: 100pt;
-        color:white;
-    }
-    </style>
-
-  </head>
-  <body>
-        <div id=header>MAGENTA</div>
-        <div id=header style="font-size: 40pt">event planer</div>
-        <div id=footer>
-            Development and design: Jakob, Johannes, Oscar and Tobias
+        <!-- The application JavaScript code -->
+        <script src="js/core.js"></script>
+        <!-- Overrides Bootstrap CSS -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div id=header>MAGENTA</div>
+            <div id=header style="font-size: 40pt">event planer</div>
+            <div id="content" ng-view></div>
+            <div id=footer>Development and design: Jakob, Johannes, Oscar and Tobias</div>
         </div>
-  </body>
+    </body>
 </html>
