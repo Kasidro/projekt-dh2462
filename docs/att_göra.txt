@@ -1,0 +1,28 @@
+Facebook Rest API:
+	- Man måste logga in via hemsidan första gången innan man kan läggas till av eventskapare på hemsidan.
+	- Hämta facebookID, namn och bild
+	- Skicka meddelande till dem som är med i eventet, med en liten text och en länk.
+
+	Skriv ett testprogramm som kan utföra detta uppgifter skriven i javascript som vi sedan kan implmentera på våran hemsida.
+
+Databas: Retunerar JSON Objekt:
+	- Vi spara ner all info om eventen i separata datastrukturer.
+		- Vilka dagar som ingår
+			- Vilka aktiviteter som ingår i den dagen
+		- Vilka personer är inbjudna
+		- Vilka priviligier har de olika användarna
+		- Optinal: Gör Api:t stabilt
+
+Backend:
+	- Drag and drop för att ändra ordning på aktiviteter inom eventet
+		- Både flytta inom dagarna men också kunna drag and dropa till en annan.
+		- Kontrollera att samma facebook ID som försökte redigera är den som skapade eventet. Det är de enda som får redigera.
+			- Vid tid möjlighet att lägga till flera som kan redigera.
+	- Datastruktur som håller de som kommer tillbaka från databas och Facebook.
+		- Eventets dagar
+		- Vilka aktiviteter som ingår i vilka dagar
+		- Vilka som är inbjudna
+			- Deras facebookID
+			- Profilbild
+			- Namn
+		- Vilka FacebookID som har rättigheter att ändra i eventet
