@@ -3,6 +3,8 @@
 which module to associate the app with. In app.js we create the "dinnerPlanner" module. -->
 <html lang="en" ng-app="meetingPlanner">
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,53 +27,26 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
   </head>
       <style>
     body{
-        background-image: url(https://lh3.googleusercontent.com/CJBZDp-M47Hebk06CZsvNJF-Ppv0IThw_ZB9vT-3rgFt1No6g7qqLnjqfJq_HnwNvSdhaPxJ56G9DYmF93oh5w=s0);
+        background-image: url(http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/background_2_zpsmtz7jgo7.jpg);
         background-size: cover;
     }
-    #header {
-        background-color: rgba(60, 73, 70,0.5);
-        color: white;
-        height: 15vh;
-        text-align: center;
-        font-family: 'Jura', sans-serif;
-        padding-bottom: 10px;
-
-    }
-
-    #title {
-        color: white;
-        font-weight: bold;
-        font-size: 50pt;
-        padding: 0px;
-        margin: 0px;
-    }
-
-    #section
+    #header
     {
-        color: rgb(50,50,55);
-        font-family: 'Jura', sans-serif;
-        height: 80vh;
-    }
-
-    #footer {
-        background: rgba(60, 73, 70,0.5);
-        color: white;
-        clear:both;
+        font-family: 'Audiowide', cursive;
+        height: 20vh;
         text-align: center;
         vertical-align: middle;
-        height: 5vh;
+        font-size: 100pt;
+        color:white;
     }
     </style>
 
   </head>
   <body>
-        <div id="header">
-            <span id="title">PROFESSIONAL MEETING PLANNER<br></span>
-        </div>
-        <div id="section" ng-view>
-        </div>
-        <div id="footer">
-            Made by: Jakob, Johannes, Oscar and Tobias
+        <div id=header>MAGENTA</div>
+        <div id=header style="font-size: 40pt">event planer</div>
+        <div id=footer>
+            Development and design: Jakob, Johannes, Oscar and Tobias
         </div>
   </body>
 </html>
