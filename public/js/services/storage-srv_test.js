@@ -1,4 +1,4 @@
-meetingPlannerApp.factory('Tester', function($http) {
+app.factory('Storage', function($http) {
 
 	// create
 	this.postEvent = function(eventData) {
@@ -24,5 +24,3 @@ meetingPlannerApp.factory('Tester', function($http) {
 
 	return this;
 });
-
-console.log('services/tester.js loaded')

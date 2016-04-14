@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('TestController', function($scope, Tester) {
+app.controller('StorageCtrl', function($scope, Storage) {
 
 	var event0 = {
 		date: new Date(),
@@ -14,17 +14,17 @@ meetingPlannerApp.controller('TestController', function($scope, Tester) {
 		description: 'Very interesting'
 	}
 
-	Tester.postEvent(event0)
+	Storage.postEvent(event0)
 		.then(function(res) {
 			console.log(res.data);
-			Tester.getEvent(res.data._id)
+			Storage.getEvent(res.data._id)
 				.then(function(res) {
 					console.log(res.data);
 					res.data.activities.push(activity0);
-					Tester.putEvent(res.data._id, res.data)
+					Storage.putEvent(res.data._id, res.data)
 						.then(function(res) {
 							console.log(res.data);
-							Tester.deleteEvent(res.data._id)
+							Storage.deleteEvent(res.data._id)
 								.then(function(res) {
 									console.log(res.data);
 								});
@@ -32,5 +32,3 @@ meetingPlannerApp.controller('TestController', function($scope, Tester) {
 				});
 		});
 });
-
-console.log('controllers/test.js loaded');

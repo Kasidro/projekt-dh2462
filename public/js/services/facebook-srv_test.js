@@ -1,4 +1,4 @@
-meetingPlannerApp.factory('facebookService', ['$q', function($q) {
+app.factory('Facebook', ['$q', function($q) {
     return {
         getLoginStatus: function() {
             var deferred = $q.defer();
