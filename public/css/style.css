@@ -7,30 +7,6 @@
     text-shadow: 0 0 15px #FF00FF;
 }
 
-#content { /*Holds the rest of the application*/
-	width: 100vw;
-	height: 95vh;
-    text-align: center;
-}
-#footer { /*Footer that are used on all pages thru the website */
-	font-family: 'Jura', sans-serif;
-	padding-top: 1vh;
-	width: 100vw;
-	color: white;
-	font-size: 2vh;
-	background-color: rgba(47,36,44,0.4); 
-	text-align: center;
-	height: 5vh;
-}
-
-#corny_quote {
-	color: white;
-	font-size: 20pt;
-	font-family: 'Jura', sans-serif;
-	text-align: center;
-	font-weight: bold;
-}
-
 #fb_login_btn {
 	background-color: #3b5998;
 	color: white;
@@ -47,3 +23,126 @@
 	width: 15vw;
 	font-size: 20pt;
 }
+
+/*----------------End of styling for start page-----------------*/
+/*----------------Styling of site wide elements-----------------*/
+
+#content { /*Holds the rest of the application*/
+	width: 100vw;
+	height: 95vh;
+    text-align: center;
+}
+#footer { /*Footer that are used on all pages thru the website */
+	font-family: 'Jura', sans-serif;
+	padding-top: 1vh;
+	width: 100vw;
+	color: white;
+	font-size: 2vh;
+	background-color: rgba(47,36,44,0.4); 
+	text-align: center;
+	height: 5vh;
+}
+
+/*-------------Styiling of header (not start page)-----------*/
+
+#dropdown_container {
+	height: 7vh;
+	font-family: 'Audiowide', cursive;
+	font-size: 3vh;
+	text-align: left;
+	color: white;
+	background-color: #994D83; 
+	transition: 0.5s;
+	padding: 0;
+}
+
+#heading_container {
+	padding-right: 10vw;
+	height: 7vh;
+	font-family: 'Audiowide', cursive;
+	font-size: 5vh;
+	text-align: right;
+	text-shadow: 0 0 10px #FFAAFF;
+	background-color: #F4EBD9; 
+}
+
+#dropdown_container:hover {
+	background-color: #992083;
+}
+
+nav ul {
+	-webkit-font-smoothing:antialiased;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 7vh;
+}
+
+#topp_list {
+	margin-top: 1.5vh;
+}
+
+nav a {
+    color:inherit;
+    display: block;
+    padding: 0 25px;
+    height: 5.5vh;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all 1s ease;
+       -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+         -o-transition: all 1s ease;
+            transition: all 1s ease;
+}
+nav .dropdown:after {
+    content: ' ▶';
+}
+nav .dropdown:hover:after{
+	content:'\25bc'
+}
+nav li:hover a {
+    background: #994D83;
+}
+#topp {
+	background: transparent;
+	color: white;
+}
+
+nav li ul {
+    float: left;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 1s ease;
+       -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+         -o-transition: all 1s ease;
+            transition: all 1s ease;
+}
+nav li:hover ul {
+    opacity: 1;
+    top: 50px;
+    visibility: visible;
+}
+nav li ul li {
+    float: none;
+    width: 100%;
+}
+nav li ul a:hover {
+    background: #996E83;
+    color: white;
+}
+
+/* Clearfix */
+
+.cf:after, .cf:before {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+.cf {
+    zoom:1;
+}​
