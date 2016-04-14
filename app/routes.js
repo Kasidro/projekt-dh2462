@@ -22,6 +22,8 @@ module.exports = function(app) {
         });
 	});
 
+	// TODO: add read for owner/guest
+
 	// update
 	app.put('/api/events/:id', function(req, res) {
 		Event.findById(req.params.id, function(err, event) {

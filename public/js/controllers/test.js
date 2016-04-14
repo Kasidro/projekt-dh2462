@@ -4,6 +4,7 @@ meetingPlannerApp.controller('TestController', function($scope, Tester) {
 		date: new Date(),
 		start: 10,
 		owner: 'Tobias',
+		guests: 'Eric, Jakob, Johannes'
 	};
 
 	var activity0 = {

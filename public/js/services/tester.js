@@ -10,6 +10,8 @@ meetingPlannerApp.factory('Tester', function($http) {
 		return $http.get('/api/events/' + id);
 	}
 
+	// TODO: add read for owner/guest
+
 	// update
 	this.putEvent = function(id, eventData) {
 		return $http.put('/api/events/' + id, eventData);
