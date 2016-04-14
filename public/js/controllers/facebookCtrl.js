@@ -23,10 +23,22 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
     $scope.loginStatus = '';
     $scope.logoutStatus = '';
 
+    // internal helper function
     var fbIdToImgUrl = function(fbId) {
         var imgUrlHead = 'http://graph.facebook.com/';
         var imgUrlTail = '/picture?type=large';
         return imgUrlHead + fbId + imgUrlTail;
+    };
+
+    // returns friend by id or null if that friend does not exist
+    $scope.getFriend = function(id) {
+        var friend = null;
+        for (var i = 0; i < $scope.friends.length; i++) {
+            if ($scope.friends[i].id === id) {
+                friend = $scope.friends[i];
+            }
+        }
+        return friend;
     };
 
     $scope.getLoginStatus = function() {
