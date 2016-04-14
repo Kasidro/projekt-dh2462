@@ -1,23 +1,22 @@
 var Event = require('./models/event');
-var Activity = require('./models/activity');
 
 module.exports = function(app) {
 
-	app.post('/api/activities/', function(req, res) {
-		var activity = new Activity();
-		for (var p in req.body) activity[p] = req.body[p];
-		activity.save(function(err) {
+	app.post('/api/events', function(req, res) {
+		var event = new Event();
+		for (var p in req.body) event[p] = req.body[p];
+		event.save(function(err) {
 			if (err)
 				res.send(err);
-            res.json({ id: activity._id });
+            res.json(event);
         });
 	});
-	
-	app.get('/api/activities/:id', function(req, res) {
-		Activity.findById(req.params.id, function(err, activity) {
+
+	app.get('/api/events/:id', function(req, res) {
+		Event.findById(req.params.id, function(err, event) {
             if (err)
                 res.send(err);
-            res.json(activity);
+            res.json(event);
         });
 	});
 }
