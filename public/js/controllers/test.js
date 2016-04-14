@@ -19,6 +19,15 @@ meetingPlannerApp.controller('TestController', function($scope, Tester) {
 			Tester.getEvent(res.data._id)
 				.then(function(res) {
 					console.log(res.data);
+					res.data.activities.push(activity0);
+					Tester.putEvent(res.data._id, res.data)
+						.then(function(res) {
+							console.log(res.data);
+							Tester.deleteEvent(res.data._id)
+								.then(function(res) {
+									console.log(res.data);
+								});
+						});
 				});
 		});
 });

@@ -1,19 +1,23 @@
 meetingPlannerApp.factory('Tester', function($http) {
 
+	// create
 	this.postEvent = function(eventData) {
 		return $http.post('/api/events', eventData);
 	}
 
+	// read
 	this.getEvent = function(id) {
 		return $http.get('/api/events/' + id);
 	}
-	
-	this.postActivity = function(activityData) {
-		return $http.post('/api/activities', activityData);
+
+	// update
+	this.putEvent = function(id, eventData) {
+		return $http.put('/api/events/' + id, eventData);
 	}
 
-	this.getActivity = function(id) {
-		return $http.get('/api/activities/' + id);
+	// delete
+	this.deleteEvent = function(id) {
+		return $http.delete('/api/events/' + id);
 	}
 
 	return this;
