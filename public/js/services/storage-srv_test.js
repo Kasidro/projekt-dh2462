@@ -6,11 +6,9 @@ app.factory('Storage', function($http) {
 	}
 
 	// read
-	this.getEvent = function(id) {
-		return $http.get('/api/events/' + id);
+	this.getEvent = function(eventId) {
+		return $http.get('/api/events/' + eventId);
 	}
-
-	// TODO: add read for owner/guest
 
 	// update
 	this.putEvent = function(id, eventData) {
@@ -20,6 +18,16 @@ app.factory('Storage', function($http) {
 	// delete
 	this.deleteEvent = function(id) {
 		return $http.delete('/api/events/' + id);
+	}
+
+	// read all
+	this.getEvents = function(facebookId) {
+		return $http.get('/api/events/facebook/' + facebookId);
+	}
+
+	// delete all
+	this.deleteEvents = function(facebookId) {
+		return $http.delete('/api/events/facebook/' + facebookId);
 	}
 
 	return this;
