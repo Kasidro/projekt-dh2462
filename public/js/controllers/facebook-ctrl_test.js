@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', function($scope, facebookService) {
+app.controller('FacebookCtrl', ['$scope', 'Facebook', function($scope, Facebook) {
 
     //Holds user information
     $scope.me = {
@@ -50,7 +50,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
 
     $scope.getLoginStatus = function() {
         $scope.getLoginStatusStatus = 'Fetching login status...';
-        facebookService.getLoginStatus()
+        Facebook.getLoginStatus()
             .then(function(response) {
                 $scope.userLoginStatus = response.status;
                 $scope.getLoginStatusStatus = 'Success fetching login status!';
@@ -62,7 +62,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
 
     $scope.getMe = function() {
         $scope.getMeStatus = 'Fetching my FB information...';
-        facebookService.api('/me')
+        Facebook.api('/me')
             .then(function(response) {
                 response.imgUrl = fbIdToImgUrl(response.id);
                 $scope.me = response;
@@ -75,7 +75,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
 
     $scope.getFriends = function() {
         $scope.getFriendsStatus = 'Fetching friends...';
-        facebookService.api('/me/friends')
+        Facebook.api('/me/friends')
             .then(function(response) {
                     $scope.friends = [];
                     for (var i = 0; i < response.data.length; i++) {
@@ -93,9 +93,9 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
 
     $scope.login = function() {
         $scope.loginStatus = 'Logging in...';
-        var promise = facebookService.getLoginStatus()
+        var promise = Facebook.getLoginStatus()
             .then(function(response) {
-                facebookService.login(response).then(function(lresponse) {
+                Facebook.login(response).then(function(lresponse) {
                     clearCache();
                     $scope.userLoginStatus = lresponse.status;
                     $scope.loginStatus = 'Success logging in!'
@@ -112,9 +112,9 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
 
     $scope.logout = function() {
         $scope.logoutStatus = 'Logging out..';
-        var promise = facebookService.getLoginStatus()
+        var promise = Facebook.getLoginStatus()
             .then(function(response) {
-                facebookService.logout(response).then(function(lresponse) {
+                Facebook.logout(response).then(function(lresponse) {
                     clearCache();
                     $scope.userLoginStatus = lresponse.status;
                     $scope.logoutStatus = 'Success logging out!';

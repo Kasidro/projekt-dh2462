@@ -7,14 +7,19 @@ var app = express();
 var port = process.env.PORT || 8000;
 
 // config
-mongoose.connect(database.url);
-app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
+mongoose.connect(database.url);
 
 // routes
 require('./app/routes.js')(app);
 
 // listen
-app.listen(port);
-console.log('Server listening on port ' + port);
+console.log('Starting...');
+mongoose.connection
+	.on('error', console.error.bind(console, 'Connection error:'))
+	.once('open', function() {
+		console.log('Connected to MongoDB');
+		app.listen(port);
+		console.log('Server listening on port ' + port);
+	});
