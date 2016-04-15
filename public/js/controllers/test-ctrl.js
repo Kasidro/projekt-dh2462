@@ -52,11 +52,7 @@ app.controller('TestCtrl', function($scope, Facebook, Storage) {
         $scope.statusString = 'Fetching friends...';
         Facebook.getFriends()
             .then(function(response) {
-                    $scope.friends = [];
-                    for (var i = 0; i < response.data.length; i++) {
-                        var friend = response.data[i];
-                        $scope.friends.push(friend);
-                    }
+                    $scope.friends = response.data;
                     $scope.statusString = 'Success fetching friends!';
                 },
                 function(reason) {
@@ -157,7 +153,8 @@ app.controller('TestCtrl', function($scope, Facebook, Storage) {
             });
     };
 
-    var crudTest = (function() {
+    // CRUD test
+    (function() {
 
         var event0 = {
             date: new Date(),
@@ -174,7 +171,7 @@ app.controller('TestCtrl', function($scope, Facebook, Storage) {
             description: 'Very interesting'
         }
 
-        // create
+        // Create
         Storage.postEvent(event0)
             .then(function(res) {
                 event0._id = res.data._id;
@@ -182,14 +179,14 @@ app.controller('TestCtrl', function($scope, Facebook, Storage) {
                     create_response: res.data
                 });
 
-                // read
+                // Read
                 Storage.getEvent(event0._id)
                     .then(function(res) {
                         console.log({
                             read_response: res.data
                         });
 
-                        // update
+                        // Update
                         event0.activities.push(activity0);
                         Storage.putEvent(event0._id, event0)
                             .then(function(res) {
@@ -197,7 +194,7 @@ app.controller('TestCtrl', function($scope, Facebook, Storage) {
                                     update_response: res.data
                                 });
 
-                                // delete
+                                // Delete
                                 Storage.deleteEvent(event0._id)
                                     .then(function(res) {
                                         console.log({
