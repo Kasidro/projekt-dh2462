@@ -1,4 +1,4 @@
-app.factory('Facebook', ['$q', function($q) {
+app.factory('Facebook', function($q) {
 
     // internal helper function
     var fbIdToImgUrl = function(fbId) {
@@ -98,4 +98,4 @@ app.factory('Facebook', ['$q', function($q) {
         //         return deferred.promise;
         //     }
     }
-}]);
+});

@@ -15,7 +15,7 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
 			}).
 			when('/test', {
 				templateUrl: 'partials/test.html',
-				controller: 'DemoCtrl'
+				controller: 'TestCtrl'
 			}).
 			otherwise({
 				redirectTo: '/home'
@@ -23,7 +23,7 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
 	})
 
 	// Load FB SDK
-	.run(['$window', function($window) {
+	.run(function($window) {
 		$window.fbAsyncInit = function() {
 			FB.init({
 				appId: '1536790389949976',
@@ -42,4 +42,4 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
 			js.src = "//connect.facebook.net/en_US/sdk.js";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-	}]);
+	});

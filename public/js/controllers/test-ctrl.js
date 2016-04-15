@@ -1,86 +1,26 @@
-app.controller('DemoCtrl', function($scope, Storage, Facebook) {
+app.controller('TestCtrl', function($scope, Facebook, Storage) {
 
-    //Holds user information
+    // Facebook
+    // ========================================================================
+
+    // Holds user information
     $scope.me = {
         'id': '',
         'name': '',
         // Stand in picture since setting this field to empty seems to keep previous picture from browser cache
         'imgUrl': 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85',
     };
-
-    //Holds users friends
+    // Holds users friends
     $scope.friends = [];
-
-    //Login status of current user, values:
-    //"connected" : The person is logged into Facebook, and has logged into your app.
-    //"not_authorized" : The person is logged into Facebook, but has not logged into your app.
-    //"unknown" : The person is not logged into Facebook, so you don't know if they've logged into your app. Or FB.logout() was called before and therefore, it cannot connect to Facebook.
-    $scope.userLoginStatus = '';
-
-    //Fields holding status messages
+    // Login status of current user, values:
+    // "connected" : The person is logged into Facebook, and has logged into your app.
+    // "not_authorized" : The person is logged into Facebook, but has not logged into your app.
+    // "unknown" : The person is not logged into Facebook, so you don't know if they've logged into your app. Or FB.logout() was called before and therefore, it cannot connect to Facebook.
+    $scope.userLoginStatus = 'not_connected';
+    // Fields holding status messages
     $scope.statusString = '';
 
-    // Clean up personal info
-    var clearCache = function() {
-        $scope.me.id = '';
-        $scope.me.name = '';
-        $scope.me.imgUrl = 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85';
-        $scope.friends = [];
-        $scope.events = null;
-    };
-
-    // returns friend by id or null if that friend does not exist
-    $scope.getFriend = function(id) {
-        var friend = null;
-        for (var i = 0; i < $scope.friends.length; i++) {
-            if ($scope.friends[i].id === id) {
-                friend = $scope.friends[i];
-            }
-        }
-        return friend;
-    };
-
-    //FB demoCtrl
-
-    $scope.getLoginStatus = function() {
-        $scope.statusString = 'Fetching login status...';
-        Facebook.getLoginStatus()
-            .then(function(response) {
-                $scope.userLoginStatus = response.status;
-                $scope.statusString = 'Success fetching login status!';
-            }, function(reason) {
-                $scope.statusString = reason;
-            });
-    };
-
-    var getMe = function() {
-        $scope.statusString = 'Fetching my FB information...';
-        Facebook.getMe()
-            .then(function(response) {
-                $scope.me = response;
-                getEvents();
-                $scope.statusString = 'Success fetching my FB information!';
-            }, function(reason) {
-                $scope.statusString = reason;
-            });
-    };
-
-    var getFriends = function() {
-        $scope.statusString = 'Fetching friends...';
-        Facebook.getFriends()
-            .then(function(response) {
-                    $scope.friends = [];
-                    for (var i = 0; i < response.data.length; i++) {
-                        var friend = response.data[i];
-                        $scope.friends.push(friend);
-                    }
-                    $scope.statusString = 'Success fetching friends!';
-                },
-                function(reason) {
-                    $scope.statusString = reason;
-                });
-    };
-
+    // Login
     $scope.login = function() {
         $scope.statusString = 'Logging in...';
         var promise = Facebook.getLoginStatus()
@@ -97,14 +37,41 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                 $scope.statusString = reason;
             });
     };
+    var getMe = function() {
+        $scope.statusString = 'Fetching my FB information...';
+        Facebook.getMe()
+            .then(function(response) {
+                $scope.me = response;
+                getEvents();
+                $scope.statusString = 'Success fetching my FB information!';
+            }, function(reason) {
+                $scope.statusString = reason;
+            });
+    };
+    var getFriends = function() {
+        $scope.statusString = 'Fetching friends...';
+        Facebook.getFriends()
+            .then(function(response) {
+                    $scope.friends = [];
+                    for (var i = 0; i < response.data.length; i++) {
+                        var friend = response.data[i];
+                        $scope.friends.push(friend);
+                    }
+                    $scope.statusString = 'Success fetching friends!';
+                },
+                function(reason) {
+                    $scope.statusString = reason;
+                });
+    };
 
+    // Logout
     $scope.logout = function() {
-        $scope.statusString = 'Logging out..';
+        $scope.statusString = 'Logging out...';
         var promise = Facebook.getLoginStatus()
             .then(function(response) {
                 Facebook.logout(response).then(function(lresponse) {
                     clearCache();
-                    $scope.userLoginStatus = lresponse.status;
+                    //$scope.userLoginStatus = lresponse.status;
                     $scope.statusString = 'Success logging out!';
                 }, function(lreason) {
                     $scope.statusString = lreason;
@@ -113,16 +80,50 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                 $scope.statusString = reason;
             });
     };
+    var clearCache = function() {
+        // Facebook
+        $scope.me.id = '';
+        $scope.me.name = '';
+        $scope.me.imgUrl = 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85';
+        $scope.friends = [];
+        $scope.userLoginStatus = 'not_connected';
+        // Storage
+        $scope.events = [];
+    };
 
-    //Storage demoCtrl
+    // Not used
+    /*
+    // returns friend by id or null if that friend does not exist
+    $scope.getFriend = function(id) {
+        var friend = null;
+        for (var i = 0; i < $scope.friends.length; i++) {
+            if ($scope.friends[i].id === id) {
+                friend = $scope.friends[i];
+            }
+        }
+        return friend;
+    };
+    $scope.getLoginStatus = function() {
+        $scope.statusString = 'Fetching login status...';
+        Facebook.getLoginStatus()
+            .then(function(response) {
+                $scope.userLoginStatus = response.status;
+                $scope.statusString = 'Success fetching login status!';
+            }, function(reason) {
+                $scope.statusString = reason;
+            });
+    };
+    */
 
-    $scope.events;
+    // Storage
+    // ========================================================================
+
+    $scope.events = [];
 
     $scope.add = function() {
-
+        if ($scope.userLoginStatus !== 'connected') return;
         var allFriends = [];
         for (i in $scope.friends) allFriends.push($scope.friends[i].id);
-
         var dummyEvent = {
             date: new Date(),
             start: 10,
@@ -135,7 +136,6 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                 description: 'Very interesting'
             }]
         }
-
         Storage.postEvent(dummyEvent)
             .then(function(res) {
                 getEvents();
@@ -143,6 +143,7 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
     }
 
     $scope.remove = function() {
+        if ($scope.userLoginStatus !== 'connected') return;
         Storage.deleteEvents($scope.me.id)
             .then(function(res) {
                 getEvents();
