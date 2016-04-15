@@ -11,13 +11,13 @@ app.factory('Storage', function($http) {
 	}
 
 	// update
-	this.putEvent = function(id, eventData) {
-		return $http.put('/api/events/' + id, eventData);
+	this.putEvent = function(eventId, eventData) {
+		return $http.put('/api/events/' + eventId, eventData);
 	}
 
 	// delete
-	this.deleteEvent = function(id) {
-		return $http.delete('/api/events/' + id);
+	this.deleteEvent = function(eventId) {
+		return $http.delete('/api/events/' + eventId);
 	}
 
 	// read all
