@@ -4,7 +4,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
     $scope.me = {
         'id': '',
         'name': '',
-        'imgUrl': '',
+        'imgUrl': 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85',
     };
 
     //Holds users friends
@@ -14,7 +14,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
     //"connected" : The person is logged into Facebook, and has logged into your app.
     //"not_authorized" : The person is logged into Facebook, but has not logged into your app.
     //"unknown" : The person is not logged into Facebook, so you don't know if they've logged into your app. Or FB.logout() was called before and therefore, it cannot connect to Facebook.
-    $scope.userLoginStatus = 'unknown';
+    $scope.userLoginStatus = '';
 
     //Fields holding status messages
     $scope.getLoginStatusStatus = '';
@@ -28,6 +28,13 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
         var imgUrlHead = 'http://graph.facebook.com/';
         var imgUrlTail = '/picture?type=large';
         return imgUrlHead + fbId + imgUrlTail;
+    };
+
+    var clearCache = function() {
+        $scope.me.id = '';
+        $scope.me.name = '';
+        $scope.me.imgUrl = 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85';
+        $scope.friends = [];
     };
 
     // returns friend by id or null if that friend does not exist
@@ -45,7 +52,6 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
         $scope.getLoginStatusStatus = 'Fetching login status...';
         facebookService.getLoginStatus()
             .then(function(response) {
-                //console.log(response);
                 $scope.userLoginStatus = response.status;
                 $scope.getLoginStatusStatus = 'Success fetching login status!';
             }, function(reason) {
@@ -90,6 +96,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
         var promise = facebookService.getLoginStatus()
             .then(function(response) {
                 facebookService.login(response).then(function(lresponse) {
+                    clearCache();
                     $scope.userLoginStatus = lresponse.status;
                     $scope.loginStatus = 'Success logging in!'
                         //console.log(lresponse);
@@ -108,6 +115,7 @@ meetingPlannerApp.controller('FacebookCtrl', ['$scope', 'facebookService', funct
         var promise = facebookService.getLoginStatus()
             .then(function(response) {
                 facebookService.logout(response).then(function(lresponse) {
+                    clearCache();
                     $scope.userLoginStatus = lresponse.status;
                     $scope.logoutStatus = 'Success logging out!';
                     //console.log(lresponse);
