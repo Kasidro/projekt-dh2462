@@ -49,7 +49,6 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                 $scope.userLoginStatus = response.status;
                 $scope.statusString = 'Success fetching login status!';
             }, function(reason) {
-                //console.log(reason);
                 $scope.statusString = reason;
             });
     };
@@ -58,12 +57,11 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
         $scope.statusString = 'Fetching my FB information...';
         Facebook.getMe()
             .then(function(response) {
-                //response.imgUrl = fbIdToImgUrl(response.id);
                 $scope.me = response;
+                getEvents();
                 $scope.statusString = 'Success fetching my FB information!';
             }, function(reason) {
                 $scope.statusString = reason;
-                //console.log(reason);
             });
     };
 
@@ -79,7 +77,6 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                     $scope.statusString = 'Success fetching friends!';
                 },
                 function(reason) {
-                    //console.log(reason);
                     $scope.statusString = reason;
                 });
     };
@@ -91,17 +88,13 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                 Facebook.login(response).then(function(lresponse) {
                     getMe();
                     getFriends();
-                    getEvents();
                     $scope.userLoginStatus = lresponse.status;
                     $scope.statusString = 'Success logging in!';
-                    //console.log(lresponse);
                 }, function(lreason) {
-                    //console.log(lreason);
                     $scope.statusString = lreason;
                 });
             }, function(reason) {
                 $scope.statusString = reason;
-                //console.log(reason);
             });
     };
 
@@ -113,13 +106,10 @@ app.controller('DemoCtrl', function($scope, Storage, Facebook) {
                     clearCache();
                     $scope.userLoginStatus = lresponse.status;
                     $scope.statusString = 'Success logging out!';
-                    //console.log(lresponse);
                 }, function(lreason) {
-                    //console.log(lreason);
                     $scope.statusString = lreason;
                 });
             }, function(reason) {
-                //console.log(reason);
                 $scope.statusString = reason;
             });
     };
