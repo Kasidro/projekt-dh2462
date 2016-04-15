@@ -1,4 +1,4 @@
-app.controller('FacebookCtrl', ['$scope', 'Facebook', function($scope, Facebook) {
+app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
 
     //Holds user information
     $scope.me = {
@@ -17,18 +17,7 @@ app.controller('FacebookCtrl', ['$scope', 'Facebook', function($scope, Facebook)
     $scope.userLoginStatus = '';
 
     //Fields holding status messages
-    $scope.getLoginStatusStatus = '';
-    $scope.getMeStatus = '';
-    $scope.getFriendsStatus = '';
-    $scope.loginStatus = '';
-    $scope.logoutStatus = '';
-
-    // internal helper function
-    var fbIdToImgUrl = function(fbId) {
-        var imgUrlHead = 'http://graph.facebook.com/';
-        var imgUrlTail = '/picture?type=large';
-        return imgUrlHead + fbId + imgUrlTail;
-    };
+    $scope.statusString = '';
 
     var clearCache = function() {
         $scope.me.id = '';
@@ -49,84 +38,83 @@ app.controller('FacebookCtrl', ['$scope', 'Facebook', function($scope, Facebook)
     };
 
     $scope.getLoginStatus = function() {
-        $scope.getLoginStatusStatus = 'Fetching login status...';
+        $scope.statusString = 'Fetching login status...';
         Facebook.getLoginStatus()
             .then(function(response) {
                 $scope.userLoginStatus = response.status;
-                $scope.getLoginStatusStatus = 'Success fetching login status!';
+                $scope.statusString = 'Success fetching login status!';
             }, function(reason) {
                 //console.log(reason);
-                $scope.getLoginStatusStatus = reason;
+                $scope.statusString = reason;
             });
     };
 
     $scope.getMe = function() {
-        $scope.getMeStatus = 'Fetching my FB information...';
-        Facebook.api('/me')
+        $scope.statusString = 'Fetching my FB information...';
+        Facebook.getMe()
             .then(function(response) {
-                response.imgUrl = fbIdToImgUrl(response.id);
+                //response.imgUrl = fbIdToImgUrl(response.id);
                 $scope.me = response;
-                $scope.getMeStatus = 'Success fetching my FB information!';
+                $scope.statusString = 'Success fetching my FB information!';
             }, function(reason) {
-                $scope.getMeStatus = reason;
+                $scope.statusString = reason;
                 //console.log(reason);
             });
     };
 
     $scope.getFriends = function() {
-        $scope.getFriendsStatus = 'Fetching friends...';
-        Facebook.api('/me/friends')
+        $scope.statusString = 'Fetching friends...';
+        Facebook.getFriends()
             .then(function(response) {
                     $scope.friends = [];
                     for (var i = 0; i < response.data.length; i++) {
                         var friend = response.data[i];
-                        friend.imgUrl = fbIdToImgUrl(friend.id);
                         $scope.friends.push(friend);
                     }
-                    $scope.getFriendsStatus = 'Success fetching friends!';
+                    $scope.statusString = 'Success fetching friends!';
                 },
                 function(reason) {
                     //console.log(reason);
-                    $scope.getFriendsStatus = reason;
+                    $scope.statusString = reason;
                 });
     };
 
     $scope.login = function() {
-        $scope.loginStatus = 'Logging in...';
+        $scope.statusString = 'Logging in...';
         var promise = Facebook.getLoginStatus()
             .then(function(response) {
                 Facebook.login(response).then(function(lresponse) {
                     clearCache();
                     $scope.userLoginStatus = lresponse.status;
-                    $scope.loginStatus = 'Success logging in!'
+                    $scope.statusString = 'Success logging in!'
                         //console.log(lresponse);
                 }, function(lreason) {
                     //console.log(lreason);
-                    $scope.loginStatus = lreason;
+                    $scope.statusString = lreason;
                 });
             }, function(reason) {
-                $scope.loginStatus = reason;
+                $scope.statusString = reason;
                 //console.log(reason);
             });
     };
 
     $scope.logout = function() {
-        $scope.logoutStatus = 'Logging out..';
+        $scope.statusString = 'Logging out..';
         var promise = Facebook.getLoginStatus()
             .then(function(response) {
                 Facebook.logout(response).then(function(lresponse) {
                     clearCache();
                     $scope.userLoginStatus = lresponse.status;
-                    $scope.logoutStatus = 'Success logging out!';
+                    $scope.statusString = 'Success logging out!';
                     //console.log(lresponse);
                 }, function(lreason) {
                     //console.log(lreason);
-                    $scope.logoutStatus = lreason;
+                    $scope.statusString = lreason;
                 });
             }, function(reason) {
                 //console.log(reason);
-                $scope.logoutStatus = reason;
+                $scope.statusString = reason;
             });
     };
 
-}]);
+});
