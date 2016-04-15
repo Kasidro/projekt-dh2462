@@ -1,0 +1,19 @@
+
+<a id="fb_login_btn" class="btn btn-default" ng-click="login()">Facebook login</a>
+<br>
+<a class="btn btn-default" ng-click="logout()">Facebook logout</a>
+
+<p>{{userLoginStatus}}</p>
+<p>Me: {{me.name}} {{me.id}}  <img ng-src={{me.imgUrl}} /></p>
+<div>
+    <ul>
+        <li ng-repeat="friend in friends">
+            {{friend.name}} <img ng-src={{friend.imgUrl}} />
+        </li>
+    </ul>
+</div>
+<p>Events: {{events}}</p>
+<p>Status: {{statusString}}</p>
+
+<a class="btn btn-default" ng-click="add()">Add dummy event</a>
+<a class="btn btn-default" ng-click="remove()">Remove all your events</a>

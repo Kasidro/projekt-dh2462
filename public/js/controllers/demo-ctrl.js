@@ -1,9 +1,10 @@
-app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
+app.controller('DemoCtrl', function($scope, Storage, Facebook) {
 
     //Holds user information
     $scope.me = {
         'id': '',
         'name': '',
+        // Stand in picture since setting this field to empty seems to keep previous picture from browser cache
         'imgUrl': 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85',
     };
 
@@ -19,11 +20,13 @@ app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
     //Fields holding status messages
     $scope.statusString = '';
 
+    // Clean up personal info
     var clearCache = function() {
         $scope.me.id = '';
         $scope.me.name = '';
         $scope.me.imgUrl = 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85';
         $scope.friends = [];
+        $scope.events = null;
     };
 
     // returns friend by id or null if that friend does not exist
@@ -37,6 +40,8 @@ app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
         return friend;
     };
 
+    //FB demoCtrl
+
     $scope.getLoginStatus = function() {
         $scope.statusString = 'Fetching login status...';
         Facebook.getLoginStatus()
@@ -49,7 +54,7 @@ app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
             });
     };
 
-    $scope.getMe = function() {
+    var getMe = function() {
         $scope.statusString = 'Fetching my FB information...';
         Facebook.getMe()
             .then(function(response) {
@@ -62,7 +67,7 @@ app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
             });
     };
 
-    $scope.getFriends = function() {
+    var getFriends = function() {
         $scope.statusString = 'Fetching friends...';
         Facebook.getFriends()
             .then(function(response) {
@@ -84,10 +89,12 @@ app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
         var promise = Facebook.getLoginStatus()
             .then(function(response) {
                 Facebook.login(response).then(function(lresponse) {
-                    clearCache();
+                    getMe();
+                    getFriends();
+                    getEvents();
                     $scope.userLoginStatus = lresponse.status;
-                    $scope.statusString = 'Success logging in!'
-                        //console.log(lresponse);
+                    $scope.statusString = 'Success logging in!';
+                    //console.log(lresponse);
                 }, function(lreason) {
                     //console.log(lreason);
                     $scope.statusString = lreason;
@@ -117,4 +124,97 @@ app.controller('FacebookCtrl', function($scope,Storage, Facebook) {
             });
     };
 
+    //Storage demoCtrl
+
+    $scope.events;
+
+    $scope.add = function() {
+
+        var allFriends = [];
+        for (i in $scope.friends) allFriends.push($scope.friends[i].id);
+
+        var dummyEvent = {
+            date: new Date(),
+            start: 10,
+            owner: $scope.me.id,
+            guests: allFriends,
+            activities: [{
+                name: 'Some activity',
+                length: 60,
+                type: 'Play',
+                description: 'Very interesting'
+            }]
+        }
+
+        Storage.postEvent(dummyEvent)
+            .then(function(res) {
+                getEvents();
+            });
+    }
+
+    $scope.remove = function() {
+        Storage.deleteEvents($scope.me.id)
+            .then(function(res) {
+                getEvents();
+            });
+    };
+
+    var getEvents = function() {
+        Storage.getEvents($scope.me.id)
+            .then(function(res) {
+                $scope.events = res.data;
+            });
+    };
+
+    var crudTest = (function() {
+
+        var event0 = {
+            date: new Date(),
+            start: 10,
+            owner: 'Tobias',
+            guests: 'Eric, Jakob, Johannes',
+            activities: []
+        };
+
+        var activity0 = {
+            name: 'Some activity',
+            length: 60,
+            type: 'Play',
+            description: 'Very interesting'
+        }
+
+        // create
+        Storage.postEvent(event0)
+            .then(function(res) {
+                event0._id = res.data._id;
+                console.log({
+                    create_response: res.data
+                });
+
+                // read
+                Storage.getEvent(event0._id)
+                    .then(function(res) {
+                        console.log({
+                            read_response: res.data
+                        });
+
+                        // update
+                        event0.activities.push(activity0);
+                        Storage.putEvent(event0._id, event0)
+                            .then(function(res) {
+                                console.log({
+                                    update_response: res.data
+                                });
+
+                                // delete
+                                Storage.deleteEvent(event0._id)
+                                    .then(function(res) {
+                                        console.log({
+                                            delete_response: res.data
+                                        });
+                                    });
+                            });
+                    });
+            });
+    })();
 });

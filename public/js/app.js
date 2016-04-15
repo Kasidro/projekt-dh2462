@@ -13,13 +13,9 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
 			when('/start-menu', {
 				templateUrl: 'partials/start-menu.html'
 			}).
-			when('/storage_test', {
-				templateUrl: 'partials/storage_test.html',
-				controller: 'StorageCtrl'
-			}).
-			when('/facebook_test', {
-				templateUrl: 'partials/facebook_test.html',
-				controller: 'FacebookCtrl'
+			when('/test', {
+				templateUrl: 'partials/test.html',
+				controller: 'DemoCtrl'
 			}).
 			otherwise({
 				redirectTo: '/home'
