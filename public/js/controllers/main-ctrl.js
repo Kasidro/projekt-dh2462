@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function($scope, Planner) {
+magenta.controller('MainCtrl', function($scope, Planner) {
 
 	/* pretty empty here */
 

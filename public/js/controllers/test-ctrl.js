@@ -1,4 +1,4 @@
-app.controller('TestCtrl', function($scope, Facebook, Storage) {
+magenta.controller('TestCtrl', function($scope, Facebook, Storage) {
 
     // Facebook
     // ========================================================================

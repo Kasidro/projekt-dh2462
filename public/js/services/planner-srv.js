@@ -1,4 +1,4 @@
-app.factory('Planner', function($http) {
+magenta.factory('Planner', function($http) {
 
 	/* pretty empty here */
 	

@@ -1,4 +1,4 @@
-app.factory('Facebook', function($q) {
+magenta.factory('Facebook', function($q) {
 
     // internal helper function
     var fbIdToImgUrl = function(fbId) {

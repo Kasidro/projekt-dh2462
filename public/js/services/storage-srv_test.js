@@ -1,4 +1,4 @@
-app.factory('Storage', function($http) {
+magenta.factory('Storage', function($http) {
 
 	// create
 	this.postEvent = function(eventData) {
