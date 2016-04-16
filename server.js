@@ -17,7 +17,7 @@ require('./app/routes.js')(app);
 // listen
 console.log('Starting...');
 mongoose.connection
-	.on('error', console.error.bind(console, 'Connection error:'))
+	.on('error', console.error.bind(console, 'Connection error:'));
 	.once('open', function() {
 		console.log('Connected to MongoDB');
 		app.listen(port);
