@@ -67,7 +67,7 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage) {
             .then(function(response) {
                 Facebook.logout(response).then(function(lresponse) {
                     clearCache();
-                    //$scope.userLoginStatus = lresponse.status;
+                    $scope.userLoginStatus = lresponse.status;
                     $scope.statusString = 'Success logging out!';
                 }, function(lreason) {
                     $scope.statusString = lreason;
