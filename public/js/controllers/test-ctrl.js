@@ -16,7 +16,7 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage) {
     // "connected" : The person is logged into Facebook, and has logged into your app.
     // "not_authorized" : The person is logged into Facebook, but has not logged into your app.
     // "unknown" : The person is not logged into Facebook, so you don't know if they've logged into your app. Or FB.logout() was called before and therefore, it cannot connect to Facebook.
-    $scope.userLoginStatus = 'not_connected';
+    $scope.userLoginStatus = 'unknown';
     // Fields holding status messages
     $scope.statusString = '';
 

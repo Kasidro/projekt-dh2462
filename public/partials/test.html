@@ -1,14 +1,14 @@
+<h3>Status text: {{statusString}}</h3>
+<h3>Login status: {{userLoginStatus}}</h3>
 <a id="fb_login_btn" class="btn btn-default" ng-click="login()">Facebook login</a>
 <br>
 <a class="btn btn-default" ng-click="logout()">Facebook logout</a>
 
-<p>{{userLoginStatus}}</p>
-<p>{{me.name}} ({{me.id}})  <img ng-src={{me.imgUrl}} /></p>
+<p>{{me.name}} ({{me.id}}) <img ng-src={{me.imgUrl}} /></p>
 <span ng-repeat="friend in friends">
 	{{friend.name}} ({{friend.id}}) <img ng-src={{friend.imgUrl}} />
 </span>
 <p>Events: {{events}}</p>
-<p>Status: {{statusString}}</p>
 
 <a class="btn btn-default" ng-click="add()">Add dummy event</a>
 <a class="btn btn-default" ng-click="remove()">Remove all your events</a>
