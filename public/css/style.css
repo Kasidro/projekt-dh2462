@@ -32,7 +32,7 @@
 	height: 95vh;
     text-align: center;
 }
-#footer { /*Footer that are used on all pages thru the website */
+.footer { /*Footer that are used on all pages thru the website */
 	font-family: 'Jura', sans-serif;
 	padding-top: 1vh;
 	width: 100vw;
@@ -41,9 +41,137 @@
 	background-color: rgba(47,36,44,0.4); 
 	text-align: center;
 	height: 5vh;
+	z-index: 100;
 }
 
-/*-------------Styiling of header (not start page)-----------*/
+.magenta-heading-1 {
+	font-family: 'Audiowide', cursive;
+	font-size: 35pt;
+	text-shadow: 0px 0px 10px #FFAAFF;
+	transition: 0.5s
+}
+
+.magenta-heading-1:hover {
+	text-shadow: 0 0 30px #FF00FF;
+}
+
+.magenta-text-1 {
+	color: white;
+	font-family: 'Audiowide', cursive;
+	font-size: 16pt;
+	text-align: left;
+	margin-left: 2vw;
+}
+
+/*----------------END OF Styling of site wide elements-----------------*/
+
+/*----------------Styling for day.html---------------------------*/
+.day {
+	background-color: #191F36;
+	width: 28vw;
+	height:84vh;
+}
+
+.day-container {
+	height: 88vh;
+	padding-top: 2vh;
+	padding-left: 2.5vw;
+}
+.activity_field {
+	height: 50vh;
+	width: 24vw;
+	margin-left: 2vw;
+	background-color: white;
+}
+#datepicker {
+	color: black;
+}
+#date-label {
+	text-align: left;
+	margin-left: 2vw;
+}
+
+#start-time-picker {
+	width: 9.9vw;
+	color:black;
+}
+.add-activity {
+	margin: 0;
+	border: none;
+	width: 24vw;
+	height: 6vh;
+	font-size: 24pt;
+	background-color: #6D98BA;
+	color: white;
+	text-align: center;
+	transition: all 0.5s ease;
+}
+
+.add-activity:hover {
+	background-color: #386FA4;
+	text-shadow: 0 0 30px #FF00FF;
+}
+.activity {
+	margin: 0;
+	border: none;
+	width: 24vw;
+	height: 12vh;
+	font-size: 24pt;
+	background-color: #554CA5;
+	color: white;
+	text-align: center;
+}
+/*----------------END OF Styling of day.html-----------------*/
+
+/*----------------Styling of start-menu.html-----------------*/
+#start-menu-header {
+	width: 100vw;
+	background-color: #F4EBD9;
+	height: 15vh;
+
+}
+#start-heading {
+	text-align: center;
+	font-size: 75pt;
+	font-family: 'Audiowide', cursive;
+	text-shadow: 0px 0px 10px #FFAAFF;
+	transition: 0.5s
+}
+
+#start-heading:hover {
+	text-shadow: 0 0 30px #FF00FF;
+}
+
+#start-title {
+	text-align: center;
+	font-size: 40pt;
+	font-family: 'Audiowide', cursive;
+}
+
+.start-button {
+	width: 60vw;
+	height: 10vh;
+	text-align: center;
+	font-size: 40pt;
+	font-family: 'Audiowide', cursive;
+	color: white;
+	transition: all 0.5s ease;
+	background-color: #994D83;
+	margin-top: 6vh;
+	border: none;
+}
+
+.start-button:hover {
+	background-color: #992083; 
+	color: white;
+	text-shadow: 0 0 30px white;
+
+}
+
+/*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
+.header {
+	height: 7vh;
+}
 
 #dropdown_container {
 	height: 7vh;
@@ -54,15 +182,13 @@
 	background-color: #994D83; 
 	transition: 0.5s;
 	padding: 0;
+	z-index: 100;
 }
 
 #heading_container {
 	padding-right: 10vw;
 	height: 7vh;
-	font-family: 'Audiowide', cursive;
-	font-size: 5vh;
 	text-align: right;
-	text-shadow: 0 0 10px #FFAAFF;
 	background-color: #F4EBD9; 
 }
 
@@ -85,16 +211,13 @@ nav ul {
 
 nav a {
     color:inherit;
+    text-shadow: 0 0 10px #FFAAFF;
     display: block;
     padding: 0 25px;
     height: 5.5vh;
     text-align: center;
     text-decoration: none;
-    -webkit-transition: all 1s ease;
-       -moz-transition: all 1s ease;
-        -ms-transition: all 1s ease;
-         -o-transition: all 1s ease;
-            transition: all 1s ease;
+  	transition: all 0.5s ease;
 }
 nav .dropdown:after {
     content: ' ▶';
@@ -103,22 +226,19 @@ nav .dropdown:hover:after{
 	content:'\25bc'
 }
 nav li:hover a {
-    background: #994D83;
+    background: #2D3142;
 }
 #topp {
 	background: transparent;
 	color: white;
+	text-shadow: none;
 }
 
 nav li ul {
     float: left;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: all 1s ease;
-       -moz-transition: all 1s ease;
-        -ms-transition: all 1s ease;
-         -o-transition: all 1s ease;
-            transition: all 1s ease;
+    transition: all 0.5s ease;
 }
 nav li:hover ul {
     opacity: 1;
@@ -130,7 +250,7 @@ nav li ul li {
     width: 100%;
 }
 nav li ul a:hover {
-    background: #996E83;
+    background: #4F5D75;
     color: white;
 }
 
@@ -146,3 +266,16 @@ nav li ul a:hover {
 .cf {
     zoom:1;
 }​
+
+/*----------------END OF HEAFER CSS-----------------*/
+
+HTMLJSCSS
+.datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ }
+  .datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+  .datepickerdemoBasicUsage .validation-messages {
+    font-size: 12px;
+    color: #dd2c00;
+    margin: 10px 0 0 25px; }
+

@@ -13,6 +13,9 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource'])
 			when('/start-menu', {
 				templateUrl: 'partials/start-menu.html'
 			}).
+			when('/event', {
+				templateUrl: 'partials/event.html'
+			}).
 			when('/test', {
 				templateUrl: 'partials/test.html',
 				controller: 'TestCtrl'
