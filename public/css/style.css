@@ -83,8 +83,9 @@
 	margin-left: 2vw;
 	background-color: white;
 }
-#datepicker {
+#date-picker {
 	color: black;
+	width: 12.5vw;
 }
 #date-label {
 	text-align: left;
@@ -92,9 +93,31 @@
 }
 
 #start-time-picker {
-	width: 9.9vw;
+	width: 8.3vw;
+	text-align: center;
 	color:black;
 }
+#end-time {
+	background-color: white;
+	color: black;
+	text-align: center;
+	padding-right:3.15vw; 
+	padding-left:3.15vw;
+	padding-top: 0.3vh;
+	padding-bottom: 0.3vh;
+}
+#duration-time {
+	background-color: white;
+	color: black;
+	text-align: center;
+	padding-right:2.5vw; 
+	padding-left:2.5vw;
+	padding-top: 0.3vh;
+	padding-bottom: 0.3vh;
+}
+
+
+
 .add-activity {
 	margin: 0;
 	border: none;
