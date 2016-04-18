@@ -27,7 +27,7 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource'])
 				controller: 'TestCtrl'
 			}).
 			otherwise({
-				redirectTo: '/home'
+				redirectTo: '/start-menu'
 			});
 	})
 

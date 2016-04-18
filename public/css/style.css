@@ -61,30 +61,58 @@
 	text-align: left;
 	margin-left: 2vw;
 }
-.magneta-title {
+.magenta-title {
 	height: 9vh;
 	font-family: 'Audiowide', cursive;
 	font-size: 6.5vh;
 	text-align: center;
-	text-shadow: 0px 0px 10px #FFAAFF;
 	transition: 0.5s;
 	margin: 0;
 	padding: 0;
 }
-.magneta-title:hover {
+.magenta-title:hover {
 	text-shadow: 0 0 30px #FF00FF;
 }
 
 /*----------------END OF Styling of site wide elements-----------------*/
 
-/*----------------Styling for day.html---------------------------*/
-#title-holder {
-	height: 9vh;
+/*-----------------STYLING FOR BROWSE-EVENT.HTML-----------------------*/
+#my-events-container {
+	height: 79vh;
+	width: 50vw;
+	margin-left: 25vw;
+	border: 4px solid #994D83;
+	border-radius: 10px;
+}
+.saved-event {
+	margin: 0.5%;
+	width: 99%;
+	height: 10vh;
 	background-color: blue;
 }
 
+
+
+
+
+
+/*---------------------Styling for day.html---------------------------*/
+.title-holder {
+	height: 9vh;
+}
+#button-title-holder {
+	height: 9vh;
+}
+.btn-title {
+	margin-left: 0;
+	font-size: 12pt;
+	margin-top: 2.8vh; 
+	color: black;
+	background-color: #ffffff;
+}
+
 .day {
-	background-color: #191F36;
+	background-color: #2B355C;
 	width: 28vw;
 	height:79vh;
 }
@@ -94,7 +122,6 @@
 	padding-left: 1vw;
 	padding-right: 1vw; 
 	float: left;
-	background-color: green;
 }
 .activity_field {
 	height: 45vh;
@@ -138,7 +165,6 @@
 	width: 5vw;
 	height: 81vh;
 	float: left;
-	background-color: red;
 }
 
 #arrow {
@@ -172,9 +198,9 @@
 }
 .remove {
 	margin: 0;
-	width: 24vw;
-	height: 5vh;
-	font-size: 24pt;
+	width: 15vw;
+	height: 4vh;
+	font-size: 16pt;
 	text-align: center;
 	margin-top: 1.5vh;
 }
@@ -211,11 +237,12 @@
 	text-align: center;
 	font-size: 40pt;
 	font-family: 'Audiowide', cursive;
-	color: white;
+	color:black;
 	transition: all 0.5s ease;
-	background-color: #994D83;
+	background-color: white;
 	margin-top: 5vh;
-	border: none;
+	border-color: #994D83;
+	border-width: 3px;
 }
 
 .start-button:hover {
@@ -227,7 +254,7 @@
 
 /*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
 .header {
-	height: 16vh;
+	height: 7vh;
 }
 
 #dropdown_container {
