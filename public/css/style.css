@@ -61,6 +61,11 @@
 	text-align: left;
 	margin-left: 2vw;
 }
+.magenta-text-2 {
+	color: #2A2A2A;
+	font-family: 'Audiowide', cursive;
+	text-align: center;
+}
 .magenta-title {
 	height: 9vh;
 	font-family: 'Audiowide', cursive;
@@ -73,7 +78,7 @@
 .magenta-title:hover {
 	text-shadow: 0 0 30px #FF00FF;
 }
-.divider-magenta {
+.magenta-divider {
 	margin: 0;
 	padding: 0;
 	width: 98%;
@@ -83,6 +88,7 @@
 	background-image: linear-gradient(to right,#994D83, #FF00FF,#994D83);
 	height: 2px;
 }
+
 
 /*----------------END OF Styling of site wide elements-----------------*/
 
@@ -99,39 +105,48 @@
 	margin-right: 0.5%;
 	width: 99%;
 	height: 10vh;
-	background-color: blue;
 }
 .column-1 {
 	float: left;
-	width: 60%;
-	background-color: purple;
+	width: 50%;
+	margin: 0;
 }
 .column-2 {
 	float: left;
-	width: 20%;
-	background-color: orange;
+	width: 25%;
+	margin: 0;
 }
 .column-3 {
 	float: left;
-	width: 20%;
-	background-color: blue;
+	width: 25%;
+	margin: 0;
 }
 .row-1 {
-	width: 100%;
+	background-color: #DCB4DC;
+	font-size: 16pt;
 	height: 3vh;
-	background-color: yellow;
 }
 .row-2 {
-	width: 100%;
+	font-size: 20pt;
 	height: 7vh;
-	background-color: red;
 }
-
-
-
-
-
-
+#date-browser {
+	padding-top: 1.3vh;
+}
+#button-browser {
+	margin-top: 1.3vh;
+	font-size: 14pt;
+	color: black;
+	background-color: white;
+	border-color: #3b5998; 
+	height: 4vh;
+	width: 8vw;
+	transition: all 0.5s ease;
+}
+#button-browser:hover {
+	background-color: #3b5998;
+	color: white; 
+}
 /*---------------------Styling for day.html---------------------------*/
 .title-holder {
 	height: 9vh;
@@ -389,13 +404,5 @@ nav li ul a:hover {
 
 /*----------------END OF HEAFER CSS-----------------*/
 
-HTMLJSCSS
-.datepickerdemoBasicUsage {
-  /** Demo styles for mdCalendar. */ }
-  .datepickerdemoBasicUsage md-content {
-    padding-bottom: 200px; }
-  .datepickerdemoBasicUsage .validation-messages {
-    font-size: 12px;
-    color: #dd2c00;
-    margin: 10px 0 0 25px; }
+
 
