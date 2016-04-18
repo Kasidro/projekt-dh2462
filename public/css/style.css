@@ -29,18 +29,17 @@
 
 #content { /*Holds the rest of the application*/
 	width: 100vw;
-	height: 95vh;
+	height: 97vh;
     text-align: center;
 }
 .footer { /*Footer that are used on all pages thru the website */
 	font-family: 'Jura', sans-serif;
-	padding-top: 1vh;
 	width: 100vw;
 	color: white;
 	font-size: 2vh;
 	background-color: rgba(47,36,44,0.4); 
 	text-align: center;
-	height: 5vh;
+	height: 3vh;
 	z-index: 100;
 }
 
@@ -69,16 +68,18 @@
 .day {
 	background-color: #191F36;
 	width: 28vw;
-	height:84vh;
+	height:79vh;
 }
 
 .day-container {
-	height: 88vh;
-	padding-top: 2vh;
-	padding-left: 2.5vw;
+	height: 90vh;
+	padding-top: 9vh;
+	padding-left: 1vw;
+	padding-right: 1vw; 
+	float: left;
 }
 .activity_field {
-	height: 50vh;
+	height: 45vh;
 	width: 24vw;
 	margin-left: 2vw;
 	background-color: white;
@@ -114,6 +115,16 @@
 	padding-left:2.5vw;
 	padding-top: 0.3vh;
 	padding-bottom: 0.3vh;
+}
+#arrow-holder {
+	width: 5vw;
+	height: 90vh;
+	float: left;
+}
+
+#arrow {
+	width: 3vw;
+	padding-top: 38vh;
 }
 
 .add-activity {
