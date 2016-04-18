@@ -116,8 +116,6 @@
 	padding-bottom: 0.3vh;
 }
 
-
-
 .add-activity {
 	margin: 0;
 	border: none;
@@ -125,14 +123,12 @@
 	height: 6vh;
 	font-size: 24pt;
 	background-color: #6D98BA;
-	color: white;
 	text-align: center;
 	transition: all 0.5s ease;
 }
 
 .add-activity:hover {
 	background-color: #386FA4;
-	text-shadow: 0 0 30px #FF00FF;
 }
 .activity {
 	margin: 0;
@@ -143,6 +139,14 @@
 	background-color: #554CA5;
 	color: white;
 	text-align: center;
+}
+.remove {
+	margin: 0;
+	width: 24vw;
+	height: 5vh;
+	font-size: 24pt;
+	text-align: center;
+	margin-top: 1.5vh;
 }
 /*----------------END OF Styling of day.html-----------------*/
 
