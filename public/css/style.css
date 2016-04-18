@@ -61,10 +61,28 @@
 	text-align: left;
 	margin-left: 2vw;
 }
+.magneta-title {
+	height: 9vh;
+	font-family: 'Audiowide', cursive;
+	font-size: 6.5vh;
+	text-align: center;
+	text-shadow: 0px 0px 10px #FFAAFF;
+	transition: 0.5s;
+	margin: 0;
+	padding: 0;
+}
+.magneta-title:hover {
+	text-shadow: 0 0 30px #FF00FF;
+}
 
 /*----------------END OF Styling of site wide elements-----------------*/
 
 /*----------------Styling for day.html---------------------------*/
+#title-holder {
+	height: 9vh;
+	background-color: blue;
+}
+
 .day {
 	background-color: #191F36;
 	width: 28vw;
@@ -72,11 +90,11 @@
 }
 
 .day-container {
-	height: 90vh;
-	padding-top: 9vh;
+	height: 81vh;
 	padding-left: 1vw;
 	padding-right: 1vw; 
 	float: left;
+	background-color: green;
 }
 .activity_field {
 	height: 45vh;
@@ -118,8 +136,9 @@
 }
 #arrow-holder {
 	width: 5vw;
-	height: 90vh;
+	height: 81vh;
 	float: left;
+	background-color: red;
 }
 
 #arrow {
@@ -208,7 +227,7 @@
 
 /*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
 .header {
-	height: 7vh;
+	height: 16vh;
 }
 
 #dropdown_container {
