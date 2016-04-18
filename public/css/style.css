@@ -88,7 +88,32 @@
 	background-image: linear-gradient(to right,#994D83, #FF00FF,#994D83);
 	height: 2px;
 }
+.magenta-label {
+	margin-top: 3vh;
+	margin-bottom: 1vh;
+	text-align: right;
+	font-family: 'Audiowide', cursive;
+	font-size: 30pt;
 
+}
+.magenta-input {
+	margin-top: 3vh;
+	margin-bottom: 1vh;
+	font-size: 30pt;
+	font-family: 'Audiowide', cursive;
+	border: 2px solid #D16BB4; 
+}
+.magenta-input:hover {
+	box-shadow: 0 0 30px #FF00FF;
+} 
+.btn-delete {
+	margin-left: 2vw;
+	margin-top: 2vh;
+	font-size: 25pt;
+	font-style: bold;
+	height: 6vh;
+	width: 6vh;
+}
 
 /*----------------END OF Styling of site wide elements-----------------*/
 
@@ -146,6 +171,46 @@
 #button-browser:hover {
 	background-color: #3b5998;
 	color: white; 
+}
+
+/*---------------------new-event.html styling-------------------------*/
+#title-input {
+	width: 50vw;
+}
+#date-input {
+	width: 22vw;
+}
+#participant-input {
+	width: 40vw;
+}
+
+#invited-field {
+	margin-top: 4vh;
+	width: 40vw;
+	height: 30vh;
+	border: 2px solid #D16BB4;
+}
+#pic-holder {
+	padding: 0;
+	margin: 0;
+}
+#pic {
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	height: 100px;
+}
+#participant {
+	background-color: #DCB4DC;
+	margin-top: 1vh;
+	padding: 0;
+	margin-left: 0;
+}
+#participant-label {
+	margin-top: 2vh;
+	text-align: left;
+	font-family: 'Audiowide', cursive;
+	font-size: 30pt;
 }
 /*---------------------Styling for day.html---------------------------*/
 .title-holder {
