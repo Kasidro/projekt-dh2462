@@ -8,12 +8,17 @@ var ActivitySchema = new Schema({
 	description: String
 });
 
-var EventSchema = new Schema({
+var DaySchema = new Schema({
 	date: Date,
+	activities: [ActivitySchema]
+}); 
+
+var EventSchema = new Schema({
+	name: String,
 	start: Number,
 	owner: String,
 	guests: [String],
-	activities: [ActivitySchema]
+	days: [DaySchema]
 });
 
 module.exports = mongoose.model('Event', EventSchema);
