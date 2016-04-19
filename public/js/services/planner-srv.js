@@ -10,8 +10,8 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
 
     var findDayIndex = function(eIndex, date) {
         if (eIndex !== -1) {
-            for (var i = 0; i < e.days.length; i++) {
-                if (e.days[i].date === date) {
+            for (var i = 0; i < events[eIndex].days.length; i++) {
+                if (events[eIndex].days[i].date === date) {
                     return i;
                 }
             }
@@ -119,8 +119,10 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
             };
             events[eIndex].days.push(day);
             events[eIndex].days.sort(function(a, b) {
-                return b.date - a.date;
+                return a.date - b.date;
             });
+            // not working for some reason, craches webserver
+            //Storage.putEvent(eventID, events[eIndex]);
         }
     };
 

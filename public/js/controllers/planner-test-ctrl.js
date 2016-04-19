@@ -31,6 +31,13 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
         console.log(Planner.getEvent("5716b0c5f5713c976aa3e0f7"));
     };
 
+    $scope.addDay = function() {
+        date1 = new Date(2004,12,24);
+        date2 = new Date(2004,12,23);
+        Planner.addDay("5716b0c5f5713c976aa3e0f7",date1,10);
+        Planner.addDay("5716b0c5f5713c976aa3e0f7",date2,10);
+    };
+
     $scope.getFriends = function() {
         console.log(Planner.getFriends());
     };
