@@ -1,4 +1,4 @@
-magenta.controller('TestCtrl', function($scope, Facebook, Storage) {
+magenta.controller('TestCtrl', function($scope, Facebook, Storage, rfc4122) {
 
     // Facebook
     // ========================================================================
@@ -19,7 +19,7 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage) {
     $scope.userLoginStatus = 'unknown';
     // Fields holding status messages
     $scope.statusString = '';
-
+    
     // Login
     $scope.login = function() {
         $scope.statusString = 'Logging in...';

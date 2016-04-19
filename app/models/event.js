@@ -10,14 +10,16 @@ var ActivitySchema = new Schema({
 
 var DaySchema = new Schema({
 	date: Date,
+	start: Number,
 	activities: [ActivitySchema]
 }); 
 
 var EventSchema = new Schema({
+	id: String,
 	name: String,
-	start: Number,
 	owner: String,
 	guests: [String],
+	description: String,
 	days: [DaySchema]
 });
 
