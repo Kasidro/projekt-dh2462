@@ -1,6 +1,6 @@
 magenta.controller('TestCtrl', function($scope, Test) {
 
-    $scope.update = function() {
+    var updateScope = function() {
         $scope.statusString = Test.getStatusString();
         $scope.userLoginStatus = Test.getUserLoginStatus();
         $scope.me = Test.getMe();
@@ -13,5 +13,7 @@ magenta.controller('TestCtrl', function($scope, Test) {
     $scope.add = Test.add;
     $scope.remove = Test.remove;
 
-    $scope.update();
+    $scope.$watch(function() { 
+        updateScope();
+    });
 });
