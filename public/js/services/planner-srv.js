@@ -1,12 +1,16 @@
-magenta.factory('Planner', function(Storage, $q) {
+magenta.factory('Planner', function(Storage) {
     var events = [];
     var friends = [];
-    var me = null;
+    var me = {
+        "id": "",
+        "name": "",
+        "imgUrl": ""
+    };
 
     this.addEvent = function(guests, name, description) {
         var event = {
             "name": name,
-            "owner": me,
+            "owner": me.id,
             "description": description,
             "guests": guests,
             "days": []
@@ -16,28 +20,17 @@ magenta.factory('Planner', function(Storage, $q) {
     };
 
 
-    this.addDay = function(eventId) {}
+    this.addDay = function(eventID, date, start) {
+        // TODO
+        // Handle days with same date 
+    };
 
     this.getEvent = function(eventID) {
         return Storage.getEvent(eventID);
     };
 
-    this.addActivity = function(startTime, duration, date) {
-        var activity = {
-            "startTime": startTime,
-            "duration": duration,
-            "date": date
-        };
-    }
-
-    function addDays(date, days) {
-        var result = new Date(date);
-        result.setDate(date.getDate() + days);
-        return result;
-    }
-
-
-    /* pretty empty here */
+    //Use eventID and date to find correct day to put activity
+    this.addActivity = function(eventID, date, name, length, type, decription) {};
 
     return this;
 });
