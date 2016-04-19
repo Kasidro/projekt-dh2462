@@ -1,5 +1,4 @@
 magenta.factory('Planner', function(Storage) {
-    var events = [];
     var friends = [];
     var me = {
         "id": "",
