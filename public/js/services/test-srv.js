@@ -209,11 +209,11 @@ magenta.factory('Test', function(Storage, Facebook) {
     })();    
 
     return {
-    	statusString: statusString,
-    	userLoginStatus: userLoginStatus,
-    	me: me,
-    	friends: friends,
-    	events: events,
+    	getStatusString: function() {return statusString},
+    	getUserLoginStatus: function() {return userLoginStatus},
+    	getMe: function() {return me},
+    	getFriends: function() {return friends},
+    	getEvents: function() {return events},
     	login: login,
     	logout: logout,
     	add: add,
