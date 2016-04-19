@@ -26,6 +26,10 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource'])
 				templateUrl: 'partials/test.html',
 				controller: 'TestCtrl'
 			}).
+            when('/planner-srv-test', {
+                templateUrl: 'partials/planner-srv-test.html',
+                controller: 'PlannerTestCtrl'
+            }).
 			otherwise({
 				redirectTo: '/start-menu'
 			});
