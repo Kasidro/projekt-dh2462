@@ -15,7 +15,6 @@ var DaySchema = new Schema({
 }); 
 
 var EventSchema = new Schema({
-	id: String,
 	name: String,
 	owner: String,
 	guests: [String],
