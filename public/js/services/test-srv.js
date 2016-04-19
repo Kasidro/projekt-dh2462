@@ -1,4 +1,4 @@
-magenta.factory('Test', function(Storage, Facebook) {
+magenta.service('Test', function(Storage, Facebook) {
     // Facebook
     // ========================================================================
 
@@ -208,15 +208,13 @@ magenta.factory('Test', function(Storage, Facebook) {
             });
     })();    
 
-    return {
-    	getStatusString: function() {return statusString},
-    	getUserLoginStatus: function() {return userLoginStatus},
-    	getMe: function() {return me},
-    	getFriends: function() {return friends},
-    	getEvents: function() {return events},
-    	login: login,
-    	logout: logout,
-    	add: add,
-    	remove: remove
-    };
+	this.getStatusString = function() {return statusString};
+	this.getUserLoginStatus = function() {return userLoginStatus};
+	this.getMe = function() {return me};
+	this.getFriends = function() {return friends};
+	this.getEvents = function() {return events};
+	this.login = login;
+	this.logout = logout;
+	this.add = add;
+	this.remove = remove;
 });
