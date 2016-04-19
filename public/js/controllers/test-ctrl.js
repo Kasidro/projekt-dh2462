@@ -82,7 +82,6 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage, Planner) {
         $scope.me.name = '';
         $scope.me.imgUrl = 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85';
         $scope.friends = [];
-        $scope.userLoginStatus = 'not_connected';
         // Storage
         $scope.events = [];
     };
@@ -115,9 +114,11 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage, Planner) {
     // ========================================================================
 
     (function() {
-        console.log("ada");
         Planner.addEvent('Johannes, Oskar', 'testevent', 'testing event').then(function(response) {
-            console.log(response);
+            //console.log(response.data._id);
+            Planner.getEvent(response.data._id).then(function(eresponse) {
+                console.log(eresponse.data);
+            });
         }, function(reason) {
             console.log(reason);
         });
