@@ -114,6 +114,24 @@
 	height: 6vh;
 	width: 6vh;
 }
+.btn-save {
+	text-align: center;
+	font-size: 40pt;
+	font-family: 'Audiowide', cursive;
+	color:black;
+	transition: all 0.5s ease;
+	background-color: white;
+	margin-top: 4vh;
+	border-color: #994D83;
+	border-width: 3px;
+}
+
+.btn-save:hover {
+	background-color: #992083; 
+	color: white;
+	text-shadow: 0 0 30px white;
+
+}
 
 /*----------------END OF Styling of site wide elements-----------------*/
 
