@@ -1,4 +1,4 @@
-magenta.controller('TestCtrl', function($scope, Facebook, Storage, rfc4122) {
+magenta.controller('TestCtrl', function($scope, Facebook, Storage, Planner) {
 
     // Facebook
     // ========================================================================
@@ -19,7 +19,7 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage, rfc4122) {
     $scope.userLoginStatus = 'unknown';
     // Fields holding status messages
     $scope.statusString = '';
-    
+
     // Login
     $scope.login = function() {
         $scope.statusString = 'Logging in...';
@@ -113,6 +113,15 @@ magenta.controller('TestCtrl', function($scope, Facebook, Storage, rfc4122) {
 
     // Storage
     // ========================================================================
+
+    (function() {
+        console.log("ada");
+        Planner.addEvent('Johannes, Oskar', 'testevent', 'testing event').then(function(response) {
+            console.log(response);
+        }, function(reason) {
+            console.log(reason);
+        });
+    })();
 
     $scope.events = [];
 
