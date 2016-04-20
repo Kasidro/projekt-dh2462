@@ -1,4 +1,4 @@
-magenta.factory('Planner', function($q, Facebook, Storage) {
+magenta.factory('Planner', function(Facebook, Storage) {
     var me = {
         "id": "",
         "name": "",
