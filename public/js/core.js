@@ -1,4 +1,4 @@
-var magenta = angular.module('magenta', ['ngRoute', 'ngResource'])
+var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
 
 	// Route
 	.config(function($routeProvider) {
