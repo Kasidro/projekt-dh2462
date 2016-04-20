@@ -15,5 +15,6 @@ magenta.controller('TestCtrl', function($scope, Test) {
 
     $scope.$watch(function() { 
         updateScope();
+        console.log('updated scope');
     });
 });
