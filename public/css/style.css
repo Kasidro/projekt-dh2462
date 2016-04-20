@@ -450,6 +450,7 @@ nav li:hover a {
 	background: transparent;
 	color: white;
 	text-shadow: none;
+	text-align: center;
 }
 
 nav li ul {

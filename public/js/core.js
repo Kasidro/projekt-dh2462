@@ -7,30 +7,29 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
     }).
-    when('/planner', {
-        templateUrl: 'partials/planner.html',
-        controller: 'PlannerCtrl'
-    }).
     when('/start-menu', {
         templateUrl: 'partials/start-menu.html'
     }).
+    when('/edit-event', {
+        templateUrl: 'partials/edit-event.html',
+        controller: 'EditCtrl'
+    }).
+    when('/browse-events', {
+        templateUrl: 'partials/browse-events.html',
+        controller: 'BrowseCtrl'
+    }).
     when('/event', {
-        templateUrl: 'partials/event.html'
+        templateUrl: 'partials/event.html',
+        controller: 'EventCtrl'
     }).
-    when('/create-event', {
-        templateUrl: 'partials/create-event.html',
-        controller: 'CreateCtrl'
-    }).
-    when('/browse-event', {
-        templateUrl: 'partials/browse-event.html'
-    }).
+    // Test related
     when('/test', {
         templateUrl: 'partials/test.html',
         controller: 'TestCtrl'
     }).
-    when('/planner-srv-test', {
-        templateUrl: 'partials/planner-srv-test.html',
-        controller: 'PlannerTestCtrl'
+    when('/test2', {
+        templateUrl: 'partials/test2.html',
+        controller: 'Test2Ctrl'
     }).
     otherwise({
         redirectTo: '/home'
