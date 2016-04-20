@@ -59,7 +59,6 @@ magenta.factory('Planner', function(Facebook, Storage) {
         return tryLogin()
             .then(readFromDB)
             .then(function() {
-                console.log('Login OK');
                 return 'Login OK';
             });
     }
