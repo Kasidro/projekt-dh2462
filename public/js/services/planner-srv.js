@@ -7,7 +7,6 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     var friends = [];
     var events = [];
     var loginStatus = 'unknown';
-    var ActivityType = ["Presentation", "Group Work", "Discussion", "Break"];
 
     var findDayIndex = function(ei, date) {
         if (ei !== -1) {
