@@ -9,10 +9,10 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     var loginStatus = 'unknown';
     var ActivityType = ["Presentation", "Group Work", "Discussion", "Break"];
 
-    var findDayIndex = function(eIndex, date) {
-        if (eIndex !== -1) {
-            for (var i = 0; i < events[eIndex].days.length; i++) {
-                if (events[eIndex].days[i].date === date) {
+    var findDayIndex = function(ei, date) {
+        if (ei !== -1) {
+            for (var i = 0; i < events[ei].days.length; i++) {
+                if (events[ei].days[i].date === date) {
                     return i;
                 }
             }
@@ -20,9 +20,9 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         return -1;
     }
 
-    var findEventIndex = function(eventID) {
+    var findEventIndex = function(eID) {
         for (var i = 0; i < events.length; i++) {
-            if (events[i]._id === eventID) {
+            if (events[i]._id === eID) {
                 return i;
             }
         }
@@ -85,28 +85,28 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         return events;
     }
 
-    this.getEvent = function(eventID) {
-        var eIndex = findEventIndex(eventID);
-        if (eIndex !== -1) {
-            return events[eIndex];
+    this.getEvent = function(eID) {
+        var ei = findEventIndex(eID);
+        if (ei !== -1) {
+            return events[ei];
         }
         return null;
     }
 
-    this.getDay = function(eventID, date) {
-        var eIndex = findEventIndex(eventID);
-        var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 && dIndex !== -1) {
-            return events[eIndex].days[dIndex];
+    this.getDay = function(eID, date) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(ei, date);
+        if (ei !== -1 && di !== -1) {
+            return events[ei].days[di];
         }
         return null;
     }
 
-    this.getActivity = function(eventID, date, position) {
-        var eIndex = findEventIndex(eventID);
-        var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 && dIndex !== -1 && typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
-            return getActByIdx(eventID, dIndex, position);
+    this.getActivity = function(eID, date, pos) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(ei, date);
+        if (ei !== -1 && di !== -1 && typeof events[ei].days[di].activities[pos] !== 'undefined') {
+            return getActByIdx(eID, di, pos);
         }
         return null;
     }
@@ -132,31 +132,31 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
             });
     }
 
-    this.addDay = function(eventID, date, start) {
-        eIndex = findEventIndex(eventID);
-        if (findDayIndex(eIndex, date) === -1 && events[eIndex].owner === me.id) {
+    this.addDay = function(eID, date, start) {
+        ei = findEventIndex(eID);
+        if (findDayIndex(ei, date) === -1 && events[ei].owner === me.id) {
             var day = {
                 'date': date,
                 'start': start,
                 'activities': []
             };
-            events[eIndex].days.push(day);
-            events[eIndex].days.sort(function(a, b) {
+            events[ei].days.push(day);
+            events[ei].days.sort(function(a, b) {
                 return a.date - b.date;
             })
-            Storage.putEvent(eventID, events[eIndex]);
+            Storage.putEvent(eID, events[ei]);
             return 0;
         }
         return -1;
     }
 
-    this.addActivity = function(eventID, date, name, length, type, description, position) {
-        var eIndex = findEventIndex(eventID);
-        var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 &&
-            dIndex !== -1 &&
-            events[eIndex].owner === me.id &&
-            events[eIndex].days[dIndex].activities[position] !== 'undefined'
+    this.addActivity = function(eID, date, name, length, type, description, pos) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(ei, date);
+        if (ei !== -1 &&
+            di !== -1 &&
+            events[ei].owner === me.id &&
+            events[ei].days[di].activities[pos] !== 'undefined'
         ) {
             var activity = {
                 'name': name,
@@ -165,76 +165,76 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
                 'decription': description
             };
 
-            if (position == null) {
-                events[eIndex].days[dIndex].activities.push(activity);
+            if (pos == null) {
+                events[ei].days[di].activities.push(activity);
             } else {
-                events[eIndex].days[dIndex].activities.splice(position, 0, activity);
+                events[ei].days[di].activities.splice(pos, 0, activity);
             }
-            Storage.putEvent(eventID, events[eIndex]);
+            Storage.putEvent(eID, events[ei]);
             return 0;
         }
         return -1;
     }
 
     //Removers
-    this.deleteEvent = function(eventID) {
-        var eIndex = findEventIndex(eventID);
-        if (eIndex !== -1 && events[eIndex].owner === me.id) {
-            events.splice(eIndex, 1);
-            Storage.deleteEvent(eventID);
+    this.deleteEvent = function(eID) {
+        var ei = findEventIndex(eID);
+        if (ei !== -1 && events[ei].owner === me.id) {
+            events.splice(ei, 1);
+            Storage.deleteEvent(eID);
             return 0;
         }
         return -1;
     }
 
-    this.deleteDay = function(eventID, date) {
-        var eIndex = findEventIndex(eventID);
-        var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 &&
-            dIndex !== -1 &&
-            events[eIndex].owner === me.id) {
-            events[eIndex].days.splice(dIndex, 1);
-            Storage.putEvent(eventID, events[eIndex]);
+    this.deleteDay = function(eID, date) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(ei, date);
+        if (ei !== -1 &&
+            di !== -1 &&
+            events[ei].owner === me.id) {
+            events[ei].days.splice(di, 1);
+            Storage.putEvent(eID, events[ei]);
             return 0;
         }
         return -1;
     }
 
-    this.deleteActivity = function(eventID, date, position) {
-        var eIndex = findEventIndex(eventID);
-        var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 &&
-            dIndex !== -1 &&
-            events[eIndex].owner === me.id &&
-            typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
-            events[eIndex].days[dIndex].activities.splice(position, 1);
-            Storage.putEvent(eventID, events[eIndex]);
+    this.deleteActivity = function(eID, date, pos) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(ei, date);
+        if (ei !== -1 &&
+            di !== -1 &&
+            events[ei].owner === me.id &&
+            typeof events[ei].days[di].activities[pos] !== 'undefined') {
+            events[ei].days[di].activities.splice(pos, 1);
+            Storage.putEvent(eID, events[ei]);
             return 0;
         }
         return -1;
     }
 
     // Mover
-    this.moveActivity = function(eventID, date, position, newpos, newdate) {
-        var eIndex = findEventIndex(eventID);
-        var dIndex = findDayIndex(eIndex, date);
-        var ndIndex = dIndex;
-        if (date !== newdate) {
-            ndIndex = findDayIndex(eIndex, newdate);
+    this.moveActivity = function(eID, date, pos, newpos, ndate) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(ei, date);
+        var ndi = di;
+        if (date !== ndate) {
+            ndi = findDayIndex(ei, ndate);
         }
 
-        if (eIndex !== -1 &&
-            dIndex !== -1 &&
-            ndIndex !== -1 &&
-            events[eIndex].owner === me.id &&
-            typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
-            if (newpos > position && newpos < events[eIndex].days[dIndex].activities.length - 1) {
+        if (ei !== -1 &&
+            di !== -1 &&
+            ndi !== -1 &&
+            events[ei].owner === me.id &&
+            typeof events[ei].days[di].activities[pos] !== 'undefined') {
+            if (newpos > pos && newpos < events[ei].days[di].activities.length - 1) {
                 newpos--;
             }
-            var activity = events[eIndex].days[dIndex].activities[position];
-            events[eIndex].days[dIndex].activities.splice(position, 1);
-            events[eIndex].days[ndIndex].activities.splice(newpos, 0, activity);
-            Storage.putEvent(eventID, events[eIndex]);
+            var activity = events[ei].days[di].activities[pos];
+            events[ei].days[di].activities.splice(pos, 1);
+            events[ei].days[ndi].activities.splice(newpos, 0, activity);
+            Storage.putEvent(eID, events[ei]);
             return 0;
         }
         return -1;
