@@ -50,4 +50,8 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
     $scope.deleteDay = function() {
         Planner.deleteDay(Planner.getEvents()[1]._id, "2016-05-12");
     };
+
+    $scope.deleteActivity = function() {
+        console.log(Planner.deleteActivity(Planner.getEvents()[1]._id, "2016-05-12", 1));
+    };
 });

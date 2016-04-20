@@ -135,7 +135,11 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     this.addActivity = function(eventID, date, name, length, type, description, position) {
         var eIndex = findEventIndex(eventID);
         var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner === me.id) {
+        if (eIndex !== -1 &&
+            dIndex !== -1 &&
+            events[eIndex].owner === me.id &&
+            events[eIndex].days[dIndex].activities[position] !== 'undefined'
+        ) {
             var activity = {
                 'name': name,
                 'length': length,
@@ -168,8 +172,21 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     this.deleteDay = function(eventID, date) {
         var eIndex = findEventIndex(eventID);
         var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner == me.id) {
+        if (eIndex !== -1 &&
+            dIndex !== -1 &&
+            events[eIndex].owner === me.id) {
             events[eIndex].days.splice(dIndex, 1);
+            Storage.putEvent(eventID, events[eIndex]);
+            return 0;
+        }
+        return -1;
+    }
+
+    this.deleteActivity = function(eventID, date, position) {
+        var eIndex = findEventIndex(eventID);
+        var dIndex = findDayIndex(eIndex, date);
+        if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner === me.id && typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
+            events[eIndex].days[dIndex].activities.splice(position, 1);
             Storage.putEvent(eventID, events[eIndex]);
             return 0;
         }
