@@ -40,7 +40,7 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
     }
 
     $scope.addActivity = function() {
-        Planner.addActivity(Planner.getEvents()[1]._id, "2016-05-12", 'activ 1', 10, 1, 'oh no!');
+        Planner.addActivity(Planner.getEvents()[1]._id, "2016-05-12", 'activ 2', 10, 1, 'oh no!', 0);
     };
 
     $scope.deleteEvent = function() {
@@ -48,6 +48,6 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
     };
 
     $scope.deleteDay = function() {
-        Planner.deleteDay(Planner.getEvents()[1]._id,"2016-05-12");
+        Planner.deleteDay(Planner.getEvents()[1]._id, "2016-05-12");
     };
 });

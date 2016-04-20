@@ -132,7 +132,7 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         return -1;
     }
 
-    this.addActivity = function(eventID, date, name, length, type, description) {
+    this.addActivity = function(eventID, date, name, length, type, description, position) {
         var eIndex = findEventIndex(eventID);
         var dIndex = findDayIndex(eIndex, date);
         if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner === me.id) {
@@ -142,7 +142,12 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
                 'type': type,
                 'decription': description
             };
-            events[eIndex].days[dIndex].activities.push(activity);
+
+            if (position == null) {
+                events[eIndex].days[dIndex].activities.push(activity);
+            } else {
+                events[eIndex].days[dIndex].activities.splice(position, 0, activity);
+            }
             Storage.putEvent(eventID, events[eIndex]);
             return 0;
         }
@@ -170,6 +175,6 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         }
         return -1;
     }
-    
+
     return this;
 });
