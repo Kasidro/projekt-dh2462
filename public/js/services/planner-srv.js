@@ -3,7 +3,7 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         "id": "",
         "name": "",
         "imgUrl": ""
-    };
+    }
     var friends = [];
     var events = [];
     var loginStatus = 'unknown';
@@ -72,7 +72,7 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
                     "id": "",
                     "name": "",
                     "imgUrl": ""
-                };
+                }
                 friends = [];
                 events = [];
                 return 'Logout OK';
@@ -100,7 +100,7 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
             "description": description,
             "guests": guests,
             "days": []
-        };
+        }
 
         return Storage.postEvent(e)
             .then(function(resp) {
@@ -116,7 +116,7 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
                 'date': date,
                 'start': start,
                 'activities': []
-            };
+            }
             events[eIndex].days.push(day);
             events[eIndex].days.sort(function(a, b) {
                 return a.date - b.date;
@@ -125,8 +125,9 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         }
     }
 
-    //Use eventID and date to find correct day to put activity
-    this.addActivity = function(eventID, date, name, length, type, decription) {};
+    this.addActivity = function(eventID, date, name, length, type, decription) {
+        //Use eventID and date to find correct day to put activity
+    }
 
     return this;
 });

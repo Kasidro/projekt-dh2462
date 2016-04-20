@@ -59,7 +59,7 @@ factory.Activtity = function(name,length,typeid,description){
 	// activity type.
 	this.getType = function () {
 		return ActivityType[_typeid];
-	};
+	}
 }
 
 // This is a day consturctor. You can use it to create days, 
@@ -83,20 +83,20 @@ function Day(startH,startM) {
 			totalLength += activity.getLength();
 		});
 		return totalLength;
-	};
+	}
 	
 	// returns the string representation Hours:Minutes of 
 	// the end time of the day
 	this.getEnd = function() {
 		var end = this._start + this.getTotalLength();
 		return Math.floor(end/60) + ":" + end % 60;
-	};
+	}
 	
 	// returns the string representation Hours:Minutes of 
 	// the start time of the day
 	this.getStart = function() {
 		return Math.floor(this._start/60) + ":" + this._start % 60;
-	};
+	}
 	
 	// returns the length (in minutes) of activities of certain type
 	this.getLengthByType = function (typeid) {
@@ -107,7 +107,7 @@ function Day(startH,startM) {
 			}
 		});
 		return length;
-	};
+	}
 	
 	// adds an activity to specific position
 	// if the position is not provided then it will add it to the 
@@ -118,14 +118,14 @@ function Day(startH,startM) {
 		} else {
 			this._activities.push(activity);
 		}
-	};
+	}
 	
 	// removes an activity from specific position
 	// this method will be called when needed from the model
 	// don't call it directly
 	this._removeActivity = function(position) {
 		return this._activities.splice(position,1)[0];
-	};
+	}
 	
 	// moves activity inside one day
 	// this method will be called when needed from the model
@@ -138,7 +138,7 @@ function Day(startH,startM) {
 		}
 		var activity = this._removeActivity(oldposition);
 		this._addActivity(activity, newposition);
-	};
+	}
 }
 
 
@@ -159,7 +159,7 @@ function Model(){
 		this.days.push(day);
 		this.notifyObservers();
 		return day;
-	};
+	}
 	
 	// add an activity to model
 	this.addActivity = function (activity,day,position) {
@@ -177,14 +177,14 @@ function Model(){
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity,position){
 		this.addActivity(activity,null,position);
-	};
+	}
 	
 	// remove an activity on provided position from parked activites 
 	this.removeParkedActivity = function(position) {
 		act = this.parkedActivities.splice(position,1)[0];
 		this.notifyObservers();
 		return act;
-	};
+	}
 	
 	// moves activity between the days, or day and parked activities.
 	// to park activity you need to set the new day to null
@@ -207,7 +207,7 @@ function Model(){
 			this.days[newday]._addActivity(activity,newposition);
 		}
 		this.notifyObservers();
-	};
+	}
 }
 
 }

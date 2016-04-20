@@ -8,7 +8,7 @@ magenta.service('Test', function(Storage, Facebook) {
         'name': '',
         // Stand in picture since setting this field to empty seems to keep previous picture from browser cache
         'imgUrl': 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85',
-    };
+    }
     // Holds users friends
     var friends = [];
     // Login status of current user, values:
@@ -35,7 +35,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    };
+    }
     var getMe = function() {
         statusString = 'Fetching my FB information...';
         Facebook.getMe()
@@ -96,7 +96,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }
         }
         return friend;
-    };
+    }
     getLoginStatus = function() {
         statusString = 'Fetching login status...';
         Facebook.getLoginStatus()
@@ -106,7 +106,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    };
+    }
     */
 
     // Storage
@@ -147,20 +147,20 @@ magenta.service('Test', function(Storage, Facebook) {
     }
 
     // CRUD test
-    (function() {
+    ;(function() {
 
         var activity0 = {
             name: 'Some activity',
             length: 60,
             type: 'Play',
             description: 'Very interesting'
-        };
+        }
 
         var day0 = {
             date: new Date(1999,11,31),
             start: 10,
             activities: []
-        };
+        }
 
         var event0 = {
             name: 'Das event',
@@ -168,7 +168,7 @@ magenta.service('Test', function(Storage, Facebook) {
             guests: 'Eric, Jakob, Johannes',
             description: 'Über event',
             days: []
-        };
+        }
         
 
         // Create
@@ -206,7 +206,7 @@ magenta.service('Test', function(Storage, Facebook) {
                             });
                     });
             });
-    })();    
+    })();
 
 	this.getStatusString = function() { return statusString };
 	this.getUserLoginStatus = function() { return userLoginStatus };
