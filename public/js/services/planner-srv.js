@@ -32,6 +32,7 @@ magenta.factory('Planner', function(Facebook, Storage) {
         return Storage.getEvents(me.id)
             .then(function(resp) {
                 events = resp.data;
+                console.log(events);
                 return resp;
             });
     }
@@ -39,19 +40,26 @@ magenta.factory('Planner', function(Facebook, Storage) {
     var tryLogin = function() {}
 
     this.login = function() {
-        return Facebook.loginStatus().then(function(resp) {
+        return Facebook.getLoginStatus().then(function(resp) {
+            console.log('past gls');
             if (resp.status === 'connected') {
+                console.log('allready connected');
                 Facebook.getFriends();
                 Facebook.getMe().then(function(resp) {
+                    console.log('getting my data');
                     me = resp;
-                    readFromDB;
+                    readFromDB();
                 });
             } else {
+                console.log('trying to log in');
                 Facebook.login().then(function(resp) {
+                    console.log('logged in');
+                    console.log(resp);
                     Facebook.getFriends();
                     Facebook.getMe().then(function(resp) {
+                        console.log('getting my data');
                         me = resp;
-                        readFromDB;
+                        readFromDB();
                     });
                 });
             }
