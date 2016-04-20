@@ -7,11 +7,12 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     var friends = [];
     var events = [];
     var loginStatus = 'unknown';
+    var ActivityType = ["Presentation", "Group Work", "Discussion", "Break"];
 
     var findDayIndex = function(eIndex, date) {
         if (eIndex !== -1) {
             for (var i = 0; i < events[eIndex].days.length; i++) {
-                if (events[eIndex].days[i].date === date) {
+                if (events[eIndex].days[i].date === date.toISOString()) {
                     return i;
                 }
             }
@@ -111,12 +112,12 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
 
     this.addDay = function(eventID, date, start) {
         eIndex = findEventIndex(eventID);
-        if (findDayIndex(eIndex, date) === -1) {
+        if (findDayIndex(eIndex, date) === -1 && events[eIndex].owner === me.id) {
             var day = {
                 'date': date,
                 'start': start,
                 'activities': []
-            }
+            };
             events[eIndex].days.push(day);
             events[eIndex].days.sort(function(a, b) {
                 return a.date - b.date;
@@ -125,8 +126,19 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         }
     }
 
-    this.addActivity = function(eventID, date, name, length, type, decription) {
-        //Use eventID and date to find correct day to put activity
+    this.addActivity = function(eventID, date, name, length, type, description) {
+        var eIndex = findEventIndex(eventID);
+        var dIndex = findDayIndex(eIndex, date);
+        if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner === me.id) {
+            var activity = {
+                'name': name,
+                'length': length,
+                'type': type,
+                'decription': description
+            };
+            events[eIndex].days[dIndex].activities.push(activity);
+            Storage.putEvent(eventID, events[eIndex]);
+        }
     }
 
     return this;

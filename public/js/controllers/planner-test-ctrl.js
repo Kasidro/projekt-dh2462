@@ -32,11 +32,16 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
     }
 
     $scope.addDay = function() {
-        date1 = new Date(2004,11,24);
-        Planner.addDay(Planner.getEvents()[0]._id,date1,10);
+        date1 = new Date(2004, 01, 01);
+        Planner.addDay(Planner.getEvents()[1]._id, date1, 10);
     }
 
     $scope.getFriends = function() {
         console.log(Planner.getFriends());
     }
+
+    $scope.addActivity = function() {
+        date1 = new Date(2004, 01, 01);
+        Planner.addActivity(Planner.getEvents()[1]._id, date1, 'activ 1', 10, 1, 'oh no!');
+    };
 });

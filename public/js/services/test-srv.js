@@ -152,7 +152,7 @@ magenta.service('Test', function(Storage, Facebook) {
         var activity0 = {
             name: 'Some activity',
             length: 60,
-            type: 'Play',
+            type: 1,
             description: 'Very interesting'
         }
 
