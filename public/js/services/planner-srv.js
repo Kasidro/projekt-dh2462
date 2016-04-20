@@ -12,7 +12,7 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     var findDayIndex = function(eIndex, date) {
         if (eIndex !== -1) {
             for (var i = 0; i < events[eIndex].days.length; i++) {
-                if (events[eIndex].days[i].date === date.toISOString()) {
+                if (events[eIndex].days[i].date === date) {
                     return i;
                 }
             }
@@ -86,7 +86,11 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     }
 
     this.getEvent = function(eventID) {
-        return events[findEventIndex(eventID)];
+        var eIndex = findEventIndex(eventID);
+        if (eIndex !== -1) {
+            return events[eIndex];
+        }
+        return null;
     }
 
     this.getFriends = function() {
@@ -123,7 +127,9 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
                 return a.date - b.date;
             })
             Storage.putEvent(eventID, events[eIndex]);
+            return 0;
         }
+        return -1;
     }
 
     this.addActivity = function(eventID, date, name, length, type, description) {
@@ -138,8 +144,32 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
             };
             events[eIndex].days[dIndex].activities.push(activity);
             Storage.putEvent(eventID, events[eIndex]);
+            return 0;
         }
+        return -1;
     }
 
+    //Removers
+    this.deleteEvent = function(eventID) {
+        var eIndex = findEventIndex(eventID);
+        if (eIndex !== -1 && events[eIndex].owner === me.id) {
+            events.splice(eIndex, 1);
+            Storage.deleteEvent(eventID);
+            return 0;
+        }
+        return -1;
+    }
+
+    this.deleteDay = function(eventID, date) {
+        var eIndex = findEventIndex(eventID);
+        var dIndex = findDayIndex(eIndex, date);
+        if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner == me.id) {
+            events[eIndex].days.splice(dIndex, 1);
+            Storage.putEvent(eventID, events[eIndex]);
+            return 0;
+        }
+        return -1;
+    }
+    
     return this;
 });

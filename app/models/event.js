@@ -9,7 +9,7 @@ var ActivitySchema = new Schema({
 });
 
 var DaySchema = new Schema({
-	date: Date,
+	date: String,
 	start: Number,
 	activities: [ActivitySchema]
 }); 

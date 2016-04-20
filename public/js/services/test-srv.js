@@ -157,7 +157,7 @@ magenta.service('Test', function(Storage, Facebook) {
         }
 
         var day0 = {
-            date: new Date(1999,11,31),
+            date: "1999-11-31",
             start: 10,
             activities: []
         }
