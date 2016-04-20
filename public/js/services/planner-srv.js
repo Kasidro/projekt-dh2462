@@ -93,6 +93,24 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         return null;
     }
 
+    this.getDay = function(eventID, date) {
+        var eIndex = findEventIndex(eventID);
+        var dIndex = findDayIndex(eIndex, date);
+        if (eIndex !== -1 && dIndex !== -1) {
+            return events[eIndex].days[dIndex];
+        }
+        return null;
+    }
+
+    this.getActivity = function(eventID, date, position) {
+        var eIndex = findEventIndex(eventID);
+        var dIndex = findDayIndex(eIndex, date);
+        if (eIndex !== -1 && dIndex !== -1 && typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
+            return getActByIdx(eventID, dIndex, position);
+        }
+        return null;
+    }
+
     this.getFriends = function() {
         return friends;
     }
@@ -185,8 +203,37 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     this.deleteActivity = function(eventID, date, position) {
         var eIndex = findEventIndex(eventID);
         var dIndex = findDayIndex(eIndex, date);
-        if (eIndex !== -1 && dIndex !== -1 && events[eIndex].owner === me.id && typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
+        if (eIndex !== -1 &&
+            dIndex !== -1 &&
+            events[eIndex].owner === me.id &&
+            typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
             events[eIndex].days[dIndex].activities.splice(position, 1);
+            Storage.putEvent(eventID, events[eIndex]);
+            return 0;
+        }
+        return -1;
+    }
+
+    // Mover
+    this.moveActivity = function(eventID, date, position, newpos, newdate) {
+        var eIndex = findEventIndex(eventID);
+        var dIndex = findDayIndex(eIndex, date);
+        var ndIndex = dIndex;
+        if (date !== newdate) {
+            ndIndex = findDayIndex(eIndex, newdate);
+        }
+
+        if (eIndex !== -1 &&
+            dIndex !== -1 &&
+            ndIndex !== -1 &&
+            events[eIndex].owner === me.id &&
+            typeof events[eIndex].days[dIndex].activities[position] !== 'undefined') {
+            if (newpos > position && newpos < events[eIndex].days[dIndex].activities.length - 1) {
+                newpos--;
+            }
+            var activity = events[eIndex].days[dIndex].activities[position];
+            events[eIndex].days[dIndex].activities.splice(position, 1);
+            events[eIndex].days[ndIndex].activities.splice(newpos, 0, activity);
             Storage.putEvent(eventID, events[eIndex]);
             return 0;
         }
