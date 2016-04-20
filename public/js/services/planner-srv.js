@@ -36,49 +36,29 @@ magenta.factory('Planner', function(Facebook, Storage) {
             });
     }
 
-    var tryLogin = function() {
-        return Facebook.getLoginStatus()
-            .then(Facebook.login)
-            .then(function(resp) {
-                loginStatus = resp.status;
-                return resp;
-            })
-            .then(Facebook.getMe)
-            .then(function(resp) {
-                me = resp;
-                return resp;
-            })
-            .then(Facebook.getFriends)
-            .then(function(resp) {
-                friends = resp.data;
-                return resp;
-            });
-    }
+    var tryLogin = function() {}
 
     this.login = function() {
-        return tryLogin()
-            .then(readFromDB)
-            .then(function() {
-                console.log('Login OK');
-                return 'Login OK';
-            });
+        return Facebook.loginStatus().then(function(resp) {
+            if (resp.status === 'connected') {
+                Facebook.getFriends();
+                Facebook.getMe().then(function(resp) {
+                    me = resp;
+                    readFromDB;
+                });
+            } else {
+                Facebook.login().then(function(resp) {
+                    Facebook.getFriends();
+                    Facebook.getMe().then(function(resp) {
+                        me = resp;
+                        readFromDB;
+                    });
+                });
+            }
+        });
     }
 
-    this.logout = function() {
-        return Facebook.getLoginStatus()
-            .then(Facebook.logout)
-            .then(function(resp) {
-                loginStatus = resp.status;
-                me = {
-                    "id": "",
-                    "name": "",
-                    "imgUrl": ""
-                }
-                friends = [];
-                events = [];
-                return 'Logout OK';
-            });
-    }
+    this.logout = function() {}
 
     //Getters
     this.getEvents = function() {

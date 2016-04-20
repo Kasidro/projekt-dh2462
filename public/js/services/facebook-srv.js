@@ -21,38 +21,30 @@ magenta.factory('Facebook', function($q) {
         },
 
         // takes response from getLoginStatus as arg to check if user is allready logged in
-        login: function(sresponse) {
+        login: function() {
             var deferred = $q.defer();
-            if (sresponse.status != 'connected') {
-                FB.login(function(response) {
-                    if (!response || response.error) {
-                        deferred.reject('Login Status Error');
-                    } else {
-                        deferred.resolve(response);
-                    }
-                }, {
-                    scope: 'user_friends,user_events'
-                });
-            } else {
-                deferred.reject('User Allready Logged In');
-            }
+            FB.login(function(response) {
+                if (!response || response.error) {
+                    deferred.reject('Login Status Error');
+                } else {
+                    deferred.resolve(response);
+                }
+            }, {
+                scope: 'user_friends,user_events'
+            });
             return deferred.promise;
         },
 
         // takes response from getLoginStatus as arg to check if user is allready logged in
-        logout: function(sresponse) {
+        logout: function() {
             var deferred = $q.defer();
-            if (sresponse.status == 'connected') {
-                FB.logout(function(response) {
-                    if (!response || response.error) {
-                        deferred.reject('Logout Status Error');
-                    } else {
-                        deferred.resolve(response);
-                    }
-                });
-            } else {
-                deferred.reject('User Allready Logged Out');
-            }
+            FB.logout(function(response) {
+                if (!response || response.error) {
+                    deferred.reject('Logout Status Error');
+                } else {
+                    deferred.resolve(response);
+                }
+            });
             return deferred.promise;
         },
 
