@@ -8,7 +8,8 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         controller: 'HomeCtrl'
     }).
     when('/start-menu', {
-        templateUrl: 'partials/start-menu.html'
+        templateUrl: 'partials/start-menu.html',
+        controller: 'StartCtrl'
     }).
     when('/edit-event', {
         templateUrl: 'partials/edit-event.html',
