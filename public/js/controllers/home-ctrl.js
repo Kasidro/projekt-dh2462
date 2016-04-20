@@ -1,12 +1,12 @@
-magenta.controller('HomeCtrl', function($scope, Planner) {
+magenta.controller('HomeCtrl', function($scope, $window, Planner) {
 
-	$scope.login = function() {
-        Planner.login()
-            .then(function(response) {
-                console.log(response);
-            }).catch(function(error) {
-                console.log(error);
-            });
+    $scope.login = function() {
+    	Planner.login()
+    		.then(function(res) {
+    			console.log(res);
+    			$window.location.href = '/#/start-menu';
+    		}).catch(function(err) {
+    			console.error(err);
+    		});
     }
-
 });

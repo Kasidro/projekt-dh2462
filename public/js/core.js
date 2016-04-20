@@ -33,7 +33,7 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         controller: 'PlannerTestCtrl'
     }).
     otherwise({
-        redirectTo: '/start-menu'
+        redirectTo: '/home'
     });
 })
 

@@ -1,4 +1,4 @@
-magenta.factory('Planner', function(Facebook, Storage) {
+magenta.factory('Planner', function($q, Facebook, Storage) {
     var me = {
         "id": "",
         "name": "",
@@ -28,38 +28,45 @@ magenta.factory('Planner', function(Facebook, Storage) {
         return -1;
     }
 
-    var readFromDB = function() {
-        return Storage.getEvents(me.id)
-            .then(function(resp) {
-                events = resp.data;
-                return resp;
+    var fbLogin = function() {
+        return Facebook.getLoginStatus()
+            .then(Facebook.logout)
+            .then(function(res) { console.log('FB logout succeded') })
+            .catch(function(err) { console.log('FB logout failed') })
+            .then(Facebook.getLoginStatus)
+            .then(Facebook.login)
+            .then(function(res) { console.log('FB login succeded'); loginStatus = res.status })
+            .catch(function(err) { console.log('FB login failed') })
+            .then(function() {
+                var deferred = $q.defer();
+                if (loginStatus === 'connected')
+                    deferred.resolve('FB connection succeded');
+                else
+                    deferred.reject('FB connection failed');
+                return deferred.promise;
             });
     }
 
-    var tryLogin = function() {
-        return Facebook.getLoginStatus()
-            .then(Facebook.login)
-            .then(function(resp) {
-                loginStatus = resp.status;
-                return resp;
-            })
-            .then(Facebook.getMe)
-            .then(function(resp) {
-                me = resp;
-                return resp;
-            })
+    var fbFetch = function() {
+        return Facebook.getMe()
+            .then(function(res) { console.log('FB fetched me'); me = res })
             .then(Facebook.getFriends)
-            .then(function(resp) {
-                friends = resp.data;
-                return resp;
-            });
+            .then(function(res) { console.log('FB fetched friends'); friends = res.data });
+    }
+
+    var dbFetch = function() {
+        return Storage.getEvents(me.id)
+            .then(function(res) { console.log('DB fetched events'); events = res.data });
     }
 
     this.login = function() {
-        return tryLogin()
-            .then(readFromDB)
+        return fbLogin()
+            .then(fbFetch)
+            .then(dbFetch)
             .then(function() {
-                return 'Login OK';
+                var deferred = $q.defer();
+                deferred.resolve('Login OK');
+                return deferred.promise;
             });
     }
 
