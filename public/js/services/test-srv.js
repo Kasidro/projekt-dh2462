@@ -46,7 +46,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    };
+    }
     var getFriends = function() {
         statusString = 'Fetching friends...';
         Facebook.getFriends()
@@ -57,7 +57,7 @@ magenta.service('Test', function(Storage, Facebook) {
                 function(reason) {
                     statusString = reason;
                 });
-    };
+    }
 
     // Logout
     var logout = function() {
@@ -74,7 +74,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    };
+    }
     var clearCache = function() {
         // Facebook
         me.id = '';
@@ -83,7 +83,7 @@ magenta.service('Test', function(Storage, Facebook) {
         friends = [];
         // Storage
         events = [];
-    };
+    }
 
     // Not used
     /*
@@ -137,14 +137,14 @@ magenta.service('Test', function(Storage, Facebook) {
             .then(function(res) {
                 getEvents();
             });
-    };
+    }
 
     var getEvents = function() {
         Storage.getEvents(me.id)
             .then(function(res) {
                 events = res.data;
             });
-    };
+    }
 
     // CRUD test
     (function() {
@@ -208,11 +208,11 @@ magenta.service('Test', function(Storage, Facebook) {
             });
     })();    
 
-	this.getStatusString = function() {return statusString};
-	this.getUserLoginStatus = function() {return userLoginStatus};
-	this.getMe = function() {return me};
-	this.getFriends = function() {return friends};
-	this.getEvents = function() {return events};
+	this.getStatusString = function() { return statusString };
+	this.getUserLoginStatus = function() { return userLoginStatus };
+	this.getMe = function() { return me };
+	this.getFriends = function() { return friends };
+	this.getEvents = function() { return events };
 	this.login = login;
 	this.logout = logout;
 	this.add = add;

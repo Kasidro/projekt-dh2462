@@ -6,7 +6,7 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
             }).catch(function(error) {
                 console.log(error);
             });
-    };
+    }
 
     $scope.logout = function() {
         Planner.logout()
@@ -15,30 +15,28 @@ magenta.controller('PlannerTestCtrl', function($scope, Planner) {
             }).catch(function(error) {
                 console.log(error);
             });
-    };
+    }
 
     $scope.addEvent = function() {
-        Planner.addEvent(['o', 'm'], 'super event', 'such fun').then(function(resp) {
+        Planner.addEvent('super event', 'such fun', ['o', 'm']).then(function(resp) {
             console.log(resp);
         });
-    };
+    }
 
     $scope.getEvents = function() {
         console.log(Planner.getEvents());
-    };
+    }
 
     $scope.getEvent = function() {
-        console.log(Planner.getEvent("5716b0c5f5713c976aa3e0f7"));
-    };
+        console.log(Planner.getEvent(Planner.getEvents()[0]._id));
+    }
 
     $scope.addDay = function() {
-        date1 = new Date(2004,12,24);
-        date2 = new Date(2004,12,23);
-        Planner.addDay("5716b0c5f5713c976aa3e0f7",date1,10);
-        Planner.addDay("5716b0c5f5713c976aa3e0f7",date2,10);
-    };
+        date1 = new Date(2004,11,24);
+        Planner.addDay(Planner.getEvents()[0]._id,date1,10);
+    }
 
     $scope.getFriends = function() {
         console.log(Planner.getFriends());
-    };
+    }
 });

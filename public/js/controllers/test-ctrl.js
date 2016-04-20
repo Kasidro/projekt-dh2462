@@ -6,7 +6,7 @@ magenta.controller('TestCtrl', function($scope, Test) {
         $scope.me = Test.getMe();
         $scope.friends = Test.getFriends();
         $scope.events = Test.getEvents();
-    };
+    }
 
     $scope.login = Test.login;
     $scope.logout = Test.logout;

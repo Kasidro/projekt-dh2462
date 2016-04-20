@@ -2,15 +2,21 @@ var Event = require('./models/event');
 
 module.exports = function(app) {
 
-	// create
-	app.post('/api/events', function(req, res) {
-		var event = new Event();
-		for (var p in req.body) event[p] = req.body[p];
+	var save = function(res, event, data) {
+		for (var p in data) {
+			if (p.charAt(0) !== '_')
+				event[p] = data[p];
+		}
 		event.save(function(err) {
 			if (err)
 				res.send(err);
 			res.json(event);
 		});
+	}
+
+	// create
+	app.post('/api/events', function(req, res) {
+		save(res, new Event(), req.body);
 	});
 
 	// read
@@ -27,12 +33,7 @@ module.exports = function(app) {
 		Event.findById(req.params.id, function(err, event) {
 			if (err)
 				res.send(err);
-			for (var p in req.body) event[p] = req.body[p];
-			event.save(function(err) {
-				if (err)
-					res.send(err);
-				res.json(event);
-			});
+			save(res, event, req.body);
 		});
 	});
 

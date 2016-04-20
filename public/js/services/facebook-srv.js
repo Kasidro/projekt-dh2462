@@ -5,7 +5,7 @@ magenta.factory('Facebook', function($q) {
         var imgUrlHead = 'http://graph.facebook.com/';
         var imgUrlTail = '/picture?type=large';
         return imgUrlHead + fbId + imgUrlTail;
-    };
+    }
 
     return {
         getLoginStatus: function() {
