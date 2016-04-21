@@ -9,7 +9,7 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
     }).
     when('/start-menu', {
         templateUrl: 'partials/start-menu.html',
-        controller: 'StartCtrl'
+        controller: 'HeaderCtrl'
     }).
     when('/edit-event/:eventID', {
         templateUrl: 'partials/edit-event.html',
@@ -21,10 +21,6 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
     }).
     when('/event/:eventID', {
         templateUrl: 'partials/event.html',
-        controller: 'EventCtrl'
-    }).
-    when('/new-activity', {
-        templateUrl: 'partials/new-activity.html',
         controller: 'EventCtrl'
     }).
     // Test related

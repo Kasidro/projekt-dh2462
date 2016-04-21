@@ -264,9 +264,4 @@ magenta.service('Planner', function($q, Facebook, Storage) {
         }
         return -1;
     }
-
-    var _this = this;
-    (function() {
-        setTimeout(_this.login, 1000);
-    })();
 });
