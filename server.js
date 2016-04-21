@@ -8,7 +8,6 @@ var port = process.env.PORT || 8000;
 
 // config
 app.use(bodyParser.json());
-app.disable('etag');
 app.use(express.static(__dirname + '/public'));
 mongoose.connect(database.url);
 
