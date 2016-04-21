@@ -1,17 +1,17 @@
-var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
+var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'ngCookies', 'dndLists'])
 
 // Route
 .config(function($routeProvider) {
     $routeProvider.
-    when('/home', {
-        templateUrl: 'partials/home.html',
-        controller: 'HomeCtrl'
+    when('/', {
+        templateUrl: 'partials/login.html',
+        controller: 'LoginCtrl'
     }).
     when('/start-menu', {
         templateUrl: 'partials/start-menu.html',
         controller: 'HeaderCtrl'
     }).
-    when('/edit-event/:eventID', {
+    when('/edit-event', {
         templateUrl: 'partials/edit-event.html',
         controller: 'EditCtrl'
     }).
@@ -19,7 +19,7 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         templateUrl: 'partials/browse-events.html',
         controller: 'BrowseCtrl'
     }).
-    when('/event-details/:eventID', {
+    when('/event-details', {
         templateUrl: 'partials/event-details.html',
         controller: 'DetailsCtrl'
     }).
@@ -33,7 +33,20 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         controller: 'Test2Ctrl'
     }).
     otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
+    });
+})
+
+.run(function ($rootScope, $location, Planner) {
+    $rootScope.$on('$routeChangeStart', function (event) {
+        if (Planner.getLoginStatus() === 'connected' || $location.path() === '/') {
+            console.log('ALLOW');
+        }
+        else {
+            console.log('DENY');
+            event.preventDefault();
+            $location.path('/');
+        }
     });
 })
 

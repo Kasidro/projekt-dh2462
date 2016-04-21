@@ -1,10 +1,9 @@
-magenta.controller('DetailsCtrl', function($scope, $routeParams, Planner) {
+magenta.controller('DetailsCtrl', function($scope, Planner) {
 
     var pc = 3;
     var cLastindex = pc - 1;
 
-    $scope.id = $routeParams.eventID;
-    $scope.mEvent = Planner.getEvent($scope.id);
+    $scope.mEvent = Planner.getEvent(Planner.currentEvent);
     $scope.cPage = [];
     $scope.nDay;
 

@@ -83,6 +83,6 @@ module.exports = function(app) {
 
 	// otherwise
 	app.get('*', function(req, res) {
-		res.redirect('/#/home');
+		res.redirect('/#/');
 	});
 };
