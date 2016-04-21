@@ -52,14 +52,15 @@
 
 .magenta-heading-1:hover {
 	text-shadow: 0 0 30px #FF00FF;
+	text-decoration: none;
 }
 
 .magenta-text-1 {
 	color: white;
 	font-family: 'Audiowide', cursive;
-	font-size: 16pt;
-	text-align: left;
-	margin-left: 2vw;
+	font-size: 180%;
+	text-align: right;
+	height: 180%;
 }
 .magenta-text-2 {
 	color: #2A2A2A;
@@ -127,12 +128,27 @@
 }
 
 .btn-save:hover {
-	background-color: #992083; 
+	background-color: #248f24; 
 	color: white;
 	text-shadow: 0 0 30px white;
-
+}
+.btn-cancel {
+	text-align: center;
+	font-size: 40pt;
+	font-family: 'Audiowide', cursive;
+	color:black;
+	transition: all 0.5s ease;
+	background-color: white;
+	margin-top: 4vh;
+	border-color: #994D83;
+	border-width: 3px;
 }
 
+.btn-cancel:hover {
+	background-color: #ff0000; 
+	color: white;
+	text-shadow: 0 0 30px white;
+}
 /*----------------END OF Styling of site wide elements-----------------*/
 
 /*-----------------STYLING FOR BROWSE-EVENT.HTML-----------------------*/
@@ -230,14 +246,53 @@
 	font-family: 'Audiowide', cursive;
 	font-size: 30pt;
 }
+/*---------------------Styling for new-activity.html---------------------------*/
+#btn-dropdown {
+	margin: none;
+	padding: none;
+}
+#description-field {
+	text-align: left;
+	vertical-align: top;
+	font-family: 'Audiowide', cursive;
+	font-size: 200%;
+	margin-top: 4vh;
+	height: 30vh;
+	border: 2px solid #D16BB4;
+	transition: all 0.5s ease;
+}
+#description-field:hover {
+	box-shadow: 0 0 30px #FF00FF;
+}
+#dropdown-act {
+	font-family: 'Audiowide', cursive;
+	color:black;
+	border: 2px solid #D16BB4;
+}
+#topp-act {
+	background: transparent;
+	color: black;
+	text-shadow: none;
+	text-align: center;
+}
+
 /*---------------------Styling for day.html---------------------------*/
 .title-holder {
 	height: 9vh;
+}
+.mag-input-2 {
+	font-size: 180%;
+	text-align:left;
+	height: 180%;
+	border: none;
+	font-family: 'Audiowide', cursive;
+	background-color: white;
 }
 #button-title-holder {
 	height: 9vh;
 }
 .btn-title {
+	height: 1vh;
 	margin-left: 0;
 	font-size: 12pt;
 	margin-top: 2.8vh; 
@@ -259,41 +314,9 @@
 }
 .activity_field {
 	height: 45vh;
-	width: 24vw;
-	margin-left: 2vw;
+	margin-top: 0.8vw;
 	background-color: white;
-}
-#date-picker {
-	color: black;
-	width: 12.5vw;
-}
-#date-label {
-	text-align: left;
-	margin-left: 2vw;
-}
-
-#start-time-picker {
-	width: 8.3vw;
-	text-align: center;
-	color:black;
-}
-#end-time {
-	background-color: white;
-	color: black;
-	text-align: center;
-	padding-right:3.15vw; 
-	padding-left:3.15vw;
-	padding-top: 0.3vh;
-	padding-bottom: 0.3vh;
-}
-#duration-time {
-	background-color: white;
-	color: black;
-	text-align: center;
-	padding-right:2.5vw; 
-	padding-left:2.5vw;
-	padding-top: 0.3vh;
-	padding-bottom: 0.3vh;
+	padding: none;
 }
 #arrow-holder {
 	width: 5vw;
@@ -307,10 +330,10 @@
 }
 
 .add-activity {
-	margin: 0;
-	border: none;
-	width: 24vw;
+	margin: none;
+	margin-top: 0.5vh;
 	height: 6vh;
+	width: 100%;
 	font-size: 24pt;
 	background-color: #6D98BA;
 	text-align: center;
@@ -321,9 +344,9 @@
 	background-color: #386FA4;
 }
 .activity {
-	margin: 0;
-	border: none;
-	width: 24vw;
+	margin: none;
+	margin-top: 0.5vh;
+	width: 100%;
 	height: 12vh;
 	font-size: 24pt;
 	background-color: #554CA5;
@@ -486,7 +509,6 @@ nav li ul a:hover {
     zoom:1;
 }​
 
-/*----------------END OF HEAFER CSS-----------------*/
-
-
+/*----------------END OF HEADER CSS-----------------*/
+/*----------------TEST */
 
