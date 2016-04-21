@@ -23,6 +23,10 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         templateUrl: 'partials/event.html',
         controller: 'EventCtrl'
     }).
+    when('/new-activity', {
+        templateUrl: 'partials/new-activity.html',
+        controller: 'EventCtrl'
+    }).
     // Test related
     when('/test', {
         templateUrl: 'partials/test.html',
