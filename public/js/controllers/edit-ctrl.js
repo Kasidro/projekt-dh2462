@@ -1,16 +1,19 @@
 magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) {
 
 	$scope.title;
-	$scope.description;
     $scope.friends = Planner.getFriends();
 	$scope.guests = [];
     $scope.selected;
 
-    $scope.add = function() {
+    var getFriend = function(id) {
         for (i in $scope.friends) {
-            if ($scope.friends[i].id === $scope.selected)
-                $scope.guests.push($scope.friends[i]);
+            if ($scope.friends[i].id === id)
+                return $scope.friends[i];
         }
+    };
+
+    $scope.add = function() {
+        $scope.guests.push(getFriend($scope.selected));
     };
 
     $scope.remove = function(unselected) {
@@ -21,7 +24,10 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) 
     };
 
 	$scope.saveEvent = function() {
-		Planner.editEvent($routeParams.eventID, $scope.title, $scope.description, $scope.guests);
+        var guestIds = [];
+        for (i in $scope.guests) guestIds.push($scope.guests[i].id);
+        console.log(guestIds);
+		Planner.editEvent($routeParams.eventID, $scope.title, guestIds);
         $window.alert("Saved event");
         $window.location.href = '/#/event/' + $routeParams.eventID;
     };
@@ -35,7 +41,9 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) 
     (function(){
     	var mEvent = Planner.getEvent($routeParams.eventID);
     	$scope.title = mEvent.name;
-		$scope.description = mEvent.description;
-		$scope.guests = mEvent.guests;
+        for (i in mEvent.guests) {
+            $scope.guests.push(getFriend(mEvent.guests[i]));   
+        }
+        console.error($scope.guests);
     })();
 });

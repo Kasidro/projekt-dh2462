@@ -191,10 +191,9 @@ magenta.service('Planner', function($q, Facebook, Storage) {
         return -1;
     }
 
-    this.editEvent = function(eID, title, description, guests) {
+    this.editEvent = function(eID, title, guests) {
         var index = findEventIndex(eID);
         events[index].name = title;
-        events[index].description = description;
         events[index].guests = guests;
         Storage.putEvent(eID, events[index]);
     }

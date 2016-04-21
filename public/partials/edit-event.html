@@ -10,10 +10,6 @@
 		<input id="title-input" ng-model="title" type="text" class="magenta-input col-md-8" placeholder="Title"></input>
 	</div>
 	<div class="col-md-12">
-		<span class="magenta-label col-md-4">DESCRIPTION: </span>
-		<input id="description-input" ng-model="description" type="text" class="magenta-input col-md-8" placeholder="Should we have a description? My vote is not :) //Tobias"></input>
-	</div>
-	<div class="col-md-12">
 		<span class="magenta-label col-md-4">ADD PARTICIPANT: </span>
 		<select ng-model="selected" ng-change="add()">
 			<option ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</option>
