@@ -6,7 +6,7 @@
 </div>
 
 
-<div id="my-events-container" ng-repeat="event in events">
+<div id="my-events-container" ng-repeat="event in events track by $index">
 	<hr class="magenta-divider">
 	<div class="saved-event" >
 		<a href="#/event">

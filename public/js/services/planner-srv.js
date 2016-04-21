@@ -8,6 +8,8 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
     var events = [];
     var loginStatus = 'unknown';
 
+
+
     var findDayIndex = function(ei, date) {
         if (ei !== -1) {
             for (var i = 0; i < events[ei].days.length; i++) {
@@ -121,6 +123,10 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         return friends;
     }
 
+    this.addEventToModel = function(event) {
+    	events.push(event);
+    }
+
     //Adders
     this.addEvent = function(name, description, guests) {
         var e = {
@@ -131,8 +137,11 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
             "days": []
         }
 
+        console.log(me.id);
+
         return Storage.postEvent(e)
             .then(function(resp) {
+            	console.log(resp);
                 events.push(resp.data);
                 return resp;
             });
