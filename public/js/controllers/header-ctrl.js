@@ -1,6 +1,8 @@
 magenta.controller('HeaderCtrl', function($scope, $window, Planner) {
 
-	$scope.createEvent2 = function() {
-		console.log('test');
+	$scope.createEvent = function() {
+		Planner.addEvent().then(function(resp) {
+			$window.location.href = '/#/edit-event/' + resp.data._id;
+        });
 	}
 });
