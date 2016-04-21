@@ -26,10 +26,9 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) 
 	$scope.saveEvent = function() {
         var guestIds = [];
         for (i in $scope.guests) guestIds.push($scope.guests[i].id);
-        console.log(guestIds);
 		Planner.editEvent($routeParams.eventID, $scope.title, guestIds);
         $window.alert("Saved event");
-        $window.location.href = '/#/event/' + $routeParams.eventID;
+        $window.location.href = '/#/event-details/' + $routeParams.eventID;
     };
 
     $scope.removeEvent = function() {
@@ -44,6 +43,5 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) 
         for (i in mEvent.guests) {
             $scope.guests.push(getFriend(mEvent.guests[i]));   
         }
-        console.error($scope.guests);
     })();
 });

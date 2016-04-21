@@ -4,5 +4,5 @@ magenta.controller('HeaderCtrl', function($scope, $window, Planner) {
 		Planner.addEvent().then(function(resp) {
 			$window.location.href = '/#/edit-event/' + resp.data._id;
         });
-	}
+	};
 });

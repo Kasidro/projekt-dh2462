@@ -1,4 +1,4 @@
-magenta.controller('EventCtrl', function($scope, $routeParams, Planner) {
+magenta.controller('DetailsCtrl', function($scope, $routeParams, Planner) {
 
     var pc = 3;
     var cLastindex = pc - 1;
@@ -25,7 +25,6 @@ magenta.controller('EventCtrl', function($scope, $routeParams, Planner) {
 
     (function() {
         $scope.nDays = $scope.mEvent.days.length;
-        console.log($scope.mEvent.days[0]);
         for (var i = 0; i < pc && i < $scope.nDays; i++) {
             $scope.cPage.push($scope.mEvent.days[i]);
         }

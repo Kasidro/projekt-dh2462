@@ -1,7 +1,6 @@
-
-magenta.controller('EditCtrl', function($scope, Planner) {
+magenta.controller('ActivityCtrl', function($scope, Planner) {
     $scope.title = "";
     $scope.startTime = "";
-    $scope.type "";
+    $scope.type = "";
     $scope.description = "";
 });

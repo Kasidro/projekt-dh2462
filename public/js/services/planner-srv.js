@@ -3,7 +3,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
         "id": "",
         "name": "",
         "imgUrl": ""
-    }
+    };
     var friends = [];
     var events = [];
     var loginStatus = 'unknown';
@@ -19,7 +19,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             }
         }
         return -1;
-    }
+    };
 
     var findEventIndex = function(eID) {
         for (var i = 0; i < events.length; i++) {
@@ -28,7 +28,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             }
         }
         return -1;
-    }
+    };
 
     var fbLogin = function() {
         return Facebook.getLoginStatus()
@@ -47,19 +47,19 @@ magenta.service('Planner', function($q, Facebook, Storage) {
                     deferred.reject('FB connection failed');
                 return deferred.promise;
             });
-    }
+    };
 
     var fbFetch = function() {
         return Facebook.getMe()
             .then(function(res) { console.log('FB fetched me'); me = res })
             .then(Facebook.getFriends)
             .then(function(res) { console.log('FB fetched friends'); friends = res.data });
-    }
+    };
 
     var dbFetch = function() {
         return Storage.getEvents(me.id)
             .then(function(res) { console.log('DB fetched events'); events = res.data });
-    }
+    };
 
     this.login = function() {
         return fbLogin()
@@ -70,7 +70,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
                 deferred.resolve('Login OK');
                 return deferred.promise;
             });
-    }
+    };
 
     this.logout = function() {
         return Facebook.getLoginStatus()
@@ -86,12 +86,12 @@ magenta.service('Planner', function($q, Facebook, Storage) {
                 events = [];
                 return 'Logout OK';
             });
-    }
+    };
 
     //Getters
     this.getEvents = function() {
         return events;
-    }
+    };
 
     this.getEvent = function(eID) {
         var ei = findEventIndex(eID);
@@ -99,7 +99,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return events[ei];
         }
         return null;
-    }
+    };
 
     this.getDay = function(eID, date) {
         var ei = findEventIndex(eID);
@@ -108,7 +108,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return events[ei].days[di];
         }
         return null;
-    }
+    };
 
     this.getActivity = function(eID, date, pos) {
         var ei = findEventIndex(eID);
@@ -117,15 +117,15 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return getActByIdx(eID, di, pos);
         }
         return null;
-    }
+    };
 
     this.getFriends = function() {
         return friends;
-    }
+    };
 
     this.addEventToModel = function(event) {
     	events.push(event);
-    }
+    };
 
     //Adders
     this.addEvent = function(name, description, guests) {
@@ -145,7 +145,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
                 events.push(resp.data);
                 return resp;
             });
-    }
+    };
 
     this.addDay = function(eID, date, start) {
         ei = findEventIndex(eID);
@@ -163,7 +163,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
-    }
+    };
 
     this.addActivity = function(eID, date, name, length, type, description, pos) {
         var ei = findEventIndex(eID);
@@ -189,14 +189,14 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
-    }
+    };
 
     this.editEvent = function(eID, title, guests) {
         var index = findEventIndex(eID);
         events[index].name = title;
         events[index].guests = guests;
         Storage.putEvent(eID, events[index]);
-    }
+    };
 
     //Removers
     this.deleteEvent = function(eID) {
@@ -207,7 +207,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
-    }
+    };
 
     this.deleteDay = function(eID, date) {
         var ei = findEventIndex(eID);
@@ -220,7 +220,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
-    }
+    };
 
     this.deleteActivity = function(eID, date, pos) {
         var ei = findEventIndex(eID);
@@ -234,7 +234,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
-    }
+    };
 
     // Mover
     this.moveActivity = function(eID, date, pos, newpos, ndate) {
@@ -260,5 +260,5 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
-    }
+    };
 });

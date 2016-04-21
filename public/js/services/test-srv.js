@@ -8,7 +8,7 @@ magenta.service('Test', function(Storage, Facebook) {
         'name': '',
         // Stand in picture since setting this field to empty seems to keep previous picture from browser cache
         'imgUrl': 'http://images3.mtv.com/uri/mgid:uma:video:mtv.com:720643?width=100&height=150&crop=true&quality=0.85',
-    }
+    };
     // Holds users friends
     var friends = [];
     // Login status of current user, values:
@@ -35,7 +35,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    }
+    };
     var getMe = function() {
         statusString = 'Fetching my FB information...';
         Facebook.getMe()
@@ -46,7 +46,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    }
+    };
     var getFriends = function() {
         statusString = 'Fetching friends...';
         Facebook.getFriends()
@@ -57,7 +57,7 @@ magenta.service('Test', function(Storage, Facebook) {
                 function(reason) {
                     statusString = reason;
                 });
-    }
+    };
 
     // Logout
     var logout = function() {
@@ -74,7 +74,7 @@ magenta.service('Test', function(Storage, Facebook) {
             }, function(reason) {
                 statusString = reason;
             });
-    }
+    };
     var clearCache = function() {
         // Facebook
         me.id = '';
@@ -83,31 +83,7 @@ magenta.service('Test', function(Storage, Facebook) {
         friends = [];
         // Storage
         events = [];
-    }
-
-    // Not used
-    /*
-    // returns friend by id or null if that friend does not exist
-    getFriend = function(id) {
-        var friend = null;
-        for (var i = 0; i < friends.length; i++) {
-            if (friends[i].id === id) {
-                friend = friends[i];
-            }
-        }
-        return friend;
-    }
-    getLoginStatus = function() {
-        statusString = 'Fetching login status...';
-        Facebook.getLoginStatus()
-            .then(function(response) {
-                userLoginStatus = response.status;
-                statusString = 'Success fetching login status!';
-            }, function(reason) {
-                statusString = reason;
-            });
-    }
-    */
+    };
 
     // Storage
     // ========================================================================
@@ -124,12 +100,12 @@ magenta.service('Test', function(Storage, Facebook) {
             guests: allFriends,
             description: 'Description',
             days: []
-        }
+        };
         Storage.postEvent(dummyEvent)
             .then(function(res) {
                 getEvents();
             });
-    }
+    };
 
     var remove = function() {
         if (userLoginStatus !== 'connected') return;
@@ -137,30 +113,30 @@ magenta.service('Test', function(Storage, Facebook) {
             .then(function(res) {
                 getEvents();
             });
-    }
+    };
 
     var getEvents = function() {
         Storage.getEvents(me.id)
             .then(function(res) {
                 events = res.data;
             });
-    }
+    };
 
     // CRUD test
-    ;(function() {
+    (function() {
 
         var activity0 = {
             name: 'Some activity',
             length: 60,
             type: 1,
             description: 'Very interesting'
-        }
+        };
 
         var day0 = {
             date: "1999-11-31",
             start: 10,
             activities: []
-        }
+        };
 
         var event0 = {
             name: 'Das event',
@@ -168,7 +144,7 @@ magenta.service('Test', function(Storage, Facebook) {
             guests: 'Eric, Jakob, Johannes',
             description: 'Über event',
             days: []
-        }
+        };
         
 
         // Create

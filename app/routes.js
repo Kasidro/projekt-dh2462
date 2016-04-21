@@ -14,7 +14,7 @@ module.exports = function(app) {
 			}
 			res.json(event);
 		});
-	}
+	};
 
 	// create
 	app.post('/api/events', function(req, res) {
@@ -85,4 +85,4 @@ module.exports = function(app) {
 	app.get('*', function(req, res) {
 		res.redirect('/#/home');
 	});
-}
+};

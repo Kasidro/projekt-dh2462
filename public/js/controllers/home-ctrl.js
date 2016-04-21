@@ -12,5 +12,5 @@ magenta.controller('HomeCtrl', function($scope, $window, Planner) {
     			console.error(err);
     			$scope.status = 'Loging failed, please try again';
     		});
-    }
+    };
 });
