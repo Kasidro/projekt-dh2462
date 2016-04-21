@@ -1,4 +1,4 @@
-magenta.controller('EditCtrl', function($scope, $window, Planner) {
+magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) {
 
 	$scope.title;
 	$scope.description;
@@ -15,10 +15,11 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
     }
 
     ;(function(){
-    	var currentEvent = Planner.getEvent(Planner.currentEvent);
-    	console.log(currentEvent);
-    	$scope.title = currentEvent.title;
-		$scope.description = currentEvent.description;
-		$scope.guests = currentEvent.guests;
+    	console.log($routeParams);
+    	var mEvent = Planner.getEvent($routeParams.eventID);
+    	console.log(mEvent);
+    	$scope.title = mEvent.name;
+		$scope.description = mEvent.description;
+		$scope.guests = mEvent.guests;
     })();
 });
