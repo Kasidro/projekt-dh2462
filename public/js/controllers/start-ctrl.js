@@ -1,5 +1,9 @@
-magenta.controller('StartCtrl', function($scope, Planner) {
+magenta.controller('StartCtrl', function($scope, $window, Planner) {
 
-	// creates a new event then redirects to edit-event for the new event ?
-
+	$scope.createEvent = function() {
+		Planner.addEvent().then(function(resp) {
+			Planner.currentEvent = resp.data._id;
+			$window.location.href = '/#/edit-event';
+        });
+	}
 });

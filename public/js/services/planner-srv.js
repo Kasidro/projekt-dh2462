@@ -59,6 +59,8 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             .then(function(res) { console.log('DB fetched events'); events = res.data });
     }
 
+    this.currentEvent;
+
     this.login = function() {
         return fbLogin()
             .then(fbFetch)
@@ -180,6 +182,14 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             return 0;
         }
         return -1;
+    }
+
+    this.editEvent = function(eID, title, description, guests) {
+        var index = findEventIndex(eID);
+        events[index].title = title;
+        events[index].description = description;
+        events[index].guests = guests;
+        Storage.putEvent(eID, events[index]);
     }
 
     //Removers
