@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 magenta.controller('EditCtrl', function($scope, $window, Planner) {
 
 	$scope.title;
@@ -12,6 +13,20 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
     $scope.removeEvent = function() {
     	Planner.deleteEvent(Planner.currentEvent);
     	$window.location.href = '/#/start-menu';
+=======
+magenta.controller('EditCtrl', function($scope, Planner, $window) {
+
+	$scope.title;
+	$scope.guests = [];
+	$scope.description;
+	$scope.id;
+
+	$scope.addEvent = function() {
+		Planner.addEvent($scope.title, $scope.description, $scope.guests).then(function(resp) {
+            console.log(resp);
+            $window.location.href = '/#/event/' + resp.data._id;
+        });
+>>>>>>> origin/master
     }
 
     ;(function(){

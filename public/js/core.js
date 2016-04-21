@@ -19,7 +19,7 @@ var magenta = angular.module('magenta', ['ngRoute', 'ngResource', 'dndLists'])
         templateUrl: 'partials/browse-events.html',
         controller: 'BrowseCtrl'
     }).
-    when('/event', {
+    when('/event/:eventID', {
         templateUrl: 'partials/event.html',
         controller: 'EventCtrl'
     }).

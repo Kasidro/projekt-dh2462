@@ -1,6 +1,6 @@
 magenta.controller('BrowseCtrl', function($scope, Planner) {
 
-		$scope.events = console.log(Planner.getEvents());
-		$scope.me = console.log(Planner.me.id);
+		console.log(Planner.getEvents());
+		$scope.events = Planner.getEvents();
 
 });
