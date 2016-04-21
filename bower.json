@@ -6,12 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.5.5",
-    "angular-animate": "^1.5.5",
     "angular-cookies": "^1.5.5",
-    "angular-drag-and-drop-lists": "^1.4.0",
-    "angular-mocks": "^1.5.5",
-    "angular-resource": "^1.5.5",
     "angular-route": "^1.5.5",
+    "angular-drag-and-drop-lists": "^1.4.0",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.3"
   }
