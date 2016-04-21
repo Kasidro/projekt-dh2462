@@ -8,7 +8,11 @@ magenta.service('Planner', function($q, Facebook, Storage) {
     var events = [];
     var loginStatus = 'unknown';
 
+    this.getLoginStatus = function() {
+        return loginStatus;
+    };
 
+    this.currentEvent;
 
     var findDayIndex = function(ei, date) {
         if (ei !== -1) {

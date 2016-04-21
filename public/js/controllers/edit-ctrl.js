@@ -1,4 +1,4 @@
-magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) {
+magenta.controller('EditCtrl', function($scope, $window, Planner) {
 
 	$scope.title;
     $scope.friends = Planner.getFriends();
@@ -10,10 +10,20 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) 
             if ($scope.friends[i].id === id)
                 return $scope.friends[i];
         }
+        return null;
+    };
+
+    var getGuest = function(id) {
+        for (i in $scope.guests) {
+            if ($scope.guests[i].id === id)
+                return $scope.guests[i];
+        }
+        return null;
     };
 
     $scope.add = function() {
-        $scope.guests.push(getFriend($scope.selected));
+        if (getGuest($scope.selected) === null)
+            $scope.guests.push(getFriend($scope.selected));
     };
 
     $scope.remove = function(unselected) {
@@ -26,19 +36,19 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, $routeParams) 
 	$scope.saveEvent = function() {
         var guestIds = [];
         for (i in $scope.guests) guestIds.push($scope.guests[i].id);
-		Planner.editEvent($routeParams.eventID, $scope.title, guestIds);
+		Planner.editEvent(Planner.currentEvent, $scope.title, guestIds);
         $window.alert("Saved event");
-        $window.location.href = '/#/event-details/' + $routeParams.eventID;
+        $window.location.href = '/#/event-details';
     };
 
     $scope.removeEvent = function() {
-    	Planner.deleteEvent($routeParams.eventID);
+    	Planner.deleteEvent(Planner.currentEvent);
         $window.alert("Removed event");
     	$window.location.href = '/#/browse-events';
     };
 
     (function(){
-    	var mEvent = Planner.getEvent($routeParams.eventID);
+    	var mEvent = Planner.getEvent(Planner.currentEvent);
     	$scope.title = mEvent.name;
         for (i in mEvent.guests) {
             $scope.guests.push(getFriend(mEvent.guests[i]));   

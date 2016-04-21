@@ -1,4 +1,4 @@
-magenta.controller('HomeCtrl', function($scope, $window, Planner) {
+magenta.controller('LoginCtrl', function($scope, $window, Planner) {
 
 	$scope.status = 'Welcome, please login';
 

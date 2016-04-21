@@ -13,11 +13,11 @@
 				<p class="column-2 row-1 magenta-text-2">DATE</p>
 				<p class="column-3 row-1 magenta-text-2	"></p>
 			</a>
-			<a href="#/edit-event/{{event._id}}">
+			<a ng-click="gotoEdit(event._id);">
 				<p class="column-1 row-2 magenta-text-2">{{event.name}}</p>
 				<p id="date-browser" class="column-2 row-2 magenta-text-2">2016-04-12</p>
 				<div class="column-3 row-2 magenta-text-2">
-					<a href="#/event-details/{{event._id}}" id="button-browser" class="btn magenta-text-2">DETAILS</a>
+					<a ng-click="gotoDetails(event._id);" id="button-browser" class="btn magenta-text-2">DETAILS</a>
 				</div>
 			</a>
 		</div>
