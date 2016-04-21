@@ -4,7 +4,7 @@
 <div class="title-holder">
 	<div id="button-title-holder" class="col-md-3">
 	</div>
-	<p class="magenta-title col-md-6">{{event.name}}</p>
+	<p class="magenta-title col-md-6">{{mEvent.name}}</p>
 	<div id="button-title-holder" class="col-md-3">
 		<a class="btn btn-success btn-title magenta-text-1" href="">+ ADD DAY</a>
 		<a class="btn btn-info btn-title magenta-text-1" href="#/edit-event">EDIT EVENT</a>
@@ -14,13 +14,8 @@
 	<img id="arrow" src="http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/pil-1_zpszmz3vkbm.png">
 </div>
 <div class="day-container" >
-	<ng-include src="'partials/day.html'"></ng-include>	
-</div>
-<div class="day-container" >
-	<ng-include src="'partials/day.html'"></ng-include>	
-</div>
-<div class="day-container" >
-	<ng-include src="'partials/day.html'"></ng-include>	
+    <div ng-repeat="day in dayPage">{{day.date}}</div>
+    <!-- <ng-include src="'partials/day.html'"></ng-include> -->	
 </div>
 <div id="arrow-holder">
 	<img id="arrow" src="http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/pil-2_zps1cl7bqyj.png">

@@ -32,7 +32,7 @@ magenta.controller('Test2Ctrl', function($scope, Planner) {
     }
 
     $scope.addDay = function() {
-        Planner.addDay(Planner.getEvents()[1]._id, "2016-05-12", 10);
+        Planner.addDay(Planner.getEvents()[1]._id, "2016-02-13", 10);
     }
 
     $scope.getFriends = function() {
