@@ -1,22 +1,49 @@
 <div class="header">
-	<ng-include src="'partials/header.html'"></ng-include>
+    <ng-include src="'partials/header.html'"></ng-include>
 </div>
 <div class="title-holder">
-	<div id="button-title-holder" class="col-md-3">
-	</div>
-	<p class="magenta-title col-md-6">{{mEvent.name}}</p>
-	<div id="button-title-holder" class="col-md-3">
-		<a class="btn btn-success btn-title magenta-text-1" href="">+ ADD DAY</a>
+    <div id="button-title-holder" class="col-md-3">
+    </div>
+    <p class="magenta-title col-md-6">{{mEvent.name}}</p>
+    <div id="button-title-holder" class="col-md-3">
+        <a class="btn btn-success btn-title magenta-text-1" href="">+ ADD DAY</a>
         <a class="btn btn-info btn-title magenta-text-1" href="#/edit-event/{{id}}">EDIT EVENT</a>
-	</div>
+    </div>
 </div>
 <div id="arrow-holder">
-	<img id="arrow" src="http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/pil-1_zpszmz3vkbm.png">
+    <img id="arrow" src="http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/pil-1_zpszmz3vkbm.png" ng-click="prevPage()">
 </div>
-<div class="day-container" >
-    <div ng-repeat="day in dayPage">{{day.date}}</div>
-    <!-- <ng-include src="'partials/day.html'"></ng-include> -->	
+<div class="day-container" ng-repeat="day in cPage">
+    <div class="day col-md-12">
+        <p style="color:white" class="magenta-heading-1">WEEKDAY</p>
+        <div class="col-md-12">
+            <p class="magenta-text-1 col-md-5">DATE: </p>
+            <input class="col-md-7 mag-input-2" type="date" value={{day.date}}>
+
+        </div>
+        <div class="col-md-12">
+            <p class="magenta-text-1 col-md-5">START TIME: </p>
+            <input class="col-md-7 mag-input-2" type="time" value="{{day.start}}:00"></input>
+
+        </div>
+        <div class="col-md-12">
+            <p class="magenta-text-1 col-md-5">END TIME: </p>
+            <span class="col-md-7 mag-input-2">14:00</span>
+
+        </div>
+        <div class="col-md-12">
+            <p class="magenta-text-1 col-md-5">DURATION: </p>
+            <span class="col-md-7 mag-input-2">06:00</span>
+        </div>
+        <div class="col-md-12">
+            <div class="activity_field col-md-12">
+                <a href="#/new-activity"><button class="btn activity magenta-text-1">INTRODUCTION</button></a>
+                <a href="#/new-activity"><button class="btn add-activity magenta-text-1">+ ADD ACTIVITY</button></a>
+            </div>
+        </div>
+        <button class="btn-danger magenta-text-1 remove">REMOVE DAY</button>
+    </div>
 </div>
 <div id="arrow-holder">
-	<img id="arrow" src="http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/pil-2_zps1cl7bqyj.png">
+    <img id="arrow" src="http://i1155.photobucket.com/albums/p556/Jakob_Fall/Projekt-iprog/pil-2_zps1cl7bqyj.png" ng-click="nextPage()">
 </div>
