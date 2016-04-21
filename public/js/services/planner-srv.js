@@ -61,8 +61,6 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             .then(function(res) { console.log('DB fetched events'); events = res.data });
     }
 
-    this.currentEvent;
-
     this.login = function() {
         return fbLogin()
             .then(fbFetch)

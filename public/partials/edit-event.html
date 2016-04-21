@@ -15,17 +15,19 @@
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">ADD PARTICIPANT: </span>
-		<input id="participant-input" ng-model="guests" type="text" class="magenta-input col-md-8" placeholder="Enter name of particpant"></input>
+		<select ng-model="selected" ng-change="add()">
+			<option ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</option>
+		</select>
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">INVITED: </span>
 		<div id="invited-field" class="col-md-8">
-			<div id="participant" class="col-md-12">
+			<div id="participant" class="col-md-12" ng-repeat="g in guests">
 				<div id="pic-holder" class="col-md-2">
-					<img id="pic" src="https://scontent-arn2-1.xx.fbcdn.net/hprofile-xla1/v/t1.0-1/p160x160/10888879_10204621052745044_7690107695651824860_n.jpg?oh=4a2cf0cafd310dac4a50d3361fb53668&oe=57A95F39"></img>
+					<img id="pic" src="{{g.imgUrl}}"></img>
 				</div>
-				<span id="participant-label" class="col-md-8">JAKOB FALL</span>
-				<a class="btn btn-danger btn-delete col-md-2" href="">X</a>
+				<span id="participant-label" class="col-md-8">{{g.name}}</span>
+				<button class="btn btn-danger btn-delete col-md-2" ng-click="remove(g.id);">X</button>
 			</div>
 		</div>
 	</div>
