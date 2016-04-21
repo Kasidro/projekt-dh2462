@@ -1,4 +1,4 @@
-magenta.factory('Planner', function($q, Facebook, Storage) {
+magenta.service('Planner', function($q, Facebook, Storage) {
     var me = {
         "id": "",
         "name": "",
@@ -245,6 +245,4 @@ magenta.factory('Planner', function($q, Facebook, Storage) {
         }
         return -1;
     }
-
-    return this;
 });
