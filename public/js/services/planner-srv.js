@@ -123,10 +123,6 @@ magenta.service('Planner', function($q, Facebook, Storage) {
         return friends;
     };
 
-    this.addEventToModel = function(event) {
-    	events.push(event);
-    };
-
     //Adders
     this.addEvent = function(name, description, guests) {
         var e = {
