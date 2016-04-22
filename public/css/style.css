@@ -292,7 +292,7 @@
 	text-align: center;
 }
 /*---------------Styling for event-details.html-----------------------*/
-.button-title-holder {
+.btn-title-holder {
 	margin: none;
 	height: 9vh;
 	width: 25vw;
@@ -300,10 +300,12 @@
 	background-color: red;
 }
 .btn-title {
-	height: 1vh;
+	height: 5vh;
+	width: 10vw;
 	margin-left: 0;
-	font-size: 12pt;
-	margin-top: 2.8vh; 
+	text-align: center;
+	font-size: 2.5vh;
+	margin-top: 2vh; 
 	color: black;
 	background-color: #ffffff;
 }
@@ -314,6 +316,41 @@
 	height: 9vh;
 	background-color: blue;
 }
+.arrow-holder {
+	background-color: yellow;
+	height: 81vh;
+	width: 5vw;
+	float: left;
+}
+
+#arrow {
+	width: 3vw;
+	padding-top: 38vh;
+}
+.day-container {
+	background-color: purple;
+	height: 81vh;
+	width: 90vw;
+	padding-left: 1vw;
+	padding-right: 1vw; 
+	float: left;
+}
+.day {
+	background-color: #2B355C;
+	width: 28vw;
+	height:79vh;
+}
+.row-day {
+	width: 28vw;
+}
+.row-1-day {
+	width: 10vw;
+	float: left;
+}
+.row-2-day{
+	width: 18vw;
+	float;left: 
+}
 /*---------------------Styling for day.html---------------------------*/
 .mag-input-2 {
 	font-size: 180%;
@@ -323,37 +360,13 @@
 	font-family: 'Audiowide', cursive;
 	background-color: white;
 }
-
-
-
-.day {
-	background-color: #2B355C;
-	width: 28vw;
-	height:79vh;
-}
-
-.day-container {
-	height: 81vh;
-	padding-left: 1vw;
-	padding-right: 1vw; 
-	float: left;
-}
 .activity_field {
-	height: 45vh;
+	height: 20vh;
 	margin-top: 0.8vw;
 	background-color: white;
 	padding: none;
 }
-#arrow-holder {
-	width: 5vw;
-	height: 81vh;
-	float: left;
-}
 
-#arrow {
-	width: 3vw;
-	padding-top: 38vh;
-}
 
 .add-activity {
 	margin: none;
