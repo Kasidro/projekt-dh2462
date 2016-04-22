@@ -6,14 +6,8 @@
     </div>
     <p class="magenta-title col-md-6">{{mEvent.name}}</p>
     <div id="button-title-holder" class="col-md-3">
-        <a class="btn btn-success btn-title magenta-text-1" href="" ng-click="addDay(newdate,newstart)">+ ADD DAY</a>
+        <a class="btn btn-success btn-title magenta-text-1" href="" ng-click="addDay()">+ ADD DAY</a>
         <a class="btn btn-info btn-title magenta-text-1" href="#/edit-event/">EDIT EVENT</a>
-        <form>
-            date: <input type="text" ng-model="newdate">
-        </form>
-        <form>
-            start: <input type="text" ng-model="newstart">
-        </form>
     </div>
 </div>
 <div id="arrow-holder">
@@ -21,25 +15,29 @@
 </div>
 <div class="day-container" ng-repeat="day in cPage">
     <div class="day col-md-12">
-        <p style="color:white" class="magenta-heading-1">{{day.date}}</p>
+        <p style="color:white" class="magenta-heading-1">{{getDayName(day.date)}}</p>
         <div class="col-md-12">
             <p class="magenta-text-1 col-md-5">DATE: </p>
-            <input class="col-md-7 mag-input-2" type="date" value={{day.date}}>
-
+            <p class="magenta-text-1 col-md-5">{{day.date}}</p>
+            <div class="col-md-1"><button ng-click="changeDay(day.date,day.start, 'add')">+</button></div>
+            <div class="col-md-1"><button ng-click="changeDay(day.date,day.start, 'sub')">-</button></div>
+            <!--<input class="col-md-7 mag-input-2" type="date" value={{day.date}} ng-model="ddate" form-on-change="editDay()"> -->
         </div>
         <div class="col-md-12">
+            <!-- <input class="col-md-7 mag-input-2" type="time" value="{{day.start}}"></input> -->
             <p class="magenta-text-1 col-md-5">START TIME: </p>
-            <input class="col-md-7 mag-input-2" type="time" value="{{day.start}}"></input>
-
+            <p class="magenta-text-1 col-md-5">{{day.start}}</p>
+            <div class="col-md-1"><button ng-click="changeStart(day.date,day.start, 'add')">+</button></div>
+            <div class="col-md-1"><button ng-click="changeStart(day.date,day.start, 'sub')">-</button></div>
         </div>
         <div class="col-md-12">
             <p class="magenta-text-1 col-md-5">END TIME: </p>
-            <span class="col-md-7 mag-input-2">14:00</span>
+            <!--<span class="col-md-7 mag-input-2">14:00</span> -->
 
         </div>
         <div class="col-md-12">
             <p class="magenta-text-1 col-md-5">DURATION: </p>
-            <span class="col-md-7 mag-input-2">06:00</span>
+            <!--<span class="col-md-7 mag-input-2">06:00</span>-->
         </div>
         <div class="col-md-12">
             <div class="activity_field col-md-12">

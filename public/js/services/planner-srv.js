@@ -267,12 +267,17 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return -1;
     };
 
-    this.editDay = function(eID, date, start) {
+    this.editDay = function(eID, date, newdate, start) {
         var ei = findEventIndex(eID);
-        var di = findDayIndex(eID, date);
+        var di = findDayIndex(ei, date);
         if (ei !== -1 && di !== -1) {
-            events[ei].days[di].date = date;
+            events[ei].days[di].date = newdate;
             events[ei].days[di].start = start;
+            events[ei].days.sort(function(a, b) {
+                var da = Date.parse(a.date);
+                var db = Date.parse(b.date);
+                return da - db;
+            })
             return 0;
         }
         return -1;
