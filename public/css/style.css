@@ -460,13 +460,13 @@
 	background-color: blue;
 }
 #log-out-btn {
+	background-color: #cc0000;
 	font-size: 180%;
 	color: white;
 	font-family: 'Audiowide', cursive;
 	margin-top: 5%;
 	height: 70%;
 	width: 100%;
-	background-color: purple;
 }
 nav ul {
 	-webkit-font-smoothing:antialiased;
