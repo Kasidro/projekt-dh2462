@@ -7,6 +7,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     $scope.mEvent = Planner.getEvent(Planner.getCurrentEvent());
     $scope.cPage = [];
     $scope.nDays;
+    $scope.isMyEvent;
 
     // date: String on format "YYYY-MM-DD"
     // add: String 'add' adds, otherwise subtract
@@ -46,7 +47,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         var newdate = chgDate(date, add);
         var olddate = date;
         //Find availible date if date is taken
-        while (Planner.editDay($scope.mEvent._id, date, newdate, start) === -1) {
+        while (Planner.editDay($scope.mEvent._id, date, newdate, start) === -1 &&
+            $scope.isMyEvent
+        ) {
             olddate = newdate;
             newdate = chgDate(olddate, add);
         }
@@ -104,5 +107,10 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         for (var i = cLastIdx - 2; i <= cLastIdx && i < $scope.nDays; i++) {
             $scope.cPage.push($scope.mEvent.days[i]);
         }
-    })
+    });
+
+    (function() {
+        if (!Planner.isDbFetched()) return;
+        $scope.isMyEvent = (Planner.getMe().id === $scope.mEvent.owner);
+    })();
 });

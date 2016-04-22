@@ -23,7 +23,7 @@
                     <img id="pic" ng-src="{{g.imgUrl}}"></img>
                 </div>
                 <span id="participant-label" class="col-md-8">{{g.name}}</span>
-                <button class="btn btn-danger btn-delete col-md-2" ng-click="remove(g.id);">X</button>
+                <button class="btn btn-danger btn-delete col-md-2" ng-click="remove(g.id)" ng-show={{isMyEvent}}>X</button>
             </div>
         </div>
     </div>

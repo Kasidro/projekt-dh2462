@@ -294,7 +294,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     // returns: 0 on success, -1 otherwise
     this.editEvent = function(eID, title, guests) {
         var index = findEventIndex(eID);
-        if (index !== -1) {
+        if (index !== -1 &&
+            events[index].owner === me.id
+        ) {
             events[index].name = title;
             events[index].guests = guests;
             Storage.putEvent(eID, events[index]);
@@ -315,7 +317,11 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         if (newdate !== date) {
             var ndi = findDayIndex(ei, newdate);
         }
-        if (ei !== -1 && di !== -1 && ndi === -1) {
+        if (ei !== -1 &&
+            di !== -1 &&
+            ndi === -1 &&
+            events[ei].owner === me.id
+        ) {
             events[ei].days[di].date = newdate;
             events[ei].days[di].start = start;
             events[ei].days.sort(function(a, b) {
