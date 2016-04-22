@@ -154,7 +154,7 @@
 }
 /*----------------END OF Styling of site wide elements-----------------*/
 
-/*-----------------STYLING FOR BROWSE-EVENT.HTML-----------------------*/
+/*-----------------STYLING FOR BROWSE-EVENTs.HTML-----------------------*/
 #my-events-container {
 	height: 79vh;
 	width: 50vw;
@@ -229,7 +229,7 @@
 	background-color: #3b5998;
 	color: white; 
 }
-/*---------------------new-event.html styling-------------------------*/
+/*---------------------edit-event.html styling-------------------------*/
 #title-input {
 	width: 50vw;
 }
@@ -243,8 +243,7 @@
 #invited-field {
 	overflow-y:auto;
 	margin-top: 4vh;
-	width: 40vw;
-	height: 30vh;
+	height: 40vh;
 	border: 2px solid #D16BB4;
 }
 #pic-holder {
@@ -269,11 +268,7 @@
 	font-family: 'Audiowide', cursive;
 	font-size: 30pt;
 }
-/*---------------------Styling for new-activity.html---------------------------*/
-#btn-dropdown {
-	margin: none;
-	padding: none;
-}
+/*---------------------Styling for edit-activity.html---------------------------*/
 #description-field {
 	text-align: left;
 	vertical-align: top;
@@ -287,16 +282,22 @@
 #description-field:hover {
 	box-shadow: 0 0 30px #FF00FF;
 }
-#dropdown-act {
+#dropdown_container-act {
+	margin-top: 2.8vh;
+	height: 7vh;
 	font-family: 'Audiowide', cursive;
-	color:black;
-	border: 2px solid #D16BB4;
-}
-#topp-act {
-	background: transparent;
-	color: black;
-	text-shadow: none;
+	font-size: 4vh;
 	text-align: center;
+	color: #999999;
+	background-color: white;
+	border: 2px solid #D16BB4; 
+	transition: 0.5s;
+	padding: 0;
+	padding-top: 0.5vh;
+	z-index: 100;
+}
+#dropdown_container-act:hover {
+	box-shadow: 0 0 30px #FF00FF;
 }
 /*---------------Styling for event-details.html-----------------------*/
 .btn-title-holder {
@@ -313,7 +314,7 @@
 	font-size: 2.5vh;
 	margin-top: 2vh; 
 	color: black;
-	background-color: #ffffff;
+	background-color: white;
 }
 #title-holder {
 	margin: none;
@@ -344,12 +345,16 @@
 .day {
 	background-color: #2B355C;
 	height:79vh;
+	border-radius: 4px;
 }
 .activity-field {
+	border-radius: 5px;
 	height: 46vh;
 	margin-top: 0.8vh;
 	background-color: white;
 	padding: none;
+	overflow-y:auto;
+	overflow-x:hidden; 
 }
 .add-activity {
 	margin: none;
@@ -376,6 +381,7 @@
 	text-align: center;
 }
 .remove {
+	border-radius: 4px;
 	margin: 0;
 	width: 15vw;
 	height: 4vh;
@@ -425,14 +431,6 @@
 	text-shadow: 0 0 30px white;
 
 }
-#test-sak {
-	padding: none;
-	margin-left: 18vw;
-
-	width: 60vw;
-	height: 6vh;
-}
-
 /*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
 .header-container {
 	height: 7vh;
@@ -456,8 +454,9 @@
 	background-color: #992083;
 }
 #user-feedback{
+	color: green;
 	font-family: 'Audiowide', cursive;
-	font-size: 2.5vh;
+	font-size: 4vh;
 	height: 5vh;
 	margin-top:1vh; 
 }
@@ -496,7 +495,7 @@ nav ul {
 }
 
 nav a {
-    color:inherit;
+    color:black;
     text-shadow: 0 0 10px #FFAAFF;
     display: block;
     padding: 0 25px;
@@ -513,6 +512,7 @@ nav .dropdown:hover:after{
 }
 nav li:hover a {
     background: #2D3142;
+    color: white;
 }
 #topp {
 	background: transparent;
