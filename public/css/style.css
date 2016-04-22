@@ -451,10 +451,6 @@
 #dropdown_container:hover {
 	background-color: #992083;
 }
-#ident-log-in {
-	height: 100%;
-	background-color: blue;
-}
 #log-out-btn {
 	height: 4vh;
 	border:2px solid #cc0000;
