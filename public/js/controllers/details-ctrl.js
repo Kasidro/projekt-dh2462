@@ -1,12 +1,15 @@
 magenta.controller('DetailsCtrl', function($scope, Planner) {
 
     var maxDaysPerPage = 3;
+    var startTimeIncr = 15;
     var cLastIdx = maxDaysPerPage - 1;
 
     $scope.mEvent = Planner.getEvent(Planner.getCurrentEvent());
     $scope.cPage = [];
     $scope.nDays;
 
+    // date: String on format "YYYY-MM-DD"
+    // add: String 'add' adds, otherwise subtract
     var chgDate = function(date, add) {
         msec = Date.parse(date);
         if (add === 'add') {
@@ -20,6 +23,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         return d.toISOString().substring(0, 10);
     }
 
+    // date: String on format "YYYY-MM-DD"
     $scope.deleteDay = function(date) {
         Planner.deleteDay($scope.mEvent._id, date);
     };
@@ -35,21 +39,27 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         }
     };
 
+    // date: String on format "YYYY-MM-DD"
+    // start: String on format "HH:MM"
+    // add: String 'add' adds, otherwise subtract
     $scope.changeDay = function(date, start, add) {
         var newdate = chgDate(date, add);
         var olddate = date;
-        //Find place to put day if date is taken
+        //Find availible date if date is taken
         while (Planner.editDay($scope.mEvent._id, date, newdate, start) === -1) {
             olddate = newdate;
             newdate = chgDate(olddate, add);
         }
     };
 
+    // date: String on format "YYYY-MM-DD"
+    // start: String on format "HH:MM"
+    // add: String 'add' adds, otherwise subtract
     $scope.changeStart = function(date, start, add) {
         if (add === 'add') {
-            var ti = 15;
+            var ti = startTimeIncr;
         } else {
-            var ti = -15;
+            var ti = -1 * startTimeIncr;
         }
         var h = parseInt(start.substring(0, 2));
         var m = parseInt(start.substring(3, 5));
@@ -60,6 +70,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         }
     };
 
+    // date: String on format "YYYY-MM-DD"
     $scope.getDayName = function(date) {
         var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var d = new Date(Date.parse(date));
