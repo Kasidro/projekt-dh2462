@@ -29,11 +29,16 @@
     </div>
     <div class="col-md-12">
         <div class="col-md-2"></div>
-        <a class="btn col-md-3 btn-save" ng-click="saveEvent()">SAVE/VIEW</a>
-        <div class="col-md-2"></div>
-        <a class="btn col-md-3 btn-save" ng-click="removeEvent()" ng-show={{isMyEvent}}>REMOVE</a>
+
+        <!-- Owner -->
+        <a class="btn col-md-3 btn-save" ng-click="saveEvent();" ng-show={{isMyEvent}}>SAVE</a>
+        <div class="col-md-2" ng-show={{isMyEvent}}></div>
+        <a class="btn col-md-3 btn-save" ng-click="removeEvent();" ng-show={{isMyEvent}}>REMOVE</a>
+        <!-- Guest -->
+        <div class="col-md-2" ng-hide={{isMyEvent}}></div>
+        <a class="btn col-md-4 btn-save" ng-click="viewDetails();" ng-hide={{isMyEvent}}>VIEW DETAILS</a>
+        <div class="col-md-2" ng-hide={{isMyEvent}}></div>
+
         <div class="col-md-2"></div>
     </div>
-
-
 </form>

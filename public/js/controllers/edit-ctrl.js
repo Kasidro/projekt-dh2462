@@ -11,7 +11,7 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
             if ($scope.friends[i].id === id)
                 return $scope.friends[i];
         }
-        return null;
+        return Planner.getMe();
     };
 
     var getGuest = function(id) {
@@ -32,6 +32,10 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
             if ($scope.guests[i].id === unselected)
                 $scope.guests.splice(i, 1);
         }
+    };
+
+    $scope.viewDetails = function() {
+        $window.location.href = '/#/event-details';
     };
 
     $scope.saveEvent = function() {
