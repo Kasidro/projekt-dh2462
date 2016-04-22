@@ -158,7 +158,7 @@
 	margin-left: 25vw;
 	border: 4px solid #994D83;
 	border-radius: 10px;
-	overflow-y:scroll;
+	overflow-y:auto;
 	overflow-x:hidden;
 }
 .saved-event {
