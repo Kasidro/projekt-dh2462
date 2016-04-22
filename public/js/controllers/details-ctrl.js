@@ -7,26 +7,32 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     $scope.cPage = [];
     $scope.nDay;
 
+    $scope.deleteDay = function(date) {
+        Planner.deleteDay($scope.mEvent._id, date);
+    };
+
+    $scope.addDay = function(date, start) {
+        Planner.addDay($scope.mEvent._id, date, start);
+    };
+
     $scope.nextPage = function() {
         if (cLastindex + 1 < $scope.nDays) {
             cLastindex++
-            $scope.cPage.splice(0, 1);
-            $scope.cPage.push($scope.mEvent.days[cLastindex]);
         }
     };
     $scope.prevPage = function() {
         if (cLastindex > pc - 1) {
             cLastindex--
-            $scope.cPage.splice(pc - 1, 1);
-            $scope.cPage.unshift($scope.mEvent.days[cLastindex - (pc - 1)]);
         }
     };
 
-    (function() {
+    $scope.$watch(function() {
+        console.log('change');
         if (!Planner.isDbFetched()) return;
+        $scope.cPage = [];
         $scope.nDays = $scope.mEvent.days.length;
-        for (var i = 0; i < pc && i < $scope.nDays; i++) {
+        for (var i = cLastindex - 2; i <= cLastindex && i < $scope.nDays; i++) {
             $scope.cPage.push($scope.mEvent.days[i]);
         }
-    })();
+    })
 });

@@ -6,8 +6,14 @@
     </div>
     <p class="magenta-title col-md-6">{{mEvent.name}}</p>
     <div id="button-title-holder" class="col-md-3">
-        <a class="btn btn-success btn-title magenta-text-1" href="">+ ADD DAY</a>
-        <a class="btn btn-info btn-title magenta-text-1" href="#/edit-event/{{id}}">EDIT EVENT</a>
+        <a class="btn btn-success btn-title magenta-text-1" href="" ng-click="addDay(newdate,newstart)">+ ADD DAY</a>
+        <a class="btn btn-info btn-title magenta-text-1" href="#/edit-event/">EDIT EVENT</a>
+        <form>
+            date: <input type="text" ng-model="newdate">
+        </form>
+        <form>
+            start: <input type="text" ng-model="newstart">
+        </form>
     </div>
 </div>
 <div id="arrow-holder">
@@ -15,7 +21,7 @@
 </div>
 <div class="day-container" ng-repeat="day in cPage">
     <div class="day col-md-12">
-        <p style="color:white" class="magenta-heading-1">WEEKDAY</p>
+        <p style="color:white" class="magenta-heading-1">{{day.date}}</p>
         <div class="col-md-12">
             <p class="magenta-text-1 col-md-5">DATE: </p>
             <input class="col-md-7 mag-input-2" type="date" value={{day.date}}>
@@ -23,7 +29,7 @@
         </div>
         <div class="col-md-12">
             <p class="magenta-text-1 col-md-5">START TIME: </p>
-            <input class="col-md-7 mag-input-2" type="time" value="{{day.start}}:00"></input>
+            <input class="col-md-7 mag-input-2" type="time" value="{{day.start}}"></input>
 
         </div>
         <div class="col-md-12">
@@ -41,7 +47,7 @@
                 <a href="#/new-activity"><button class="btn add-activity magenta-text-1">+ ADD ACTIVITY</button></a>
             </div>
         </div>
-        <button class="btn-danger magenta-text-1 remove">REMOVE DAY</button>
+        <button class="btn-danger magenta-text-1 remove" ng-click="deleteDay(day.date)">REMOVE DAY</button>
     </div>
 </div>
 <div id="arrow-holder">

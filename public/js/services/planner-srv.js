@@ -220,7 +220,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
             };
             events[ei].days.push(day);
             events[ei].days.sort(function(a, b) {
-                return a.date - b.date;
+                var da = Date.parse(a.date);
+                var db = Date.parse(b.date);
+                return da - db;
             })
             Storage.putEvent(eID, events[ei]);
             return 0;
