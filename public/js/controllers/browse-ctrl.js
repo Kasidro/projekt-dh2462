@@ -11,4 +11,12 @@ magenta.controller('BrowseCtrl', function($scope, $window, Planner) {
 			Planner.setCurrentEvent(eventId);
 			$window.location.href = '/#/event-details';
 		};
+
+		$scope.shortenTitle = function(name) {
+			if (name.length > 20) {
+				name = name.substring(0,20);
+				name = name + "..";
+			}
+			return name;
+		}
 });
