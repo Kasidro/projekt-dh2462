@@ -460,7 +460,11 @@
 	background-color: blue;
 }
 #log-out-btn {
-	height: 100%;
+	font-size: 180%;
+	color: white;
+	font-family: 'Audiowide', cursive;
+	margin-top: 5%;
+	height: 70%;
 	width: 100%;
 	background-color: purple;
 }
@@ -539,3 +543,4 @@ nav li ul a:hover {
 /*----------------END OF HEADER CSS-----------------*/
 /*----------------TEST */
 
+git 
