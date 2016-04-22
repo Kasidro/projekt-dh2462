@@ -38,13 +38,13 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
         var guestIds = [];
         for (i in $scope.guests) guestIds.push($scope.guests[i].id);
         Planner.editEvent(Planner.getCurrentEvent(), $scope.title, guestIds);
-        //$window.alert("Saved event");
+        Planner.setHeaderStatus('Saved event');
         $window.location.href = '/#/event-details';
     };
 
     $scope.removeEvent = function() {
         Planner.deleteEvent(Planner.getCurrentEvent());
-        //$window.alert("Removed event");
+        Planner.setHeaderStatus('Removed event');
         $window.location.href = '/#/browse-events';
     };
 
