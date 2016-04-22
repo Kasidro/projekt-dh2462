@@ -45,10 +45,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         }
         var h = parseInt(start.substring(0, 2));
         var m = parseInt(start.substring(3, 5));
-        console.log(h);
-        console.log(m);
         if (!isNaN(h) && !isNaN(m)) {
             var d = new Date(1999, 11, 31, h + 1, m + ti);
+            console.log("Party like it's " + d.toString().substring(0, 15) + "!");
             Planner.editDay($scope.mEvent._id, date, date, d.toISOString().substring(11, 16));
         }
     };
@@ -79,7 +78,6 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     };
 
     $scope.$watch(function() {
-        console.log('change');
         if (!Planner.isDbFetched()) return;
         $scope.cPage = [];
         $scope.nDays = $scope.mEvent.days.length;

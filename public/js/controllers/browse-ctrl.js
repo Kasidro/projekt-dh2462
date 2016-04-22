@@ -13,10 +13,17 @@ magenta.controller('BrowseCtrl', function($scope, $window, Planner) {
 		};
 
 		$scope.shortenTitle = function(name) {
-			if (name.length > 20) {
+			if (typeof name !== 'undefined' && name.length > 20) {
 				name = name.substring(0,20);
 				name = name + "..";
 			}
 			return name;
+		}
+
+		$scope.getFormatedDate = function(days) {
+			if (days.length === 0)
+				return "No date";
+
+			return days[0].date;
 		}
 });
