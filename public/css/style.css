@@ -145,7 +145,7 @@
 }
 
 .btn-cancel:hover {
-	background-color: #ff0000; 
+	background-color: #CC0000; 
 	color: white;
 	text-shadow: 0 0 30px white;
 }
@@ -408,7 +408,6 @@
 }
 
 .start-button {
-	width: 60vw;
 	height: 10vh;
 	text-align: center;
 	font-size: 40pt;
