@@ -3,7 +3,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     var pc = 3;
     var cLastindex = pc - 1;
 
-    $scope.mEvent = Planner.getEvent(Planner.currentEvent);
+    $scope.mEvent = Planner.getEvent(Planner.getCurrentEvent());
     $scope.cPage = [];
     $scope.nDay;
 
@@ -23,10 +23,10 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     };
 
     (function() {
+        if (!Planner.isDbFetched()) return;
         $scope.nDays = $scope.mEvent.days.length;
         for (var i = 0; i < pc && i < $scope.nDays; i++) {
             $scope.cPage.push($scope.mEvent.days[i]);
         }
     })();
-
 });

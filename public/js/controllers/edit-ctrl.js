@@ -36,19 +36,20 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
 	$scope.saveEvent = function() {
         var guestIds = [];
         for (i in $scope.guests) guestIds.push($scope.guests[i].id);
-		Planner.editEvent(Planner.currentEvent, $scope.title, guestIds);
+		Planner.editEvent(Planner.getCurrentEvent(), $scope.title, guestIds);
         $window.alert("Saved event");
         $window.location.href = '/#/event-details';
     };
 
     $scope.removeEvent = function() {
-    	Planner.deleteEvent(Planner.currentEvent);
+    	Planner.deleteEvent(Planner.getCurrentEvent());
         $window.alert("Removed event");
     	$window.location.href = '/#/browse-events';
     };
 
     (function(){
-    	var mEvent = Planner.getEvent(Planner.currentEvent);
+        if (!Planner.isDbFetched()) return;
+    	var mEvent = Planner.getEvent(Planner.getCurrentEvent());
     	$scope.title = mEvent.name;
         for (i in mEvent.guests) {
             $scope.guests.push(getFriend(mEvent.guests[i]));   

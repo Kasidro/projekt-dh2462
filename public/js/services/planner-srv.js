@@ -1,18 +1,65 @@
-magenta.service('Planner', function($q, Facebook, Storage) {
+magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
+
+    // Data field
+    // ========================================================================
+
+    var loginStatus;
     var me = {
         "id": "",
         "name": "",
         "imgUrl": ""
     };
     var friends = [];
+    var currentEvent;
     var events = [];
-    var loginStatus = 'unknown';
+    var dbFetched = false;
 
-    this.getLoginStatus = function() {
-        return loginStatus;
+    // Cookie stuff
+    // ========================================================================
+
+    var setMe = function(_me) {
+        me = _me;
+        $cookieStore.put('me', me);
+    };
+    var setFriends = function(_friends) {
+        friends = _friends;
+        $cookieStore.put('friends', friends);
+    };
+    var setLoginStatus = function(_loginStatus) {
+        loginStatus = _loginStatus;
+        $cookieStore.put('loginStatus', loginStatus);
+    };
+    this.setCurrentEvent = function(_currentEvent) {
+        currentEvent = _currentEvent;
+        $cookieStore.put('currentEvent', currentEvent);
     };
 
-    this.currentEvent;
+    this.retrieveTempData = function() {
+        loginStatus = $cookieStore.get('loginStatus');
+        me = $cookieStore.get('me');
+        friends = $cookieStore.get('friends');
+        currentEvent = $cookieStore.get('currentEvent');
+        console.log('Cookies retrived');
+        return dbFetch();
+    };
+    var destroyTempData = function() {
+        loginStatus = undefined;
+        me = {
+            "id": "",
+            "name": "",
+            "imgUrl": ""
+        };
+        friends = [];
+        currentEvent = undefined;
+        events = [];
+        angular.forEach($cookieStore, function (v, k) {
+            $cookieStore.remove(k);
+        });
+        console.log('Temporary data destroyed');
+    };
+
+    // Helper functions
+    // ========================================================================
 
     var findDayIndex = function(ei, date) {
         if (ei !== -1) {
@@ -41,7 +88,7 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             .catch(function(err) { console.log('FB logout failed') })
             .then(Facebook.getLoginStatus)
             .then(Facebook.login)
-            .then(function(res) { console.log('FB login succeded'); loginStatus = res.status })
+            .then(function(res) { console.log('FB login succeded'); setLoginStatus(res.status) })
             .catch(function(err) { console.log('FB login failed') })
             .then(function() {
                 var deferred = $q.defer();
@@ -55,44 +102,45 @@ magenta.service('Planner', function($q, Facebook, Storage) {
 
     var fbFetch = function() {
         return Facebook.getMe()
-            .then(function(res) { console.log('FB fetched me'); me = res })
+            .then(function(res) { console.log('FB fetched me'); setMe(res) })
             .then(Facebook.getFriends)
-            .then(function(res) { console.log('FB fetched friends'); friends = res.data });
+            .then(function(res) { console.log('FB fetched friends'); setFriends(res.data) });
     };
 
     var dbFetch = function() {
         return Storage.getEvents(me.id)
-            .then(function(res) { console.log('DB fetched events'); events = res.data });
+            .then(function(res) { console.log('DB fetched events'); events = res.data; dbFetched = true });
     };
+
+    // Login/out
+    // ========================================================================
 
     this.login = function() {
         return fbLogin()
             .then(fbFetch)
-            .then(dbFetch)
-            .then(function() {
-                var deferred = $q.defer();
-                deferred.resolve('Login OK');
-                return deferred.promise;
-            });
+            .then(dbFetch);
     };
 
     this.logout = function() {
+        destroyTempData();
         return Facebook.getLoginStatus()
-            .then(Facebook.logout)
-            .then(function(resp) {
-                loginStatus = resp.status;
-                me = {
-                    "id": "",
-                    "name": "",
-                    "imgUrl": ""
-                }
-                friends = [];
-                events = [];
-                return 'Logout OK';
-            });
+            .then(Facebook.logout);
     };
 
-    //Getters
+    // Getters
+    // ========================================================================
+
+    this.isDbFetched = function() {
+        return dbFetched;
+    };
+
+    this.getLoginStatus = function() {
+        return loginStatus;
+    };
+    this.getCurrentEvent = function() {
+        return currentEvent;
+    };
+
     this.getEvents = function() {
         return events;
     };
@@ -127,7 +175,9 @@ magenta.service('Planner', function($q, Facebook, Storage) {
         return friends;
     };
 
-    //Adders
+    // Adders
+    // ========================================================================
+    
     this.addEvent = function(name, description, guests) {
         var e = {
             "name": name,
@@ -136,12 +186,8 @@ magenta.service('Planner', function($q, Facebook, Storage) {
             "guests": guests,
             "days": []
         }
-
-        console.log(me.id);
-
         return Storage.postEvent(e)
             .then(function(resp) {
-            	console.log(resp);
                 events.push(resp.data);
                 return resp;
             });
@@ -198,7 +244,9 @@ magenta.service('Planner', function($q, Facebook, Storage) {
         Storage.putEvent(eID, events[index]);
     };
 
-    //Removers
+    // Removers
+    // ========================================================================
+
     this.deleteEvent = function(eID) {
         var ei = findEventIndex(eID);
         if (ei !== -1 && events[ei].owner === me.id) {
@@ -237,6 +285,8 @@ magenta.service('Planner', function($q, Facebook, Storage) {
     };
 
     // Mover
+    // ========================================================================
+
     this.moveActivity = function(eID, date, pos, newpos, ndate) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);

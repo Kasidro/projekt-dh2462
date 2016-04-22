@@ -1,4 +1,5 @@
 magenta.controller('Test2Ctrl', function($scope, Planner) {
+    
     $scope.login = function() {
         Planner.login()
             .then(function(response) {
