@@ -291,21 +291,13 @@
 	text-shadow: none;
 	text-align: center;
 }
-
-/*---------------------Styling for day.html---------------------------*/
-.title-holder {
+/*---------------Styling for event-details.html-----------------------*/
+.button-title-holder {
+	margin: none;
 	height: 9vh;
-}
-.mag-input-2 {
-	font-size: 180%;
-	text-align:left;
-	height: 180%;
-	border: none;
-	font-family: 'Audiowide', cursive;
-	background-color: white;
-}
-#button-title-holder {
-	height: 9vh;
+	width: 25vw;
+	float: left;
+	background-color: red;
 }
 .btn-title {
 	height: 1vh;
@@ -315,6 +307,24 @@
 	color: black;
 	background-color: #ffffff;
 }
+#title-holder {
+	margin: none;
+	float: left;
+	width: 50vw;
+	height: 9vh;
+	background-color: blue;
+}
+/*---------------------Styling for day.html---------------------------*/
+.mag-input-2 {
+	font-size: 180%;
+	text-align:left;
+	height: 180%;
+	border: none;
+	font-family: 'Audiowide', cursive;
+	background-color: white;
+}
+
+
 
 .day {
 	background-color: #2B355C;
@@ -550,5 +560,3 @@ nav li ul a:hover {
 
 /*----------------END OF HEADER CSS-----------------*/
 /*----------------TEST */
-
-git 
