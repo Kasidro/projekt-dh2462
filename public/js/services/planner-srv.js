@@ -117,7 +117,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     // ========================================================================
 
     this.login = function() {
-        return Facebook.login()
+        return fbLogin()
             .then(fbFetch)
             .then(dbFetch);
     };
