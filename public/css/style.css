@@ -446,7 +446,6 @@
 }
 
 #heading_container {
-	padding-right: 10vw;
 	height: 7vh;
 	text-align: right;
 	background-color: #F4EBD9; 
@@ -456,6 +455,15 @@
 	background-color: #992083;
 }
 
+#ident-log-in {
+	height: 100%;
+	background-color: blue;
+}
+#log-out-btn {
+	height: 100%;
+	width: 100%;
+	background-color: purple;
+}
 nav ul {
 	-webkit-font-smoothing:antialiased;
     list-style: none;
