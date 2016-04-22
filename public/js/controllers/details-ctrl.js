@@ -1,17 +1,19 @@
 magenta.controller('DetailsCtrl', function($scope, Planner) {
 
-    var pc = 3;
-    var cLastindex = pc - 1;
+    var maxDaysPerPage = 3;
+    var cLastIdx = maxDaysPerPage - 1;
 
     $scope.mEvent = Planner.getEvent(Planner.getCurrentEvent());
     $scope.cPage = [];
-    $scope.nDay;
+    $scope.nDays;
 
     var chgDate = function(date, add) {
         msec = Date.parse(date);
         if (add === 'add') {
+            //Add one day
             msec += 86400000;
         } else {
+            //Remove one day
             msec -= 86400000;
         }
         var d = new Date(msec);
@@ -36,6 +38,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     $scope.changeDay = function(date, start, add) {
         var newdate = chgDate(date, add);
         var olddate = date;
+        //Find place to put day if date is taken
         while (Planner.editDay($scope.mEvent._id, date, newdate, start) === -1) {
             olddate = newdate;
             newdate = chgDate(olddate, add);
@@ -64,29 +67,30 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     };
 
     $scope.nextPage = function() {
-        if (cLastindex + 1 < $scope.nDays) {
-            cLastindex++
+        if (cLastIdx + 1 < $scope.nDays) {
+            cLastIdx++
         }
     };
+
     $scope.prevPage = function() {
-        if (cLastindex > pc - 1) {
-            cLastindex--
+        if (cLastIdx > maxDaysPerPage - 1) {
+            cLastIdx--
         }
     };
 
-    $scope.pagesToRight = function() {
-        return (cLastindex + 1 < $scope.nDays);
+    $scope.hasPagesToRight = function() {
+        return (cLastIdx + 1 < $scope.nDays);
     };
 
-    $scope.pagesToLeft = function() {
-        return (cLastindex > pc - 1);
+    $scope.hasPagesToLeft = function() {
+        return (cLastIdx > maxDaysPerPage - 1);
     };
 
     $scope.$watch(function() {
         if (!Planner.isDbFetched()) return;
         $scope.cPage = [];
         $scope.nDays = $scope.mEvent.days.length;
-        for (var i = cLastindex - 2; i <= cLastindex && i < $scope.nDays; i++) {
+        for (var i = cLastIdx - 2; i <= cLastIdx && i < $scope.nDays; i++) {
             $scope.cPage.push($scope.mEvent.days[i]);
         }
     })
