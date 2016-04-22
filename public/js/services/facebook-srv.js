@@ -37,7 +37,6 @@ magenta.factory('Facebook', function($q) {
             return deferred.promise;
         },
 
-
         logout: function(sresponse) {
             var deferred = $q.defer();
             if (sresponse.status == 'connected') {
@@ -52,7 +51,6 @@ magenta.factory('Facebook', function($q) {
                 deferred.reject('User Allready Logged Out');
             return deferred.promise;
         },
-
 
         getMe: function() {
             var deferred = $q.defer();
@@ -80,6 +78,6 @@ magenta.factory('Facebook', function($q) {
                 }
             });
             return deferred.promise;
-        },
-    }
+        }
+    };
 });
