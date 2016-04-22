@@ -1,9 +1,10 @@
 magenta.controller('EditCtrl', function($scope, $window, Planner) {
 
-	$scope.title;
+    $scope.title;
     $scope.friends = Planner.getFriends();
-	$scope.guests = [];
+    $scope.guests = [];
     $scope.selected;
+    $scope.myEvent;
 
     var getFriend = function(id) {
         for (i in $scope.friends) {
@@ -33,26 +34,27 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
         }
     };
 
-	$scope.saveEvent = function() {
+    $scope.saveEvent = function() {
         var guestIds = [];
         for (i in $scope.guests) guestIds.push($scope.guests[i].id);
-		Planner.editEvent(Planner.getCurrentEvent(), $scope.title, guestIds);
-        $window.alert("Saved event");
+        Planner.editEvent(Planner.getCurrentEvent(), $scope.title, guestIds);
+        //$window.alert("Saved event");
         $window.location.href = '/#/event-details';
     };
 
     $scope.removeEvent = function() {
-    	Planner.deleteEvent(Planner.getCurrentEvent());
-        $window.alert("Removed event");
-    	$window.location.href = '/#/browse-events';
+        Planner.deleteEvent(Planner.getCurrentEvent());
+        //$window.alert("Removed event");
+        $window.location.href = '/#/browse-events';
     };
 
-    (function(){
+    (function() {
         if (!Planner.isDbFetched()) return;
-    	var mEvent = Planner.getEvent(Planner.getCurrentEvent());
-    	$scope.title = mEvent.name;
+        var mEvent = Planner.getEvent(Planner.getCurrentEvent());
+        $scope.title = mEvent.name;
+        $scope.myEvent = (Planner.getMe().id === mEvent.owner);
         for (i in mEvent.guests) {
-            $scope.guests.push(getFriend(mEvent.guests[i]));   
+            $scope.guests.push(getFriend(mEvent.guests[i]));
         }
     })();
 });

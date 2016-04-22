@@ -192,6 +192,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return friends;
     };
 
+    this.getMe = function() {
+        return me;
+    };
+
     // Adders
     // ========================================================================
     this.addEvent = function(name, description, guests) {
