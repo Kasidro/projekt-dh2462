@@ -84,8 +84,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     var fbLogin = function() {
         return Facebook.getLoginStatus()
             .then(Facebook.logout)
-            .then(function(res) { console.log('FB logout succeded') })
-            .catch(function(err) { console.log('FB logout failed') })
+            .then(function(res) { /*console.log('FB logout succeded')*/ })
+            .catch(function(err) { /*console.log('FB logout failed')*/ })
             .then(Facebook.getLoginStatus)
             .then(Facebook.login)
             .then(function(res) { console.log('FB login succeded'); setLoginStatus(res.status) })
