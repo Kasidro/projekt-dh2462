@@ -273,7 +273,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     this.editDay = function(eID, date, newdate, start) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
-        var ndi = findDayIndex(ei, newdate);
+        var ndi = -1;
+        if (newdate !== date) {
+            var ndi = findDayIndex(ei, newdate);
+        }
         if (ei !== -1 && di !== -1 && ndi === -1) {
             events[ei].days[di].date = newdate;
             events[ei].days[di].start = start;
