@@ -419,6 +419,13 @@
 	text-shadow: 0 0 30px white;
 
 }
+#test-sak {
+	padding: none;
+	margin-left: 18vw;
+
+	width: 60vw;
+	height: 6vh;
+}
 
 /*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
 .header {
