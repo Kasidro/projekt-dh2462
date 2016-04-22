@@ -64,11 +64,11 @@
 	text-align: center;
 }
 .magenta-text-3 {
-	color: white;
+	color: black;
 	font-family: 'Audiowide', cursive;
 	font-size: 2.3vh;
 	text-align: left;
-	height: 180%;
+	background-color: white;
 }
 .magenta-title {
 	height: 9vh;
@@ -345,49 +345,12 @@
 	background-color: #2B355C;
 	height:79vh;
 }
-.row-day {
-	width: 28vw;
-	height: 5vh;
-}
-.column-1-day {
-	width: 11vw;
-	height: 5vh;
-	float: left;
-	background-color: green;
-	margin: none;
-}
-.column-2-day{
-	width: 11vw;
-	height: 5vh;
-	float:left;
-	text-align:right; 
-	background-color: red;
-}
-.float {
-	float: left;
-}
-.btn-add-sub {
-	height: 5vh;
-	width: 6vw;
-	background-color: orange;
-}
-/*---------------------Styling for day.html---------------------------*/
-.mag-input-2 {
-	font-size: 180%;
-	text-align:left;
-	height: 180%;
-	border: none;
-	font-family: 'Audiowide', cursive;
-	background-color: white;
-}
-.activity_field {
-	height: 20vh;
-	margin-top: 0.8vw;
+.activity-field {
+	height: 46vh;
+	margin-top: 0.8vh;
 	background-color: white;
 	padding: none;
 }
-
-
 .add-activity {
 	margin: none;
 	margin-top: 0.5vh;
@@ -420,7 +383,7 @@
 	text-align: center;
 	margin-top: 1.5vh;
 }
-/*----------------END OF Styling of day.html-----------------*/
+/*----------------END OF Styling of event-details-----------------*/
 
 /*----------------Styling of start-menu.html-----------------*/
 #start-menu-header {
