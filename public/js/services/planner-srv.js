@@ -81,6 +81,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return -1;
     };
 
+<<<<<<< HEAD
     var fbLogin = function() {
         return Facebook.getLoginStatus()
             .then(Facebook.logout)
@@ -105,19 +106,58 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
             .then(function(res) { console.log('FB fetched me'); setMe(res) })
             .then(Facebook.getFriends)
             .then(function(res) { console.log('FB fetched friends'); setFriends(res.data) });
+=======
+    var fbFetch = function() {
+        return Facebook.getMe()
+            .then(function(res) {
+                me = res
+                return 'FB fetched me';
+            })
+            .then(Facebook.getFriends)
+            .then(function(res) {
+                friends = res.data
+                return 'FB fetched friends';
+            })
+            .catch(function(error) {
+                return $q.reject(error);
+            });
+>>>>>>> origin/master
     };
 
     var dbFetch = function() {
         return Storage.getEvents(me.id)
+<<<<<<< HEAD
             .then(function(res) { console.log('DB fetched events'); events = res.data; dbFetched = true });
+=======
+            .then(function(res) {
+                events = res.data
+                return 'DB fetched events';
+            })
+            .catch(function(error) {
+                return $q.reject(error);
+            });
+
+>>>>>>> origin/master
     };
 
     // Login/out
     // ========================================================================
 
     this.login = function() {
-        return fbLogin()
+        return Facebook.login()
+            .then(function(resp) {
+                loginStatus = resp.status;
+                if (resp.status == 'connected') {
+                    return 'Login OK'
+                } else {
+                    return $q.reject('Login failed');
+                }
+            })
+            .catch(function(error) {
+                return $q.reject(error);
+            })
             .then(fbFetch)
+<<<<<<< HEAD
             .then(dbFetch);
     };
 
@@ -139,6 +179,30 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     };
     this.getCurrentEvent = function() {
         return currentEvent;
+=======
+            .then(dbFetch)
+            .then(function() {
+                //console.log(me);
+                //console.log(friends);
+                //console.log(events);
+                return 'Login Complete';
+            });
+    };
+
+    this.logout = function() {
+        return Facebook.logout()
+            .then(function(resp) {
+                loginStatus = resp.status;
+                me = {
+                    "id": "",
+                    "name": "",
+                    "imgUrl": ""
+                }
+                friends = [];
+                events = [];
+                return 'Logout OK';
+            });
+>>>>>>> origin/master
     };
 
     this.getEvents = function() {
@@ -188,6 +252,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         }
         return Storage.postEvent(e)
             .then(function(resp) {
+<<<<<<< HEAD
+=======
+                console.log(resp);
+>>>>>>> origin/master
                 events.push(resp.data);
                 return resp;
             });
