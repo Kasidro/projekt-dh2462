@@ -428,8 +428,12 @@
 }
 
 /*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
-.header {
+.header-container {
 	height: 7vh;
+}
+.header{
+	height: 7vh;
+	background-color: #F4EBD9;
 }
 
 #dropdown_container {
@@ -444,7 +448,7 @@
 	z-index: 100;
 }
 
-#heading_container {
+.heading-container {
 	height: 7vh;
 	text-align: right;
 	background-color: #F4EBD9; 
@@ -459,15 +463,17 @@
 	background-color: blue;
 }
 #log-out-btn {
-	height: 5vh;
-	background-color: #cc0000;
-	font-size: 2.5vh;
-	color: white;
+	height: 4vh;
+	border:2px solid #cc0000;
+	font-size: 2vh;
+	color: black;
 	font-family: 'Audiowide', cursive;
-	margin-top: 5%;
+	margin-top: 1.5vh;
+	transition: 0.5s;
 }
 #log-out-btn:hover {
-	font-size:2.5vh;
+	color: white;
+	background-color: #cc0000;
 }
 nav ul {
 	-webkit-font-smoothing:antialiased;
