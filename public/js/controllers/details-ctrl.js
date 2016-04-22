@@ -44,7 +44,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         console.log(h);
         console.log(m);
         if (!isNaN(h) && !isNaN(m)) {
-            var d = new Date(1999, 11, 31, h+1, m + ti);
+            var d = new Date(1999, 11, 31, h + 1, m + ti);
             Planner.editDay($scope.mEvent._id, date, date, d.toISOString().substring(11, 16));
         }
     };
@@ -52,7 +52,6 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     $scope.getDayName = function(date) {
         var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var d = new Date(Date.parse(date));
-        //console.log(d);
         return weekday[d.getDay()];
     };
 
@@ -65,6 +64,14 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         if (cLastindex > pc - 1) {
             cLastindex--
         }
+    };
+
+    $scope.pagesToRight = function() {
+        return (cLastindex  + 1 < $scope.nDays);
+    };
+
+    $scope.pagesToLeft = function() {
+        return (cLastindex > pc -1);
     };
 
     $scope.$watch(function() {
