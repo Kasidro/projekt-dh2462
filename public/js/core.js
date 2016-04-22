@@ -23,6 +23,10 @@ var magenta = angular.module('magenta', ['ngCookies', 'ngRoute', 'dndLists'])
                 templateUrl: 'partials/event-details.html',
                 controller: 'DetailsCtrl'
             })
+            .when('/edit-activity', {
+                templateUrl: 'partials/edit-activity.html',
+                controller: 'ActivityCtrl'
+            })
             // Test related
             .when('/test', {
                 templateUrl: 'partials/test.html',
