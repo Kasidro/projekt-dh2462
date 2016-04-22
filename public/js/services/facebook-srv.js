@@ -79,5 +79,5 @@ magenta.factory('Facebook', function($q) {
             });
             return deferred.promise;
         }
-    }
+    };
 });
