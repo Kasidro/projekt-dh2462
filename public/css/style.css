@@ -435,7 +435,6 @@
 	height: 7vh;
 	background-color: #F4EBD9;
 }
-
 #dropdown_container {
 	height: 7vh;
 	font-family: 'Audiowide', cursive;
@@ -447,12 +446,22 @@
 	padding: 0;
 	z-index: 100;
 }
-
 #dropdown_container:hover {
 	background-color: #992083;
 }
+#user-feedback{
+	font-family: 'Audiowide', cursive;
+	font-size: 2.5vh;
+	height: 5vh;
+	margin-top:1vh; 
+}
+#header-profile-pic {
+	height: 7vh;
+}
+
 #log-out-btn {
 	height: 4vh;
+	background-color: transparent;
 	border:2px solid #cc0000;
 	font-size: 2vh;
 	color: black;
@@ -464,6 +473,9 @@
 	color: white;
 	background-color: #cc0000;
 }
+
+/*---------------Dropdown styling---------------*/
+
 nav ul {
 	-webkit-font-smoothing:antialiased;
     list-style: none;

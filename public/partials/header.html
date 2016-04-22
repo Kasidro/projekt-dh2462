@@ -13,24 +13,20 @@
             </ul>
         </nav>
     </div>
-    <div class="col-md-2 header"></div>
-    <div class="col-md-2 header">
-        <p></p>
+    <div class="col-md-1 header"></div>
+    <div class="col-md-4 header">
+        <p id="user-feedback">Message to user here!</p>
     </div>
     <div class="col-md-2 header">
-        <img ng-src="{{me.imgUrl}}" \>
-        <p class=""></p>
-    </div>
-    <div class="col-md-1 header">
         <a href="#/start-menu">
-            <p id="log-out-btn" class="btn">LOG OUT</p>
+            <div class="col-md-2"></div>
+            <img id="header-profile-pic" class="col-md-4" ng-src="{{me.imgUrl}}" \>
+            <p id="log-out-btn" class="btn btn-danger col-md-6">LOG OUT</p>
         </a>
     </div>
     <div class="col-md-2 header">
-        <div>
-            <a href="#/start-menu">
-                <p style="color: black; text-align: left;" class="magenta-heading-1 header">MAGENTA</p>
-            </a>
-        </div>
+        <a href="#/start-menu">
+            <p style="color: black; text-align: left;" class="magenta-heading-1 header">MAGENTA</p>
+        </a>
     </div>
 </div>
