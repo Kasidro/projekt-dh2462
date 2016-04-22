@@ -282,7 +282,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
                 var db = Date.parse(b.date);
                 return da - db;
             })
-            //Storage.putEvent(eID, events[di]);
+            Storage.putEvent(eID, events[ei]);
             return 0;
         }
         return -1;
