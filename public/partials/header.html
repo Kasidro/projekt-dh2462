@@ -1,29 +1,31 @@
-<div id=dropdown_container class="col-md-3">
-    <nav>
-        <ul class="cf">
-            <li id="topp_list"><p id="topp" class="dropdown" href="#">NAVIGATE</p>
-                <ul>
-                    <!-- <li><a href="#/event">EVENT OVERVIEW</a></li> -->
-                    <li><a ng-controller="CreateCtrl" ng-click="createEvent()">CREATE NEW EVENT</a></li>
-                    <li><a href="#/browse-events">CHECK MY EVENTS</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</div>
-<div class="col-md-2 header" ></div>
-<div class="col-md-2 header">
-    <p>MESSAGE TO USER HERE!</p>
-</div>
-<div class="col-md-2 header">
-    <img src="Planner.getMe().imgUrl">
-    <p class=""></p>
-</div>
-<div class="col-md-1 header">
-    <a href="#/start-menu"><p id="log-out-btn" class="btn">LOG OUT</p></a>    
-</div> 
-<div class="col-md-2 header">
-    <div>  
-    <a href="#/start-menu"><p style="color: black; text-align: left;" class="magenta-heading-1 header">MAGENTA</p></a>
+<div ng-controller="HeaderCtrl as ctrl">
+    <div id=dropdown_container class="col-md-3">
+        <nav>
+            <ul class="cf">
+                <li id="topp_list"><p id="topp" class="dropdown" href="#">NAVIGATE</p>
+                    <ul>
+                        <!-- <li><a href="#/event">EVENT OVERVIEW</a></li> -->
+                        <li><a ng-controller="CreateCtrl" ng-click="createEvent()">CREATE NEW EVENT</a></li>
+                        <li><a href="#/browse-events">CHECK MY EVENTS</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-2 header" ></div>
+    <div class="col-md-2 header">
+        <p></p>
+    </div>
+    <div class="col-md-2 header">
+        <img src="{{me.imgUrl}}">git 
+        <p class=""></p>
+    </div>
+    <div class="col-md-1 header">
+        <a href="#/start-menu"><p id="log-out-btn" class="btn">LOG OUT</p></a>    
+    </div> 
+    <div class="col-md-2 header">
+        <div>  
+        <a href="#/start-menu"><p style="color: black; text-align: left;" class="magenta-heading-1 header">MAGENTA</p></a>
+        </div>
     </div>
 </div>

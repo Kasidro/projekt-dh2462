@@ -1,4 +1,4 @@
-magenta.controller('ActivityCtrl', function($scope, Planner) {
+magenta.controller('HeaderCtrl', function($scope, Planner) {
     
     $scope.me = Planner.getMe();
 });
