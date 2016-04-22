@@ -19,4 +19,11 @@ magenta.controller('BrowseCtrl', function($scope, $window, Planner) {
 			}
 			return name;
 		}
+
+		$scope.getFormatedDate = function(days) {
+			if (days.length === 0)
+				return "No date";
+
+			return days[0].date;
+		}
 });

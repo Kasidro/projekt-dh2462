@@ -145,7 +145,7 @@
 }
 
 .btn-cancel:hover {
-	background-color: #ff0000; 
+	background-color: #CC0000; 
 	color: white;
 	text-shadow: 0 0 30px white;
 }
@@ -408,7 +408,6 @@
 }
 
 .start-button {
-	width: 60vw;
 	height: 10vh;
 	text-align: center;
 	font-size: 40pt;
@@ -460,9 +459,13 @@
 	background-color: blue;
 }
 #log-out-btn {
-	height: 100%;
+	background-color: #cc0000;
+	font-size: 180%;
+	color: white;
+	font-family: 'Audiowide', cursive;
+	margin-top: 5%;
+	height: 70%;
 	width: 100%;
-	background-color: purple;
 }
 nav ul {
 	-webkit-font-smoothing:antialiased;
@@ -539,3 +542,4 @@ nav li ul a:hover {
 /*----------------END OF HEADER CSS-----------------*/
 /*----------------TEST */
 
+git 
