@@ -15,33 +15,41 @@
 
 <div class="day-container">
     <div ng-repeat="day in cPage">
-        <div class="day">
-            <p style="color:white" class="magenta-heading-1">{{getDayName(day.date)}}</p>
-            <div class="row-day">
-                <p class="magenta-text-1 row-1-day">DATE: </p>
-                <p class="magenta-text-1 row-2-day">{{day.date}}</p>
-                <div class="col-md-1"><button ng-click="changeDay(day.date,day.start, 'add')" ng-show="{{isMyEvent}}">+</button></div>
-                <div class="col-md-1"><button ng-click="changeDay(day.date,day.start, 'sub')" ng-show="{{isMyEvent}}">-</button></div>
-            </div>
-            <div class="row-day">
-                <p class="magenta-text-1 row-1-day">START TIME: </p>
-                <p class="magenta-text-1 row-2-day">{{day.start}}</p>
-                <div class="col-md-1"><button ng-click="changeStart(day.date,day.start, 'add')" ng-show="{{isMyEvent}}">+</button></div>
-                <div class="col-md-1"><button ng-click="changeStart(day.date,day.start, 'sub')" ng-show="{{isMyEvent}}">-</button></div>
-            </div>
-            <div class="row-day">
-                <p class="magenta-text-1 col-md-12">END TIME: </p>
-            </div>
-            <div class="row-day">
-                <p class="magenta-text-1 col-md-12">DURATION: </p>
-            </div>
-            <div class="col-md-12">
-                <div class="activity_field col-md-12">
-                    <a href="#/new-activity"><button class="btn activity magenta-text-1">INTRODUCTION</button></a>
-                    <a href="#/new-activity"><button class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
+        <div class="col-md-4">
+            <div class="day col-md-12">
+                <p style="color:white" class="magenta-heading-1">{{getDayName(day.date)}}</p>
+                <div class="col-md-12">
+                    <p class="magenta-text-1 col-md-4">DATE:</p>
+                    <p style="text-align: left;" class="magenta-text-3 col-md-5">{{day.date}}</p>
+                    <div class="btn-group col-md-3">
+                        <button ng-click="changeDay(day.date,day.start, 'add')" ng-show="{{isMyEvent}}" class="btn magenta-text-2 float">+</button>
+                        <button ng-click="changeDay(day.date,day.start, 'sub')" ng-show="{{isMyEvent}}" class="btn magenta-text-2 float">-</button>
+                    </div>
                 </div>
+                <div class="col-md-12">
+                    <p class="magenta-text-1 col-md-4">START:</p>
+                    <p style="text-align: left;" class="magenta-text-3 col-md-5">{{day.start}}</p>
+                    <div class="btn-group col-md-3">
+                        <button ng-click="changeStart(day.date,day.start, 'add')" ng-show="{{isMyEvent}}" class="btn magenta-text-2 float">+</button>
+                        <button ng-click="changeStart(day.date,day.start, 'sub')" ng-show="{{isMyEvent}}" class="btn magenta-text-2 float">-</button>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p class="magenta-text-1 col-md-4">END:</p>
+                    <p class="magenta-text-3 col-md-7">14:00 </p>
+                </div>
+                <div class="col-md-12">
+                    <p class="magenta-text-1 col-md-4">LENGTH:</p>
+                    <p class="magenta-text-3 col-md-7">14:00 </p>
+                </div>
+                <div class="col-md-12">
+                    <div class="activity_field col-md-12">
+                        <a href="#/new-activity"><button class="btn activity magenta-text-1">INTRODUCTION</button></a>
+                        <a href="#/new-activity"><button class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
+                    </div>
+                </div>
+                <button class="btn-danger magenta-text-1 remove" ng-click="deleteDay(day.date)" ng-show="{{isMyEvent}}">REMOVE DAY</button>
             </div>
-            <button class="btn-danger magenta-text-1 remove" ng-click="deleteDay(day.date)" ng-show="{{isMyEvent}}">REMOVE DAY</button>
         </div>
     </div>
 </div>
