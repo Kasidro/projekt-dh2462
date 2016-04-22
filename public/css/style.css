@@ -22,7 +22,7 @@
 	font-size: 20pt;
 }
 
-/*----------------End of styling for start page-----------------*/
+/*----------------End of styling for login page-----------------*/
 /*----------------Styling of site wide elements-----------------*/
 
 #content { /*Holds the rest of the application*/
@@ -381,10 +381,7 @@
 
 /*----------------Styling of start-menu.html-----------------*/
 #start-menu-header {
-	width: 100vw;
 	background-color: #F4EBD9;
-	height: 15vh;
-
 }
 #start-heading {
 	text-align: center;
@@ -405,7 +402,6 @@
 }
 
 .start-button {
-	height: 10vh;
 	text-align: center;
 	font-size: 40pt;
 	font-family: 'Audiowide', cursive;
