@@ -158,6 +158,8 @@
 	margin-left: 25vw;
 	border: 4px solid #994D83;
 	border-radius: 10px;
+	overflow-y:auto;
+	overflow-x:hidden;
 }
 .saved-event {
 	margin-left: 0.5%;
@@ -192,21 +194,38 @@
 #date-browser {
 	padding-top: 1.3vh;
 }
-#button-browser {
-	margin-top: 1.3vh;
-	font-size: 14pt;
+#title-browser {
+	padding-top: 1.3vh;
+}
+#button-row {
+	 
+	padding-top: 0.5vh;
+	padding-left: 1vw;
+	height: 2vh;
+	width: 8vw;
+}
+#button-browser-1 {
+	font-size: 8pt;
 	color: black;
 	background-color: white;
 	border-color: #3b5998; 
-	height: 4vh;
-	width: 8vw;
 	transition: all 0.5s ease;
 }
-#button-browser:hover {
+#button-browser-1:hover {
+	background-color: #992083; 
+	color: white; 
+}
+#button-browser-2 {
+	font-size: 8pt;
+	color: black;
+	background-color: white;
+	border-color: #3b5998; 
+	transition: all 0.5s ease;
+}
+#button-browser-2:hover {
 	background-color: #3b5998;
 	color: white; 
 }
-
 /*---------------------new-event.html styling-------------------------*/
 #title-input {
 	width: 50vw;
