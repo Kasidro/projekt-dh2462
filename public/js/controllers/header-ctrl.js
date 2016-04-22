@@ -1,4 +1,4 @@
-magenta.controller('HeaderCtrl', function($scope, Planner) {
+magenta.controller('HeaderCtrl', function($scope, $window, Planner) {
     
     $scope.me = Planner.getMe();
 
@@ -7,4 +7,9 @@ magenta.controller('HeaderCtrl', function($scope, Planner) {
     $scope.$on('CLEAR_HEADER_STATUS', function(event, args) {
     	$scope.status = undefined;    	
     });
+
+    $scope.logout = function() {
+    	Planner.logout();
+    	$window.location.href = '/#/';
+    };
 });

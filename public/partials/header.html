@@ -6,7 +6,7 @@
                     <p id="topp" class="dropdown" href="#">NAVIGATE</p>
                     <ul>
                         <!-- <li><a href="#/event">EVENT OVERVIEW</a></li> -->
-                        <li><a ng-controller="CreateCtrl" ng-click="createEvent()">CREATE NEW EVENT</a></li>
+                        <li><a href="#" ng-controller="CreateCtrl" ng-click="createEvent();">CREATE NEW EVENT</a></li>
                         <li><a href="#/browse-events">CHECK MY EVENTS</a></li>
                     </ul>
                 </li>
@@ -18,11 +18,17 @@
         <p id="user-feedback">{{status}}</p>
     </div>
     <div class="col-md-2 header">
+<<<<<<< HEAD
+        <div class="col-md-2"></div>
+        <img id="header-profile-pic" class="col-md-4" ng-src="{{me.imgUrl}}" \>
+        <p ng-click="logout();" id="log-out-btn" class="btn btn-danger col-md-6">LOG OUT</p>
+=======
         <a href="#/start-menu">
             <div class="col-md-2"></div>
             <img id="header-profile-pic" class="col-md-4" ng-src="{{me.imgUrl}}"\>
             <p id="log-out-btn" class="btn btn-danger col-md-6">LOG OUT</p>
         </a>
+>>>>>>> origin/master
     </div>
     <div class="col-md-2 header">
         <a href="#/start-menu">
