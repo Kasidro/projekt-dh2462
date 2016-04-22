@@ -4,7 +4,7 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
     $scope.friends = Planner.getFriends();
     $scope.guests = [];
     $scope.selected;
-    $scope.myEvent;
+    $scope.isMyEvent;
 
     var getFriend = function(id) {
         for (i in $scope.friends) {
@@ -52,7 +52,7 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
         if (!Planner.isDbFetched()) return;
         var mEvent = Planner.getEvent(Planner.getCurrentEvent());
         $scope.title = mEvent.name;
-        $scope.myEvent = (Planner.getMe().id === mEvent.owner);
+        $scope.isMyEvent = (Planner.getMe().id === mEvent.owner);
         for (i in mEvent.guests) {
             $scope.guests.push(getFriend(mEvent.guests[i]));
         }

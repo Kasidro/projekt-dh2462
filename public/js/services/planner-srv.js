@@ -274,6 +274,13 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
         if (ei !== -1 && di !== -1) {
+            //while (newdate !== date && findDayIndex(ei, newdate) !== -1) {
+            //    if (newdate < date) {
+            //        newdate--;
+            //    } else {
+            //        newdate++;
+            //    }
+            //}
             events[ei].days[di].date = newdate;
             events[ei].days[di].start = start;
             events[ei].days.sort(function(a, b) {
