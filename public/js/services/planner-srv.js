@@ -21,10 +21,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
 
     this.setHeaderStatus = function(_headerStatus) {
         headerStatus = _headerStatus;
+        $rootScope.$broadcast('HEADER_STATUS', headerStatus);
         $timeout(function() {
             headerStatus = undefined;
-            $rootScope.$broadcast('CLEAR_HEADER_STATUS');
-        }, 2000);
+            $rootScope.$broadcast('HEADER_STATUS', headerStatus);
+        }, 1500);
     };
 
     this.getHeaderStatus = function() {

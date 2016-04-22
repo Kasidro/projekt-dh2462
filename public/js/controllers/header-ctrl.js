@@ -4,8 +4,8 @@ magenta.controller('HeaderCtrl', function($scope, $window, Planner) {
 
     $scope.status = Planner.getHeaderStatus();
 
-    $scope.$on('CLEAR_HEADER_STATUS', function(event, args) {
-    	$scope.status = undefined;    	
+    $scope.$on('HEADER_STATUS', function(event, args) {
+    	$scope.status = args;    	
     });
 
     $scope.logout = function() {
