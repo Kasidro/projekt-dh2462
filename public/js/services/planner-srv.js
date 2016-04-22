@@ -61,6 +61,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     // Helper functions
     // ========================================================================
 
+    // ei: index of event in events
+    // date: date of day as String "YYYY-MM-DD"
+    // returns: index of day or -1 if not in days
     var findDayIndex = function(ei, date) {
         if (ei !== -1) {
             for (var i = 0; i < events[ei].days.length; i++) {
@@ -72,6 +75,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return -1;
     };
 
+    //eID: event ID
+    //returns: index of event in events
     var findEventIndex = function(eID) {
         for (var i = 0; i < events.length; i++) {
             if (events[i]._id === eID) {
@@ -162,6 +167,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return events;
     };
 
+    // eID: event ID
+    // returns: event or null
     this.getEvent = function(eID) {
         var ei = findEventIndex(eID);
         if (ei !== -1) {
@@ -170,6 +177,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return null;
     };
 
+    // eID: event ID
+    // date: date of day as String "YYYY-MM-DD"
+    // returns: array of days
     this.getDay = function(eID, date) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
@@ -179,6 +189,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return null;
     };
 
+    // eID: event ID
+    // date: date of day as String "YYYY-MM-DD"
+    // pos: position of activity in activities
+    // returns: activity
     this.getActivity = function(eID, date, pos) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
@@ -198,6 +212,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
 
     // Adders
     // ========================================================================
+    // name: String
+    // description: String
+    // guests: Array of guests
+    // returns: Promise from Storage API call
     this.addEvent = function(name, description, guests) {
         var e = {
             "name": name,
@@ -213,6 +231,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
             });
     };
 
+    // eID: event ID
+    // date: date of day as String "YYYY-MM-DD"
+    // returns: 0 on success, -1 otherwise
     this.addDay = function(eID, date, start) {
         ei = findEventIndex(eID);
         if (findDayIndex(ei, date) === -1 && events[ei].owner === me.id) {
@@ -233,6 +254,14 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return -1;
     };
 
+    // eID: event ID
+    // date: date of day as String "YYYY-MM-DD"
+    // name: String
+    // length: int
+    // type: int
+    // description: String
+    // pos: position of activity in activities
+    // returns: 0 on success, -1 otherwise
     this.addActivity = function(eID, date, name, length, type, description, pos) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
@@ -259,6 +288,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return -1;
     };
 
+    // eID: event ID
+    // titel: String
+    // guests: Array of guests
+    // returns: 0 on success, -1 otherwise
     this.editEvent = function(eID, title, guests) {
         var index = findEventIndex(eID);
         if (index !== -1) {
@@ -270,6 +303,11 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         return -1;
     };
 
+    // eID: String event ID
+    // date: String date of day as "YYYY-MM-DD"
+    // newdate: String new date of day as "YYYY-MM-DD"
+    // start: String start time as HH:MM
+    // returns: 0 on success, -1 otherwise
     this.editDay = function(eID, date, newdate, start) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
