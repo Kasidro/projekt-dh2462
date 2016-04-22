@@ -34,7 +34,12 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     };
 
     $scope.changeDay = function(date, start, add) {
-        Planner.editDay($scope.mEvent._id, date, chgDate(date, add), start);
+        var newdate = chgDate(date, add);
+        var olddate = date;
+        while (Planner.editDay($scope.mEvent._id, date, newdate, start) === -1) {
+            olddate = newdate;
+            newdate = chgDate(olddate, add);
+        }
     };
 
     $scope.changeStart = function(date, start, add) {
