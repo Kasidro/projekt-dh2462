@@ -52,7 +52,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
         friends = [];
         currentEvent = undefined;
         events = [];
-        angular.forEach($cookieStore, function (v, k) {
+        angular.forEach($cookieStore, function(v, k) {
             $cookieStore.remove(k);
         });
         console.log('Temporary data destroyed');
@@ -84,12 +84,21 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     var fbLogin = function() {
         return Facebook.getLoginStatus()
             .then(Facebook.logout)
-            .then(function(res) { console.log('FB logout succeded') })
-            .catch(function(err) { console.log('FB logout failed') })
+            .then(function(res) {
+                console.log('FB logout succeded')
+            })
+            .catch(function(err) {
+                console.log('FB logout failed')
+            })
             .then(Facebook.getLoginStatus)
             .then(Facebook.login)
-            .then(function(res) { console.log('FB login succeded'); setLoginStatus(res.status) })
-            .catch(function(err) { console.log('FB login failed') })
+            .then(function(res) {
+                console.log('FB login succeded');
+                setLoginStatus(res.status)
+            })
+            .catch(function(err) {
+                console.log('FB login failed')
+            })
             .then(function() {
                 var deferred = $q.defer();
                 if (loginStatus === 'connected')
@@ -102,15 +111,25 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
 
     var fbFetch = function() {
         return Facebook.getMe()
-            .then(function(res) { console.log('FB fetched me'); setMe(res) })
+            .then(function(res) {
+                console.log('FB fetched me');
+                setMe(res)
+            })
             .then(Facebook.getFriends)
-            .then(function(res) { console.log('FB fetched friends'); setFriends(res.data) });
+            .then(function(res) {
+                console.log('FB fetched friends');
+                setFriends(res.data)
+            });
     };
 
 
     var dbFetch = function() {
         return Storage.getEvents(me.id)
-            .then(function(res) { console.log('DB fetched events'); events = res.data; dbFetched = true });
+            .then(function(res) {
+                console.log('DB fetched events');
+                events = res.data;
+                dbFetched = true
+            });
     };
 
     // Login/out
@@ -179,7 +198,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
 
     // Adders
     // ========================================================================
-    
+
     this.addEvent = function(name, description, guests) {
         var e = {
             "name": name,
@@ -241,9 +260,24 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
 
     this.editEvent = function(eID, title, guests) {
         var index = findEventIndex(eID);
-        events[index].name = title;
-        events[index].guests = guests;
-        Storage.putEvent(eID, events[index]);
+        if (index !== -1) {
+            events[index].name = title;
+            events[index].guests = guests;
+            Storage.putEvent(eID, events[index]);
+            return 0;
+        }
+        return -1;
+    };
+
+    this.editDay = function(eID, date, start) {
+        var ei = findEventIndex(eID);
+        var di = findDayIndex(eID, date);
+        if (ei !== -1 && di !== -1) {
+            events[ei].days[di].date = date;
+            events[ei].days[di].start = start;
+            return 0;
+        }
+        return -1;
     };
 
     // Removers
@@ -302,14 +336,14 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
             ndi !== -1 &&
             events[ei].owner === me.id &&
             typeof events[ei].days[di].activities[pos] !== 'undefined') {
-                if (newpos > pos && newpos < events[ei].days[di].activities.length - 1) {
-                    newpos--;
-                }
-                var activity = events[ei].days[di].activities[pos];
-                events[ei].days[di].activities.splice(pos, 1);
-                events[ei].days[ndi].activities.splice(newpos, 0, activity);
-                Storage.putEvent(eID, events[ei]);
-                return 0;
+            if (newpos > pos && newpos < events[ei].days[di].activities.length - 1) {
+                newpos--;
+            }
+            var activity = events[ei].days[di].activities[pos];
+            events[ei].days[di].activities.splice(pos, 1);
+            events[ei].days[ndi].activities.splice(newpos, 0, activity);
+            Storage.putEvent(eID, events[ei]);
+            return 0;
         }
         return -1;
     };
