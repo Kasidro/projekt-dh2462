@@ -38,7 +38,11 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     };
 
     $scope.changeStart = function(date, start, add) {
-        var ti = 15
+        if (add === 'add') {
+            var ti = 15;
+        } else {
+            var ti = -15;
+        }
         var h = parseInt(start.substring(0, 2));
         var m = parseInt(start.substring(3, 5));
         console.log(h);
@@ -67,11 +71,11 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     };
 
     $scope.pagesToRight = function() {
-        return (cLastindex  + 1 < $scope.nDays);
+        return (cLastindex + 1 < $scope.nDays);
     };
 
     $scope.pagesToLeft = function() {
-        return (cLastindex > pc -1);
+        return (cLastindex > pc - 1);
     };
 
     $scope.$watch(function() {
