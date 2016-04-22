@@ -1,4 +1,4 @@
-magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
+magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Facebook, Storage) {
 
     // Data field
     // ========================================================================
@@ -13,6 +13,23 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage) {
     var currentEvent;
     var events = [];
     var dbFetched = false;
+
+    // Header status
+    // ========================================================================
+
+    var headerStatus;
+
+    this.setHeaderStatus = function(_headerStatus) {
+        headerStatus = _headerStatus;
+        $timeout(function() {
+            headerStatus = undefined;
+            $rootScope.$broadcast('CLEAR_HEADER_STATUS');
+        }, 2000);
+    };
+
+    this.getHeaderStatus = function() {
+        return headerStatus;
+    };
 
     // Cookie stuff
     // ========================================================================
