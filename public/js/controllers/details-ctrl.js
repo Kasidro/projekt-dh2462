@@ -5,7 +5,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
 
     $scope.mEvent = Planner.getEvent(Planner.getCurrentEvent());
     $scope.cPage = [];
-    $scope.nDay;
+    $scope.nDays;
 
     var chgDate = function(date, add) {
         msec = Date.parse(date);
