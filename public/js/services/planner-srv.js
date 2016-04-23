@@ -15,7 +15,6 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     var currentPosition;
     var events = [];
     var dbFetched = false;
-    var newActivity;
 
     // Cookie stuff
     // ========================================================================
@@ -37,11 +36,23 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         $cookieStore.put('currentEvent', currentEvent);
     };
 
+    this.setCurrentDate = function(_currentDate) {
+        currentDate = _currentDate;
+        $cookieStore.put('currentDate', currentDate);
+    };
+
+    this.setCurrentActivityPosition = function(_currenPosition) {
+        currentPosition =  _currenPosition;
+        $cookieStore.put('currentPosition', currentPosition);
+    }
+
     this.retrieveTempData = function() {
         loginStatus = $cookieStore.get('loginStatus');
         me = $cookieStore.get('me');
         friends = $cookieStore.get('friends');
         currentEvent = $cookieStore.get('currentEvent');
+        currentDate = $cookieStore.get('currentDate');
+        currentPosition = $cookieStore.get('currentPosition');
         console.log('Cookies retrived');
         return dbFetch();
     };
@@ -54,6 +65,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         };
         friends = [];
         currentEvent = undefined;
+        currentPosition = undefined;
         events = [];
         angular.forEach($cookieStore, function(v, k) {
             $cookieStore.remove(k);
@@ -133,6 +145,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 console.log('DB fetched events');
                 events = res.data;
                 dbFetched = true
+                console.log(res);
             });
     };
 
@@ -235,17 +248,6 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
 
     // Setters
     // ========================================================================
-    this.setCurrentDate = function(_currentDate) {
-        currentDate = _currentDate;
-    };
-
-    this.setNewActivity = function(status) {
-        newActivity = status;
-    }
-
-    this.setCurrentActivityPosition = function(_currenPosition) {
-        currentPosition =  _currenPosition;
-    }
 
     // Adders
     // ========================================================================

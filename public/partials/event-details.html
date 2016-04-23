@@ -44,10 +44,9 @@
                 </div>
                 <div class="col-md-12">
                     <div class="activity-field col-md-12">
-                        <a><button ng-click="createActivity(day)" class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
-                        <a><button class="btn activity magenta-text-1">INTRODUCTION</button></a>
-                        <a ng-repeat="activity in day.activities">
-                            <button ng-click="editActivity(day, $index)" class="btn activity magenta-text-1">{{activity.name}}</button>
+                        <a href="#/edit-activity"><button ng-click="createActivity(day)" class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
+                        <a ng-repeat="activity in day.activities" href="#/edit-activity">
+                            <button ng-click="editActivity(day, $index)" href="#/edit-activity" class="btn activity magenta-text-1">{{activity.name}}</button>
                         </a>
                     </div>
                 </div>

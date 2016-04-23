@@ -118,13 +118,11 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
         Planner.setCurrentDate(day.date);
         Planner.addActivity(Planner.getCurrentEvent(), day.date);
         Planner.setCurrentActivityPosition(day.activities.length - 1);
-        $window.location.href = '/#/edit-activity';
     };
 
     $scope.editActivity = function(day, pos) {
         Planner.setCurrentDate(day.date);
         Planner.setCurrentActivityPosition(pos);
-        $window.location.href = '/#/edit-activity';
     };
 
     $scope.$watch(function() {
