@@ -11,8 +11,11 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     };
     var friends = [];
     var currentEvent;
+    var currentDate;
+    var currentPosition;
     var events = [];
     var dbFetched = false;
+    var newActivity;
 
     // Cookie stuff
     // ========================================================================
@@ -205,10 +208,22 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
         if (ei !== -1 && di !== -1 && typeof events[ei].days[di].activities[pos] !== 'undefined') {
-            return getActByIdx(eID, di, pos);
+            return events[ei].days[di].activities[pos];
         }
         return null;
     };
+
+    this.getNewActivity = function() {
+        return newActivity;
+    }
+
+    this.getCurrentDate = function() {
+        return currentDate;
+    }
+
+    this.getCurrentActivityPosition = function() {
+        return currentPosition;
+    }
 
     this.getFriends = function() {
         return friends;
@@ -217,6 +232,20 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     this.getMe = function() {
         return me;
     };
+
+    // Setters
+    // ========================================================================
+    this.setCurrentDate = function(_currentDate) {
+        currentDate = _currentDate;
+    };
+
+    this.setNewActivity = function(status) {
+        newActivity = status;
+    }
+
+    this.setCurrentActivityPosition = function(_currenPosition) {
+        currentPosition =  _currenPosition;
+    }
 
     // Adders
     // ========================================================================
@@ -354,15 +383,16 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     this.editActivity = function(eID, date, name, length, type, description, pos) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
+
         if (ei !== -1 &&
             di !== -1 &&
             events[ei].owner === me.id &&
             events[ei].days[di].activities[pos] !== 'undefined'
         ) {
-            events[ei].days[ei].activities[pos].name = name;
-            events[ei].days[ei].activities[pos].length = length;
-            events[ei].days[ei].activities[pos].type = type;
-            events[ei].days[ei].activities[pos].description = description;
+            events[ei].days[di].activities[pos].name = name;
+            events[ei].days[di].activities[pos].length = length;
+            events[ei].days[di].activities[pos].type = type;
+            events[ei].days[di].activities[pos].description = description;
             putEventToDB(eID, events[ei]);
             return 0;
         }
