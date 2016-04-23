@@ -4,38 +4,47 @@
 <div class="title-holder col-md-12">
 	<p class="magenta-title">ADD ACTIVITY</p>
 </div>
-<div class="col-md-12">
-	<span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
-	<input type="text" class="magenta-input col-md-5" placeholder="Title"></input>
-</div>
-<div class="col-md-12">
-	<span class="magenta-label col-md-4">DURATION: </span>
-	<input type="time" class="magenta-input col-md-3"></input>
-</div>
-<div class="col-md-12">
-	<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
-	<div class="col-md-4" id="dropdown_container-act">	
-		<nav>
-	        <ul class="cf">
-	            <li >
-	            	<p class="dropdown" href="#">CHOSE TYPE</p>
-	                <ul>
-	                    <li><a class="dd-alt" href="#/event">MEETING</a></li>
-	                    <li><a class="dd-alt" href="#/edit-event">LUNCH</a></li>
-	                    <li><a class="dd-alt" href="#/browse-events">TEAM BUILDING</a></li>
-	                </ul>
-	                </li>
-	        </ul>
-	    </nav>
+<form>
+	<div class="col-md-12">
+		<span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
+		<input type="text" ng-model="title" class="magenta-input col-md-5" placeholder="Title"></input>
 	</div>
-</div>
-<div class="col-md-12">
-	<span class="magenta-label col-md-4">DESCRIPTION: </span>
-	<textarea id="description-field" class="col-md-5" type="text"></textarea>
+	<div class="col-md-12">
+		<span class="magenta-label col-md-4">DURATION: </span>
+		<input type="time" step="60" ng-model="duration" class="magenta-input col-md-3"></input>
+	</div>
+	<div class="col-md-12">
+		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
+		<input type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
+		<!--Dropdown for typ feels weird? -->	
+		<!--
+		<div class="col-md-4" id="dropdown_container-act">
+			<nav>
+		        <ul class="cf">
+		            <li >
+		            	<p class="dropdown" href="#">CHOSE TYPE</p>
+		                <ul>
+		                    <li><a class="dd-alt" href="#/event">MEETING</a></li>
+		                    <li><a class="dd-alt" href="#/edit-event">LUNCH</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">TEAM BUILDING</a></li>
+		                </ul>
+		                </li>
+		        </ul>
+		    </nav>
+		    -->
+		</div>
+	</div>
+	<div class="col-md-12">
+		<span class="magenta-label col-md-4">DESCRIPTION: </span>
+		<textarea id="description-field" ng-model="description" class="col-md-5" type="text"></textarea>
+	</div>
+</form>
 <div class="col-md-12">
 	<div class="col-md-2"></div>
-	<a class="btn col-md-3 btn-save" href="#/event-details">SAVE</a>
+	<a class="btn col-md-3 btn-save" ng-click="saveActivity()" ng-show={{isMyActivity}} href="#/event-details">SAVE</a>
 	<div class="col-md-2"></div>
-	<a class="btn col-md-3 btn-cancel" href="#/event-details">CANCEL</a>
+	<a class="btn col-md-3 btn-cancel" ng-click="removeActivity()" ng-show={{isMyActivity}} href="#/event-details">REMOVE</a>
 	<div class="col-md-"></div>
+	<a class="btn col-md-3 btn-save" ng-hide="{{isMyActivity}}" href="#/event-details">BACK</a>
+	<div class="col-md-2"></div>
 </div>

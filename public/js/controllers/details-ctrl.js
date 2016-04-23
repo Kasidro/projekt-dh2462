@@ -1,4 +1,4 @@
-magenta.controller('DetailsCtrl', function($scope, Planner, Status) {
+magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
 
     var maxDaysPerPage = 3;
     var startTimeIncr = 15;
@@ -8,6 +8,8 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status) {
     $scope.cPage = [];
     $scope.nDays;
     $scope.isMyEvent;
+
+    $scope.testDays = ['activity1', 'activity2', 'activity3', 'activity4', 'activity5'];
 
     // date: String on format "YYYY-MM-DD"
     // add: String 'add' adds, otherwise subtract
@@ -110,6 +112,17 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status) {
 
     $scope.hasPagesToLeft = function() {
         return (cLastIdx > maxDaysPerPage - 1);
+    };
+
+    $scope.createActivity = function(day) {
+        Planner.setCurrentDate(day.date);
+        Planner.addActivity(Planner.getCurrentEvent(), day.date);
+        Planner.setCurrentActivityPosition(day.activities.length - 1);
+    };
+
+    $scope.editActivity = function(day, pos) {
+        Planner.setCurrentDate(day.date);
+        Planner.setCurrentActivityPosition(pos);
     };
 
     $scope.$watch(function() {

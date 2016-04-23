@@ -11,6 +11,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     };
     var friends = [];
     var currentEvent;
+    var currentDate;
+    var currentPosition;
     var events = [];
     var dbFetched = false;
 
@@ -34,11 +36,23 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         $cookieStore.put('currentEvent', currentEvent);
     };
 
+    this.setCurrentDate = function(_currentDate) {
+        currentDate = _currentDate;
+        $cookieStore.put('currentDate', currentDate);
+    };
+
+    this.setCurrentActivityPosition = function(_currenPosition) {
+        currentPosition =  _currenPosition;
+        $cookieStore.put('currentPosition', currentPosition);
+    }
+
     this.retrieveTempData = function() {
         loginStatus = $cookieStore.get('loginStatus');
         me = $cookieStore.get('me');
         friends = $cookieStore.get('friends');
         currentEvent = $cookieStore.get('currentEvent');
+        currentDate = $cookieStore.get('currentDate');
+        currentPosition = $cookieStore.get('currentPosition');
         console.log('Cookies retrived');
         return dbFetch();
     };
@@ -51,6 +65,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         };
         friends = [];
         currentEvent = undefined;
+        currentPosition = undefined;
         events = [];
         angular.forEach($cookieStore, function(v, k) {
             $cookieStore.remove(k);
@@ -130,6 +145,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 console.log('DB fetched events');
                 events = res.data;
                 dbFetched = true
+                console.log(res);
             });
     };
 
@@ -205,10 +221,22 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
         if (ei !== -1 && di !== -1 && typeof events[ei].days[di].activities[pos] !== 'undefined') {
-            return getActByIdx(eID, di, pos);
+            return events[ei].days[di].activities[pos];
         }
         return null;
     };
+
+    this.getNewActivity = function() {
+        return newActivity;
+    }
+
+    this.getCurrentDate = function() {
+        return currentDate;
+    }
+
+    this.getCurrentActivityPosition = function() {
+        return currentPosition;
+    }
 
     this.getFriends = function() {
         return friends;
@@ -217,6 +245,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     this.getMe = function() {
         return me;
     };
+
+    // Setters
+    // ========================================================================
 
     // Adders
     // ========================================================================
@@ -354,15 +385,16 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     this.editActivity = function(eID, date, name, length, type, description, pos) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
+
         if (ei !== -1 &&
             di !== -1 &&
             events[ei].owner === me.id &&
             events[ei].days[di].activities[pos] !== 'undefined'
         ) {
-            events[ei].days[ei].activities[pos].name = name;
-            events[ei].days[ei].activities[pos].length = length;
-            events[ei].days[ei].activities[pos].type = type;
-            events[ei].days[ei].activities[pos].description = description;
+            events[ei].days[di].activities[pos].name = name;
+            events[ei].days[di].activities[pos].length = length;
+            events[ei].days[di].activities[pos].type = type;
+            events[ei].days[di].activities[pos].description = description;
             putEventToDB(eID, events[ei]);
             return 0;
         }
