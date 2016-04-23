@@ -1,4 +1,4 @@
-magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Facebook, Storage) {
+magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status) {
 
     // Data field
     // ========================================================================
@@ -248,7 +248,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
                 var db = Date.parse(b.date);
                 return da - db;
             })
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -282,7 +286,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
             } else {
                 events[ei].days[di].activities.splice(pos, 0, activity);
             }
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -299,7 +307,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
         ) {
             events[index].name = title;
             events[index].guests = guests;
-            Storage.putEvent(eID, events[index]);
+            Storage.putEvent(eID, events[index])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -329,7 +341,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
                 var db = Date.parse(b.date);
                 return da - db;
             })
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -355,7 +371,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
             events[ei].days[ei].activities[pos].length = length;
             events[ei].days[ei].activities[pos].type = type;
             events[ei].days[ei].activities[pos].description = description;
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -370,7 +390,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
         var ei = findEventIndex(eID);
         if (ei !== -1 && events[ei].owner === me.id) {
             events.splice(ei, 1);
-            Storage.deleteEvent(eID);
+            Storage.deleteEvent(eID)
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -385,7 +409,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
             di !== -1 &&
             events[ei].owner === me.id) {
             events[ei].days.splice(di, 1);
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -403,7 +431,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
             events[ei].owner === me.id &&
             typeof events[ei].days[di].activities[pos] !== 'undefined') {
             events[ei].days[di].activities.splice(pos, 1);
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
@@ -438,7 +470,11 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
             var activity = events[ei].days[di].activities[pos];
             events[ei].days[di].activities.splice(pos, 1);
             events[ei].days[ndi].activities.splice(newpos, 0, activity);
-            Storage.putEvent(eID, events[ei]);
+            Storage.putEvent(eID, events[ei])
+                .catch(function(error) {
+                    console.log(error);
+                    Status.setStatusMsg("Error updating DB");
+                });
             return 0;
         }
         return -1;
