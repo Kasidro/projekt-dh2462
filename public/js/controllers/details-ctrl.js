@@ -26,17 +26,29 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
 
     // date: String on format "YYYY-MM-DD"
     $scope.deleteDay = function(date) {
-        Planner.deleteDay($scope.mEvent._id, date);
+        if (Planner.deleteDay($scope.mEvent._id, date) === 0) {
+            Planner.setHeaderStatus("Removed day");
+        } else {
+            Planner.setHeaderStatus("Error removing day");
+        }
     };
 
     $scope.addDay = function() {
+        var date;
+        var start;
         if ($scope.nDays !== 0) {
-            var date = $scope.mEvent.days[$scope.nDays - 1].date;
-            var start = $scope.mEvent.days[$scope.nDays - 1].start;
-            Planner.addDay($scope.mEvent._id, chgDate(date, 'add'), start);
+            date = chgDate($scope.mEvent.days[$scope.nDays - 1].date, "add");
+            start = $scope.mEvent.days[$scope.nDays - 1].start;
         } else {
             var d = new Date()
-            Planner.addDay($scope.mEvent._id, d.toISOString().substring(0, 10), '08:00');
+            date = d.toISOString().substring(0, 10);
+            start = "08:00";
+        }
+
+        if (Planner.addDay($scope.mEvent._id, date, start) === 0) {
+            Planner.setHeaderStatus("Added new day");
+        } else {
+            Planner.setHeaderStatus("Error adding new day");
         }
     };
 
