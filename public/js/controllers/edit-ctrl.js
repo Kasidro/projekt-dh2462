@@ -41,15 +41,21 @@ magenta.controller('EditCtrl', function($scope, $window, Planner) {
     $scope.saveEvent = function() {
         var guestIds = [];
         for (i in $scope.guests) guestIds.push($scope.guests[i].id);
-        Planner.editEvent(Planner.getCurrentEvent(), $scope.title, guestIds);
-        Planner.setHeaderStatus('Saved event');
-        $window.location.href = '/#/event-details';
+        if (Planner.editEvent(Planner.getCurrentEvent(), $scope.title, guestIds) == 0) {
+            Planner.setStatusMsg('Saved event');
+            $window.location.href = '/#/event-details';
+        } else {
+            Planner.setStatusMsg('Error saving event');
+        }
     };
 
     $scope.removeEvent = function() {
-        Planner.deleteEvent(Planner.getCurrentEvent());
-        Planner.setHeaderStatus('Removed event');
-        $window.location.href = '/#/browse-events';
+        if (Planner.deleteEvent(Planner.getCurrentEvent()) == 0) {
+            Planner.setStatusMsg('Removed event');
+            $window.location.href = '/#/browse-events';
+        } else {
+            Planner.setStatusMsg('Error removing event');
+        }
     };
 
     (function() {

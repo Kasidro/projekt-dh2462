@@ -17,19 +17,19 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
     // Header status
     // ========================================================================
 
-    var headerStatus;
+    var statusMsg;
 
-    this.setHeaderStatus = function(_headerStatus) {
-        headerStatus = _headerStatus;
-        $rootScope.$broadcast('HEADER_STATUS', headerStatus);
+    this.setStatusMsg = function(_statusMsg) {
+        statusMsg = _statusMsg;
+        $rootScope.$broadcast('HEADER_STATUS', statusMsg);
         $timeout(function() {
-            headerStatus = undefined;
-            $rootScope.$broadcast('HEADER_STATUS', headerStatus);
+            statusMsg = undefined;
+            $rootScope.$broadcast('HEADER_STATUS', statusMsg);
         }, 1500);
     };
 
-    this.getHeaderStatus = function() {
-        return headerStatus;
+    this.getStatusMsg = function() {
+        return statusMsg;
     };
 
     // Cookie stuff

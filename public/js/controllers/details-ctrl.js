@@ -27,9 +27,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     // date: String on format "YYYY-MM-DD"
     $scope.deleteDay = function(date) {
         if (Planner.deleteDay($scope.mEvent._id, date) === 0) {
-            Planner.setHeaderStatus("Removed day");
+            Planner.setStatusMsg("Removed day");
         } else {
-            Planner.setHeaderStatus("Error removing day");
+            Planner.setStatusMsg("Error removing day");
         }
     };
 
@@ -46,9 +46,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         }
 
         if (Planner.addDay($scope.mEvent._id, date, start) === 0) {
-            Planner.setHeaderStatus("Added new day");
+            Planner.setStatusMsg("Added new day");
         } else {
-            Planner.setHeaderStatus("Error adding new day");
+            Planner.setStatusMsg("Error adding new day");
         }
     };
 

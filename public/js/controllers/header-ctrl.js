@@ -2,7 +2,7 @@ magenta.controller('HeaderCtrl', function($scope, $window, Planner) {
     
     $scope.me = Planner.getMe();
 
-    $scope.status = Planner.getHeaderStatus();
+    $scope.status = Planner.getStatusMsg();
 
     $scope.$on('HEADER_STATUS', function(event, args) {
     	$scope.status = args;    	
