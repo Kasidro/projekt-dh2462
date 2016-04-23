@@ -14,24 +14,6 @@ magenta.service('Planner', function($q, $cookieStore, $timeout, $rootScope, Face
     var events = [];
     var dbFetched = false;
 
-    // Header status
-    // ========================================================================
-
-    var statusMsg;
-
-    this.setStatusMsg = function(_statusMsg) {
-        statusMsg = _statusMsg;
-        $rootScope.$broadcast('HEADER_STATUS', statusMsg);
-        $timeout(function() {
-            statusMsg = undefined;
-            $rootScope.$broadcast('HEADER_STATUS', statusMsg);
-        }, 1500);
-    };
-
-    this.getStatusMsg = function() {
-        return statusMsg;
-    };
-
     // Cookie stuff
     // ========================================================================
 

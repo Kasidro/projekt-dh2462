@@ -1,4 +1,4 @@
-magenta.controller('DetailsCtrl', function($scope, Planner) {
+magenta.controller('DetailsCtrl', function($scope, Planner, Status) {
 
     var maxDaysPerPage = 3;
     var startTimeIncr = 15;
@@ -27,9 +27,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
     // date: String on format "YYYY-MM-DD"
     $scope.deleteDay = function(date) {
         if (Planner.deleteDay($scope.mEvent._id, date) === 0) {
-            Planner.setStatusMsg("Removed day");
+            Status.setStatusMsg("Removed day");
         } else {
-            Planner.setStatusMsg("Error removing day");
+            Status.setStatusMsg("Error removing day");
         }
     };
 
@@ -46,9 +46,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner) {
         }
 
         if (Planner.addDay($scope.mEvent._id, date, start) === 0) {
-            Planner.setStatusMsg("Added new day");
+            Status.setStatusMsg("Added new day");
         } else {
-            Planner.setStatusMsg("Error adding new day");
+            Status.setStatusMsg("Error adding new day");
         }
     };
 

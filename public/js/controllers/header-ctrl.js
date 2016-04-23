@@ -1,10 +1,10 @@
-magenta.controller('HeaderCtrl', function($scope, $window, Planner) {
+magenta.controller('HeaderCtrl', function($scope, $window, Planner, Status) {
     
     $scope.me = Planner.getMe();
 
-    $scope.status = Planner.getStatusMsg();
+    $scope.status = Status.getStatusMsg();
 
-    $scope.$on('HEADER_STATUS', function(event, args) {
+    $scope.$on('STATUS_MSG', function(event, args) {
     	$scope.status = args;    	
     });
 
