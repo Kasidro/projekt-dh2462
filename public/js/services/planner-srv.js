@@ -410,15 +410,16 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
 
     this.getColors = function() {
         var colors = ['#FF0000',
-                      '#800080',
-                      '#0000FF',
-                      '#008080',
-                      '#FF00FF',
-                      '#808080',
-                      '#008000',
-                      '#800000',
-                      '#000080',
-                      '#00FF00'];
+            '#800080',
+            '#0000FF',
+            '#008080',
+            '#FF00FF',
+            '#808080',
+            '#008000',
+            '#800000',
+            '#000080',
+            '#00FF00'
+        ];
         return colors;
     }
 
@@ -561,7 +562,12 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             di !== -1 &&
             ndi !== -1 &&
             events[ei].owner === me.id &&
-            typeof events[ei].days[di].activities[pos] !== 'undefined') {
+            typeof events[ei].days[di].activities[pos] !== 'undefined'
+        ) {
+            if (date === ndate && events[ei].days[di].activities.length === 1) {
+                return 1;
+            }
+            
             if (newpos > pos && newpos < events[ei].days[di].activities.length - 1) {
                 newpos--;
             }

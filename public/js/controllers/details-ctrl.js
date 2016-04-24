@@ -47,11 +47,11 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
 
         //if we try to move from and to the same list with only one item
         //just return
-        if (activities.length === 1) {
-            if (activities[0]._id === activity._id) {
-                return false;
-            }
-        }
+        //if (activities.length === 1) {
+        //    if (activities[0]._id === activity._id) {
+        //        return false;
+        //    }
+        //}
 
         //if we try move from and to the same with more objects we dont need to check for space.
         for (i = 0; i < activities.length; i++) {
