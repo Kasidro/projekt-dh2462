@@ -322,8 +322,7 @@
 .btn-title-holder {
 	margin: none;
 	height: 9vh;
-	width: 25vw;
-	float: left;
+	background-color: red;
 }
 .btn-title {
 	height: 5vh;
@@ -337,9 +336,8 @@
 }
 #title-holder {
 	margin: none;
-	float: left;
-	width: 50vw;
 	height: 9vh;
+	background-color: blue;
 
 }
 .arrow-holder {
