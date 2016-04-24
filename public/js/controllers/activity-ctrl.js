@@ -9,18 +9,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
  		$scope.date = Planner.getCurrentDate();
    	$scope.eventId = Planner.getCurrentEvent();
     $scope.activityPosition = Planner.getCurrentActivityPosition();
-
-    $scope.timeLeft = function() {
-    	var day = Planner.getDay($scope.eventId, $scope.date);
-    	var activities = day.activities;
- 			var totalTime = 0;
- 			var startTime = day.start;
-
-    	for (i = 0; i < activities.length; i++) {
-    			totalTime += activities[i].length;
-    	}
-    	return intToTime(24*60 - dateToDuration(startTime) - totalTime);
-    };
+    $scope.maxDuration;
 
     $scope.saveActivity = function() {
 
@@ -100,6 +89,18 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
  			d.setMilliseconds(0);
 
  			return d;
+    };
+
+     var timeLeft = function() {
+    	var day = Planner.getDay($scope.eventId, $scope.date);
+    	var activities = day.activities;
+ 			var totalTime = 0;
+ 			var startTime = day.start;
+
+    	for (i = 0; i < activities.length; i++) {
+    			totalTime += activities[i].length;
+    	}
+    	return intToTime(24*60 - dateToDuration(startTime) - totalTime);
     };
 
 
