@@ -171,6 +171,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
     $scope.editActivity = function(day, pos) {
         Planner.setCurrentDate(day.date);
         Planner.setCurrentActivityPosition(pos);
+        $window.location.href = '#/edit-activity';
     };
 
     var getLength = function(day) {
