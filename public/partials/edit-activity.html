@@ -2,20 +2,24 @@
 	<ng-include src="'partials/header.html'"></ng-include>
 </div>
 <div class="title-holder col-md-12">
-	<p class="magenta-title">ADD ACTIVITY</p>
+	<p ng-show={{isMyActivity}} class="magenta-title">EDIT ACTIVITY</p>
+	<p ng-hide={{isMyActivity}} class="magenta-title">ACTIVITY OVERVIEW</p>
 </div>
 <form>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
-		<input type="text" ng-model="title" class="magenta-input col-md-5" placeholder="Title"></input>
+		<input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-5" placeholder="Title"></input>
+		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{title}}</span>
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">DURATION: </span>
-		<input type="time" step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
+		<input type="time" ng-show={{isMyActivity}} step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
+		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{formatedTime}}</span>
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
-		<input type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
+		<input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
+		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{type}}</span>
 		<!--Dropdown for typ feels weird? -->	
 		<!--
 		<div class="col-md-4" id="dropdown_container-act">
@@ -36,7 +40,8 @@
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">DESCRIPTION: </span>
-		<textarea id="description-field" ng-model="description" class="col-md-5" type="text"></textarea>
+		<textarea ng-show={{isMyActivity}} id="description-field" ng-model="description" class="col-md-5" type="text"></textarea>
+		<textarea disabled ng-hide={{isMyActivity}} id="description-field" ng-model="description" class="col-md-5" type="text"></textarea>
 	</div>
 </form>
 <div class="col-md-12">

@@ -10,6 +10,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
    	$scope.eventId = Planner.getCurrentEvent();
     $scope.activityPosition = Planner.getCurrentActivityPosition();
     $scope.maxDuration;
+    $scope.formatedTime;
 
     $scope.saveActivity = function() {
 
@@ -114,5 +115,14 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
         $scope.duration = intToTime(activity.length);
         $scope.type = activity.type;
         $scope.description = activity.description; 
+
+        var hours = $scope.duration.getHours().toString();
+    		var minutes = $scope.duration.getMinutes().toString();
+
+    		if (minutes.length === 1) {
+    			minutes = "0" + minutes;
+    		}
+
+    		$scope.formatedTime = hours + ":" + minutes;
     })();
 });
