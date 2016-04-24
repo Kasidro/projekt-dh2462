@@ -10,7 +10,7 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
             if ($scope.friends[i].id === id)
                 return $scope.friends[i];
         }
-        return Planner.getMe();
+        return null;
     };
 
     var getGuest = function(id) {
@@ -62,8 +62,22 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
         var mEvent = Planner.getEvent(Planner.getCurrentEvent());
         $scope.title = mEvent.name;
         $scope.isMyEvent = (Planner.getMe().id === mEvent.owner);
+        var notFriends = 0;
         for (i in mEvent.guests) {
-            $scope.guests.push(getFriend(mEvent.guests[i]));
+            var guestId = mEvent.guests[i];
+            var friend = getFriend(guestId);
+            if (friend !== null)
+                $scope.guests.push(friend);
+            else if (guestId === Planner.getMe().id)
+                $scope.guests.push(Planner.getMe());
+            else
+                notFriends = notFriends + 1;
+        }
+        if (notFriends > 0) {
+            $scope.guests.push({
+                name: '+ ' + notFriends + ' other guests',
+                imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Question_opening-closing.svg'
+            });
         }
     })();
 });
