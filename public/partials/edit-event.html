@@ -10,9 +10,10 @@
 <form>
     <div class="col-md-12">
         <span class="magenta-label col-md-4">TITLE OF EVENT: </span>
-        <input id="title-input" ng-model="title" type="text" class="magenta-input col-md-8" placeholder="Title"></input>
+        <input ng-show={{isMyEvent}} id="title-input" ng-model="title" type="text" class="magenta-input col-md-8" placeholder="Title"></input>
+        <span ng-hide={{isMyEvent}} class="magenta-label col-md-8" style="text-align:left;">{{title}}</span>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" ng-show={{isMyEvent}}>
         <span class="magenta-label col-md-4">ADD PARTICIPANT: </span>
         <div class="col-md-5" id="dropdown_container-act">  
         <nav>
