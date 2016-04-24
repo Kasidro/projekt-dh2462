@@ -1,28 +1,3 @@
-#header_start { /*Formating for header of start page */
-	padding-top: 15vh;
-    font-family: 'Audiowide', cursive;
-    text-align: center;
-    font-size: 100pt;
-    color:white;
-    text-shadow: 0 0 15px #FF00FF;
-}
-
-#fb_login_btn {
-	background-color: #3b5998;
-	color: white;
-	font-family: Tahoma, sans-serif;
-	border: 0;
-	font-size: 10pt;
-	margin-top: 10vh;
-	transition: 0.5s;
-	transition-timing-function: ease-out; 	
-}
-
-#fb_login_btn:hover {
-	font-size: 20pt;
-}
-
-/*----------------End of styling for login page-----------------*/
 /*----------------Styling of site wide elements-----------------*/
 
 #content { /*Holds the rest of the application*/
@@ -153,7 +128,72 @@
 	text-shadow: 0 0 30px white;
 }
 /*----------------END OF Styling of site wide elements-----------------*/
+/*-----------------Formating for login page *----------------*/
+#header_start { 
+	padding-top: 15vh;
+    font-family: 'Audiowide', cursive;
+    text-align: center;
+    font-size: 100pt;
+    color:white;
+    text-shadow: 0 0 15px #FF00FF;
+}
 
+#fb_login_btn {
+	background-color: #3b5998;
+	color: white;
+	font-family: Tahoma, sans-serif;
+	border: 0;
+	font-size: 10pt;
+	margin-top: 10vh;
+	transition: 0.5s;
+	transition-timing-function: ease-out; 	
+}
+
+#fb_login_btn:hover {
+	font-size: 20pt;
+}
+
+/*----------------End of styling for login page-----------------*/
+/*----------------Styling of start-menu.html-----------------*/
+#start-menu-header {
+	background-color: #F4EBD9;
+}
+#start-heading {
+	text-align: center;
+	font-size: 75pt;
+	font-family: 'Audiowide', cursive;
+	text-shadow: 0px 0px 10px #FFAAFF;
+	transition: 0.5s
+}
+
+#start-heading:hover {
+	text-shadow: 0 0 30px #FF00FF;
+}
+
+#start-title {
+	text-align: center;
+	font-size: 40pt;
+	font-family: 'Audiowide', cursive;
+}
+
+.start-button {
+	text-align: center;
+	font-size: 40pt;
+	font-family: 'Audiowide', cursive;
+	color:black;
+	transition: all 0.5s ease;
+	background-color: white;
+	margin-top: 5vh;
+	border-color: #994D83;
+	border-width: 3px;
+}
+
+.start-button:hover {
+	background-color: #992083; 
+	color: white;
+	text-shadow: 0 0 30px white;
+}
+/*----------------Styling of start-menu.html-----------------*/
 /*-----------------STYLING FOR BROWSE-EVENTs.HTML-----------------------*/
 #my-events-container {
 	height: 79vh;
@@ -163,36 +203,6 @@
 	border-radius: 10px;
 	overflow-y:auto;
 	overflow-x:hidden;
-}
-.saved-event {
-	margin-left: 0.5%;
-	margin-right: 0.5%;
-	width: 99%;
-	height: 10vh;
-}
-.column-1 {
-	float: left;
-	width: 50%;
-	margin: 0;
-}
-.column-2 {
-	float: left;
-	width: 25%;
-	margin: 0;
-}
-.column-3 {
-	float: left;
-	width: 25%;
-	margin: 0;
-}
-.row-1 {
-	background-color: #DCB4DC;
-	font-size: 16pt;
-	height: 3vh;
-}
-.row-2 {
-	font-size: 20pt;
-	height: 7vh;
 }
 #date-browser {
 	padding-top: 1.3vh;
@@ -229,6 +239,37 @@
 	background-color: #3b5998;
 	color: white; 
 }
+.saved-event {
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+	width: 99%;
+	height: 10vh;
+}
+.column-1 {
+	float: left;
+	width: 50%;
+	margin: 0;
+}
+.column-2 {
+	float: left;
+	width: 25%;
+	margin: 0;
+}
+.column-3 {
+	float: left;
+	width: 25%;
+	margin: 0;
+}
+.row-1 {
+	background-color: #DCB4DC;
+	font-size: 16pt;
+	height: 3vh;
+}
+.row-2 {
+	font-size: 20pt;
+	height: 7vh;
+}
+/*-----------------END STYLING FOR BROWSE-EVENTs.HTML-----------------------*/
 /*---------------------edit-event.html styling-------------------------*/
 #title-input {
 	width: 50vw;
@@ -268,6 +309,7 @@
 	font-family: 'Audiowide', cursive;
 	font-size: 30pt;
 }
+/*---------------------end of edit-event.html styling-------------------------*/
 /*---------------------Styling for edit-activity.html---------------------------*/
 #description-field {
 	text-align: left;
@@ -312,17 +354,22 @@
 	box-shadow: 0 0 30px #FF00FF;
 }
 /*---------------Styling for event-details.html-----------------------*/
-
 #dragndrop {
     padding: 0;
     list-style-type: none;
  	 	min-height: 38.5vh;
 }
-
+#arrow {
+	width: 3vw;
+	padding-top: 38vh;
+}
+#title-holder {
+	margin: none;
+	height: 9vh;
+}
 .btn-title-holder {
 	margin: none;
 	height: 9vh;
-	background-color: red;
 }
 .btn-title {
 	height: 5vh;
@@ -334,22 +381,12 @@
 	color: black;
 	background-color: white;
 }
-#title-holder {
-	margin: none;
-	height: 9vh;
-	background-color: blue;
 
-}
 .arrow-holder {
 
 	height: 81vh;
 	width: 5vw;
 	float: left;
-}
-
-#arrow {
-	width: 3vw;
-	padding-top: 38vh;
 }
 .day-container {
 
@@ -407,55 +444,7 @@
 	margin-top: 1.5vh;
 }
 /*----------------END OF Styling of event-details-----------------*/
-
-/*----------------Styling of start-menu.html-----------------*/
-#start-menu-header {
-	background-color: #F4EBD9;
-}
-#start-heading {
-	text-align: center;
-	font-size: 75pt;
-	font-family: 'Audiowide', cursive;
-	text-shadow: 0px 0px 10px #FFAAFF;
-	transition: 0.5s
-}
-
-#start-heading:hover {
-	text-shadow: 0 0 30px #FF00FF;
-}
-
-#start-title {
-	text-align: center;
-	font-size: 40pt;
-	font-family: 'Audiowide', cursive;
-}
-
-.start-button {
-	text-align: center;
-	font-size: 40pt;
-	font-family: 'Audiowide', cursive;
-	color:black;
-	transition: all 0.5s ease;
-	background-color: white;
-	margin-top: 5vh;
-	border-color: #994D83;
-	border-width: 3px;
-}
-
-.start-button:hover {
-	background-color: #992083; 
-	color: white;
-	text-shadow: 0 0 30px white;
-
-}
-/*-------------Styiling of header (not used on start-menu.html and home.html)-----------*/
-.header-container {
-	height: 7vh;
-}
-.header{
-	height: 7vh;
-	background-color: #F4EBD9;
-}
+/*-------------Styiling of header (not used on login and start menu)-----------*/
 #dropdown_container {
 	height: 7vh;
 	font-family: 'Audiowide', cursive;
@@ -495,7 +484,14 @@
 	color: white;
 	background-color: #cc0000;
 }
-
+.header-container {
+	height: 7vh;
+}
+.header{
+	height: 7vh;
+	background-color: #F4EBD9;
+}
+/*-------------end of Styiling for header (not used on login and start menu)-----------*/
 /*---------------Dropdown styling---------------*/
 
 nav ul {
