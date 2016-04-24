@@ -47,7 +47,7 @@
                     <div class="activity-field col-md-12">
                         <a href="#/edit-activity"><button ng-click="createActivity(day)" class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
                         
-                        <ul ng-show={{isMyActivity}} id="dragndrop" dnd-list="day.activities"
+                        <ul ng-show={{isMyEvent}} id="dragndrop" dnd-list="day.activities"
                             dnd-drop="moveActivityCallback(event, index, item, external, type, 'itemType', day)"
                         >
 
@@ -66,7 +66,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <a ng-hide={{isMyActivity}} ng-repeat="activity in day.activities" href="#/edit-activity">
+                        <a ng-hide={{isMyEvent}} ng-repeat="activity in day.activities" href="#/edit-activity">
                             <button ng-click="editActivity(day, $index)" href="#/edit-activity" class="btn activity magenta-text-1">{{activity.name}}</button>
                         </a>
                     </div>
