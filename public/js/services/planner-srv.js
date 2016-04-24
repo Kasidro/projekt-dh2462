@@ -327,7 +327,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     // description: String
     // pos: int position of activity in activities
     // returns: 0 on success, -1 otherwise
-    this.addActivity = function(eID, date, name, length, type, description, pos, color) {
+    this.addActivity = function(eID, date, name, length, type, description, pos) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
         if (ei !== -1 &&
@@ -342,6 +342,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             if (calculateTimeLeft(ei, di, pos, length) !== 0) {
                 return 1;
             }
+
+            var color = '#554CA5';
+
             var activity = {
                 'name': name,
                 'length': length,
@@ -349,6 +352,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 'description': description,
                 'activityColor': color
             };
+
+
 
             if (pos == null) {
                 events[ei].days[di].activities.push(activity);

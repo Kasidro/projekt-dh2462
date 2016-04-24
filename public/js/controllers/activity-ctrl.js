@@ -24,7 +24,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
         var res = 2;
         if ($scope.duration !== null && typeof $scope.duration !== 'undefined') {
             res = Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
-                $scope.type, $scope.description, $scope.activityPosition);
+                $scope.type, $scope.description, $scope.activityPosition, $scope.color);
         }
 
         if (res === 0) {
