@@ -326,8 +326,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     // type: int
     // description: String
     // pos: int position of activity in activities
-    // returns: 0 on success, 1 if day is full, -1 otherwise
-    this.addActivity = function(eID, date, name, length, type, description, pos) {
+    // returns: 0 on success, -1 otherwise
+    this.addActivity = function(eID, date, name, length, type, description, pos, color) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
         if (ei !== -1 &&
@@ -346,7 +346,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 'name': name,
                 'length': length,
                 'type': type,
-                'description': description
+                'description': description,
+                'activityColor': color
             };
 
             if (pos == null) {
@@ -402,6 +403,20 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         return -1;
     };
 
+    this.getColors = function() {
+        var colors = ['#FF0000',
+                      '#800080',
+                      '#0000FF',
+                      '#008080',
+                      '#FF00FF',
+                      '#808080',
+                      '#008000',
+                      '#800000',
+                      '#000080',
+                      '#00FF00'];
+        return colors;
+    }
+
     // eID: String event ID
     // date: String date of day as "YYYY-MM-DD"
     // newdate: String new date of day as "YYYY-MM-DD"
@@ -444,7 +459,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     // description String
     // pos: int position of activity in activities
     // returns: 0 on success, -1 otherwise
-    this.editActivity = function(eID, date, name, length, type, description, pos) {
+    this.editActivity = function(eID, date, name, length, type, description, pos, color) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
 
@@ -460,6 +475,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             events[ei].days[di].activities[pos].length = length;
             events[ei].days[di].activities[pos].type = type;
             events[ei].days[di].activities[pos].description = description;
+            events[ei].days[di].activities[pos].color = color;
             putEventToDB(eID, events[ei]);
             return 0;
         }

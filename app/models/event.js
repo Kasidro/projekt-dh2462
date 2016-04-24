@@ -5,7 +5,8 @@ var ActivitySchema = new Schema({
 	name: String,
 	length: Number,
 	type: String,
-	description: String
+	description: String,
+	activitycolor: String
 });
 
 var DaySchema = new Schema({

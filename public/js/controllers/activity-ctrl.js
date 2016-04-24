@@ -12,10 +12,16 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     $scope.maxDuration;
     $scope.formatedTime;
     $scope.relativeStartTime;
+    $scope.color = "#000080";
+    $scope.colors = Planner.getColors();
+
+
+    $scope.setColor = function(color) {
+        $scope.color = color;
+    }
 
     $scope.saveActivity = function() {
         var res = 2;
-        console.log($scope.duration);
         if ($scope.duration !== null && typeof $scope.duration !== 'undefined') {
             res = Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
                 $scope.type, $scope.description, $scope.activityPosition);
