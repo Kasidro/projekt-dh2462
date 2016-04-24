@@ -22,22 +22,17 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 
     $scope.saveActivity = function() {
 
-    	var day = Planner.getDay($scope.eventId, $scope.date);
-    	var timeLeft = calculateTimeLeft(day);
+        var res = Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
+            $scope.type, $scope.description, $scope.activityPosition, $scope.color);
 
-    	if (timeLeft === 0) {
-    		if (Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
-	    	$scope.type, $scope.description, $scope.activityPosition, $scope.color) === 0) {
-	    		Status.setStatusMsg("Saved activity");
-	    		$window.location.href = '/#/event-details';
-	    	}
-	    	else {
-	    		Status.setStatusMsg("Error saving activity");
-	    	}
-	    }
-	    else {
-	    	Status.setStatusMsg("Not enough remaining time");
-	    }
+        if (res === 0) {
+            Status.setStatusMsg("Saved activity");
+            $window.location.href = '/#/event-details';
+        } else if (res === 1) {
+            Status.setStatusMsg("Not enough remaining time");
+        } else {
+            Status.setStatusMsg("Error saving activity");
+        }
     };
 
     $scope.removeActivity = function() {
