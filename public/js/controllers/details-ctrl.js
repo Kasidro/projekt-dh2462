@@ -125,12 +125,37 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
         Planner.setCurrentActivityPosition(pos);
     };
 
+    var getLength = function(day) {
+        var length = 0;
+        for (i in day.activities) {
+            var a = day.activities[i];
+            length += a.length;
+        }
+        return length;
+    };
+
+    var minutesToHHMM = function(minutes) {
+        hhString = Math.floor(minutes / 60);
+        if (hhString < 10)
+            hhString = '0' + hhString;
+        mmString = minutes % 60;
+        if (mmString < 10)
+            mmString = '0' + mmString;
+        return hhString + ':' +  mmString;
+    };
+
     $scope.$watch(function() {
         if (!Planner.isDbFetched()) return;
         $scope.cPage = [];
         $scope.nDays = $scope.mEvent.days.length;
         for (var i = cLastIdx - 2; i <= cLastIdx && i < $scope.nDays; i++) {
-            $scope.cPage.push($scope.mEvent.days[i]);
+            var day = $scope.mEvent.days[i];
+            var start = day.start.split(':');
+            var lengthMinutes = getLength(day);
+            var endMinutes = parseInt(start[0]) * 60 + parseInt(start[1]) + lengthMinutes;
+            day.length = minutesToHHMM(lengthMinutes);
+            day.end = minutesToHHMM(endMinutes);
+            $scope.cPage.push(day);
         }
     });
 
