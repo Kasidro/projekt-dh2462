@@ -60,6 +60,7 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
     (function() {
         if (!Planner.isDbFetched()) return;
         var mEvent = Planner.getEvent(Planner.getCurrentEvent());
+        $scope.owner = getFriend(mEvent.owner);
         $scope.title = mEvent.name;
         $scope.isMyEvent = (Planner.getMe().id === mEvent.owner);
         var notFriends = 0;

@@ -31,6 +31,10 @@
 			<option ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</option>
 		</select> -->
     </div>
+    <div class="col-md-12" ng-hide={{isMyEvent}}>
+        <span class="magenta-label col-md-4">HOST: </span>
+        <span class="magenta-label col-md-8" style="text-align:left;">{{owner.name}}</span>
+    </div>
     <div class="col-md-12">
         <span class="magenta-label col-md-4">INVITED: </span>
         <div id="invited-field" class="col-md-5">
