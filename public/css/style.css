@@ -312,6 +312,13 @@
 	box-shadow: 0 0 30px #FF00FF;
 }
 /*---------------Styling for event-details.html-----------------------*/
+
+#dragndrop {
+    padding: 0;
+    list-style-type: none;
+ 	 	min-height: 38.5vh;
+}
+
 .btn-title-holder {
 	margin: none;
 	height: 9vh;

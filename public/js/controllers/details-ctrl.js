@@ -24,7 +24,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
         }
         var d = new Date(msec);
         return d.toISOString().substring(0, 10);
-    }
+    };
 
     // date: String on format "YYYY-MM-DD"
     $scope.deleteDay = function(date) {
@@ -33,6 +33,54 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
         } else {
             Status.setStatusMsg("Error removing day");
         }
+    };
+
+    $scope.logEvent = function(message, event) {
+        console.log(message);
+        console.log(event);
+    };
+
+    $scope.moveActivityCallback = function(event, index, activity, external, type, itemType, day) {
+        
+        var totalTime = dateToDuration(day.start);
+        var activities = day.activities;
+
+        //if we try to move from and to the same list with only one item
+        //just return
+        if (activities.length === 1) {
+            if (activities[0]._id === activity._id) {
+                return false;
+            }
+        }
+
+        //if we try move from and to the same with more objects we dont need to check for space.
+        for (i = 0; i < activities.length; i++) {
+            if (activities[i]._id === activity._id) {
+                return activity;
+            }
+        }
+
+        //Else we need to make sure there is space in the destination day.
+        for (i = 0; i < activities.length; i++) {
+            totalTime += activities[i].length;
+        }
+
+        totalTime += activity.length;
+
+        if (totalTime > 24*60) {
+            Status.setStatusMsg("Not enough remaining time");
+            return false;
+        }
+        return activity;
+    };
+
+
+    $scope.reArrangeActivities = function() {
+        if(Planner.editActivities(Planner.getCurrentEvent()) === 0) {
+            Status.setStatusMsg("Moved activity");
+        }
+        else
+            Status.setStatusMsg("Error moving event");
     };
 
     $scope.addDay = function() {
@@ -142,6 +190,38 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
         if (mmString < 10)
             mmString = '0' + mmString;
         return hhString + ':' +  mmString;
+    };
+
+    var dateToDuration = function(time) {
+
+        if (time.length == 5) {
+            var h = parseInt(time.substring(0, 2));
+            var m = parseInt(time.substring(3, 5));
+            time = new Date(1999, 11, 31, h, m);
+        }
+
+        var parsedTime = time;
+
+        var d = new Date(time);
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+
+        parsedTime = hours * 60 + minutes;
+
+        return parsedTime;
+    };
+
+    var intToTime = function(time) {
+        var hours = Math.floor(time / 60);
+        var minutes = time - hours * 60;
+
+            var d = new Date();
+            d.setMinutes(minutes);
+            d.setHours(hours);
+            d.setSeconds(0);
+            d.setMilliseconds(0);
+
+            return d;
     };
 
     $scope.$watch(function() {

@@ -1,12 +1,12 @@
 magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 
-		$scope.mEvent;
+	$scope.mEvent;
     $scope.title = "";
     $scope.duration;
     $scope.type = "";
     $scope.description = "";
     $scope.isMyActivity;
- 		$scope.date = Planner.getCurrentDate();
+ 	$scope.date = Planner.getCurrentDate();
    	$scope.eventId = Planner.getCurrentEvent();
     $scope.activityPosition = Planner.getCurrentActivityPosition();
     $scope.maxDuration;
@@ -150,8 +150,8 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
         $scope.type = activity.type;
         $scope.description = activity.description; 
 
-    		$scope.formatedTime = dateToHoursAndMinutes($scope.duration);
+    	$scope.formatedTime = dateToHoursAndMinutes($scope.duration);
 
-    		$scope.relativeStartTime = dateToHoursAndMinutes(calculateRelativeStartingTime());
+    	$scope.relativeStartTime = dateToHoursAndMinutes(calculateRelativeStartingTime());
     })();
 });
