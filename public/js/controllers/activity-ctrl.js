@@ -1,13 +1,13 @@
 magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 
-	$scope.mEvent;
+    $scope.mEvent;
     $scope.title = "";
     $scope.duration;
     $scope.type = "";
     $scope.description = "";
     $scope.isMyActivity;
- 	$scope.date = Planner.getCurrentDate();
-   	$scope.eventId = Planner.getCurrentEvent();
+    $scope.date = Planner.getCurrentDate();
+    $scope.eventId = Planner.getCurrentEvent();
     $scope.activityPosition = Planner.getCurrentActivityPosition();
     $scope.maxDuration;
     $scope.formatedTime;
@@ -21,15 +21,19 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     }
 
     $scope.saveActivity = function() {
-
-        var res = Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
-            $scope.type, $scope.description, $scope.activityPosition, $scope.color);
+        var res = 2;
+        if ($scope.duration !== null && typeof $scope.duration !== 'undefined') {
+            res = Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
+                $scope.type, $scope.description, $scope.activityPosition);
+        }
 
         if (res === 0) {
             Status.setStatusMsg("Saved activity");
             $window.location.href = '/#/event-details';
         } else if (res === 1) {
             Status.setStatusMsg("Not enough remaining time");
+        } else if (res === 2) {
+            Status.setStatusMsg('Please choose duration');
         } else {
             Status.setStatusMsg("Error saving activity");
         }
