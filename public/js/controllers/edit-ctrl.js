@@ -73,9 +73,11 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
             else
                 notFriends = notFriends + 1;
         }
-        $scope.guests.push({
-            name: '+ ' + notFriends + ' other guests',
-            imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Question_opening-closing.svg'
-        });
+        if (notFriends > 0) {
+            $scope.guests.push({
+                name: '+ ' + notFriends + ' other guests',
+                imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Question_opening-closing.svg'
+            });
+        }
     })();
 });
