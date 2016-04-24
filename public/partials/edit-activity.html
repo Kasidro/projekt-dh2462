@@ -17,6 +17,10 @@
 		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{formatedTime}}</span>
 	</div>
 	<div class="col-md-12">
+		<span class="magenta-label col-md-4">START TIME: </span>
+		<span class="magenta-label col-md-8" style="text-align:left;">{{relativeStartTime}}</span>
+	</div>
+	<div class="col-md-12">
 		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
 		<input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
 		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{type}}</span>

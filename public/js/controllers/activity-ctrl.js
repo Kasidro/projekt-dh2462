@@ -11,6 +11,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     $scope.activityPosition = Planner.getCurrentActivityPosition();
     $scope.maxDuration;
     $scope.formatedTime;
+    $scope.relativeStartTime;
 
     $scope.saveActivity = function() {
 
@@ -42,6 +43,9 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     		Status.setStatusMsg("Error removing activity");
     	}
     };
+
+
+    //HELPERS
 
     var calculateTimeLeft = function(day) {
     	var activities = day.activities;
@@ -91,7 +95,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 
  			return d;
     };
-
+    /**
      var timeLeft = function() {
     	var day = Planner.getDay($scope.eventId, $scope.date);
     	var activities = day.activities;
@@ -104,7 +108,37 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     	return intToTime(24*60 - dateToDuration(startTime) - totalTime);
     };
 
+    */
 
+    var calculateRelativeStartingTime = function() {
+    	var day = Planner.getDay($scope.eventId, $scope.date);
+
+    	var relativeStartTime = dateToDuration(day.start);
+
+    	for (i = 0; i < $scope.activityPosition; i++) {
+    		relativeStartTime += day.activities[i].length;
+    	}
+
+    	return intToTime(relativeStartTime);
+
+    };
+
+    var dateToHoursAndMinutes = function(date) {
+    	 	var hours = date.getHours().toString();
+    		var minutes = date.getMinutes().toString();
+
+    		if (minutes.length === 1) {
+    			minutes = "0" + minutes;
+    		}
+    		if (hours.length === 1) {
+    			hours = "0" + hours;
+    		}
+
+    		return hours + ":" + minutes;
+    };
+
+
+    //INIT
     (function() {
     		if (!Planner.isDbFetched()) return;
     	
@@ -116,13 +150,8 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
         $scope.type = activity.type;
         $scope.description = activity.description; 
 
-        var hours = $scope.duration.getHours().toString();
-    		var minutes = $scope.duration.getMinutes().toString();
+    		$scope.formatedTime = dateToHoursAndMinutes($scope.duration);
 
-    		if (minutes.length === 1) {
-    			minutes = "0" + minutes;
-    		}
-
-    		$scope.formatedTime = hours + ":" + minutes;
+    		$scope.relativeStartTime = dateToHoursAndMinutes(calculateRelativeStartingTime());
     })();
 });
