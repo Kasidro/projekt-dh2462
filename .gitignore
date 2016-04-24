@@ -6,4 +6,3 @@ tmp
 .DS_Store
 bower_components/
 *.log
-/config/database.js
