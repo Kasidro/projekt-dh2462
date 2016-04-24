@@ -333,7 +333,11 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         if (ei !== -1 &&
             di !== -1 &&
             events[ei].owner === me.id &&
-            events[ei].days[di].activities[pos] !== 'undefined'
+            events[ei].days[di].activities[pos] !== 'undefined' &&
+            typeof name !== 'undefined' &&
+            typeof length !== 'undefined' &&
+            typeof type !== 'undefined' &&
+            typeof description !== 'undefined'
         ) {
             if (calculateTimeLeft(ei, di, pos, length) !== 0) {
                 return 1;
@@ -346,7 +350,6 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             };
 
             if (pos == null) {
-                activity.length = 0;
                 events[ei].days[di].activities.push(activity);
             } else {
                 events[ei].days[di].activities.splice(pos, 0, activity);

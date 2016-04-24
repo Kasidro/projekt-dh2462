@@ -167,7 +167,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
     $scope.createActivity = function(day) {
         console.log(day);
         Planner.setCurrentDate(day.date);
-        Planner.addActivity(Planner.getCurrentEvent(), day.date);
+        Planner.addActivity(Planner.getCurrentEvent(), day.date, "",0,"","");
         Planner.setCurrentActivityPosition(day.activities.length - 1);
     };
 
