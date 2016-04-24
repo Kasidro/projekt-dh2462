@@ -42,7 +42,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     };
 
     this.setCurrentActivityPosition = function(_currenPosition) {
-        currentPosition =  _currenPosition;
+        currentPosition = _currenPosition;
         $cookieStore.put('currentPosition', currentPosition);
     }
 
@@ -155,7 +155,33 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 console.log(error);
                 Status.setStatusMsg("Error updating DB");
             })
-    }
+    };
+
+    var calculateTimeLeft = function(ei, di, pos, length) {
+        var activities = events[ei].days[di].activities;
+        var startTime = events[ei].days[di].start;
+
+        for (i = 0; i < activities.length; i++) {
+            if (i !== pos) {
+                length += activities[i].length;
+            }
+        }
+
+        if (length > (24 * 60 - parseTimeString(startTime))) {
+            return -1;
+        }
+        return 0;
+    };
+
+    var parseTimeString = function(start) {
+        var h = parseInt(start.substring(0, 2));
+        var m = parseInt(start.substring(3, 5));
+        if (!isNaN(h) && !isNaN(m)) {
+            var d = new Date(1999, 11, 31, h, m);
+            return d.getHours() * 60 + d.getMinutes();
+        }
+        return 10 * 60;
+    };
 
     // Login/out
     // ========================================================================
@@ -309,6 +335,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             events[ei].owner === me.id &&
             events[ei].days[di].activities[pos] !== 'undefined'
         ) {
+            if (calculateTimeLeft(ei, di, pos, length) !== 0) {
+                return 1;
+            }
             var activity = {
                 'name': name,
                 'length': length,
@@ -402,6 +431,10 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             ndi === -1 &&
             events[ei].owner === me.id
         ) {
+            var timeDiff = parseTimeString(start) - parseTimeString(events[ei].days[di].start);
+            if (calculateTimeLeft(ei, di, -1, timeDiff) !== 0) {
+                return 1;
+            }
             events[ei].days[di].date = newdate;
             events[ei].days[di].start = start;
             events[ei].days.sort(function(a, b) {
@@ -432,6 +465,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             events[ei].owner === me.id &&
             events[ei].days[di].activities[pos] !== 'undefined'
         ) {
+            if (calculateTimeLeft(ei, di, pos, length) !== 0) {
+                return 1;
+            }
             events[ei].days[di].activities[pos].name = name;
             events[ei].days[di].activities[pos].length = length;
             events[ei].days[di].activities[pos].type = type;
