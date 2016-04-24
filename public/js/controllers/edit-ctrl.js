@@ -3,7 +3,6 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
     $scope.title;
     $scope.friends = Planner.getFriends();
     $scope.guests = [];
-    $scope.selected;
     $scope.isMyEvent;
 
     var getFriend = function(id) {
@@ -22,9 +21,9 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
         return null;
     };
 
-    $scope.add = function() {
-        if (getGuest($scope.selected) === null)
-            $scope.guests.push(getFriend($scope.selected));
+    $scope.add = function(selected) {
+        if (getGuest(selected) === null)
+            $scope.guests.push(getFriend(selected));
     };
 
     $scope.remove = function(unselected) {

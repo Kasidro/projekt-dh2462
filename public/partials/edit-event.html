@@ -19,8 +19,8 @@
             <ul class="cf">
                 <li >
                     <p class="dropdown" href="#">PARTICIPANT</p>
-                    <ul ng-model="selected">
-                        <li><a ng-click="add()" ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</a></li>
+                    <ul>
+                        <li><a ng-click="add(f.id);" ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</a></li>
                     </ul>
                     </li>
                 </ul>
