@@ -83,7 +83,9 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
         if (!isNaN(h) && !isNaN(m)) {
             var d = new Date(1999, 11, 31, h + 1, m + ti);
             console.log("Party like it's " + d.toString().substring(0, 15) + "!");
-            Planner.editDay($scope.mEvent._id, date, date, d.toISOString().substring(11, 16));
+            if (Planner.editDay($scope.mEvent._id, date, date, d.toISOString().substring(11, 16)) === 1) {
+                Status.setStatusMsg("End of day");
+            }
         }
     };
 
@@ -115,6 +117,7 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
     };
 
     $scope.createActivity = function(day) {
+        console.log(day);
         Planner.setCurrentDate(day.date);
         Planner.addActivity(Planner.getCurrentEvent(), day.date);
         Planner.setCurrentActivityPosition(day.activities.length - 1);
