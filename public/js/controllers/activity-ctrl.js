@@ -1,4 +1,4 @@
-magenta.controller('ActivityCtrl', function($scope, Planner, Status) {
+magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 
 		$scope.mEvent;
     $scope.title = "";
@@ -10,14 +10,37 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status) {
    	$scope.eventId = Planner.getCurrentEvent();
     $scope.activityPosition = Planner.getCurrentActivityPosition();
 
+    $scope.timeLeft = function() {
+    	var day = Planner.getDay($scope.eventId, $scope.date);
+    	var activities = day.activities;
+ 			var totalTime = 0;
+ 			var startTime = day.start;
+
+    	for (i = 0; i < activities.length; i++) {
+    			totalTime += activities[i].length;
+    	}
+    	return intToTime(24*60 - dateToDuration(startTime) - totalTime);
+    };
+
     $scope.saveActivity = function() {
-    	if (Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
-    	$scope.type, $scope.description, $scope.activityPosition) === 0) {
-    		Status.setStatusMsg("Saved activity");
-    	}
-    	else {
-    		Status.setStatusMsg("Error saving activity");
-    	}
+
+    	var day = Planner.getDay($scope.eventId, $scope.date);
+    	var timeLeft = calculateTimeLeft(day);
+
+    	if (timeLeft === 0) {
+    		if (Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
+	    	$scope.type, $scope.description, $scope.activityPosition) === 0) {
+	    		Status.setStatusMsg("Saved activity");
+	    		$window.location.href = '/#/event-details';
+	    	}
+	    	else {
+	    		Status.setStatusMsg("Error saving activity");
+	    	}
+	    }
+	    else {
+	    	Status.setStatusMsg("Not enough remaining time");
+	    }
+
 
     };
 
@@ -30,7 +53,30 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status) {
     	}
     };
 
+    var calculateTimeLeft = function(day) {
+    	var activities = day.activities;
+ 			var totalTime = 0;
+ 			var startTime = day.start;
+
+    	for (i = 0; i < activities.length; i++) {
+    		if (i != $scope.activityPosition)
+    			totalTime += activities[i].length;
+    	}
+
+    	if ((totalTime + dateToDuration($scope.duration)) > (24*60 - dateToDuration(startTime))) {
+    		return -1;
+    	}
+
+    	return 0;
+    };
+
     var dateToDuration = function(time) {
+
+    	if (time.length == 5) {
+    		var h = parseInt(time.substring(0, 2));
+        var m = parseInt(time.substring(3, 5));
+    		time = new Date(1999, 11, 31, h, m);
+    	}
 
     	var parsedTime = time;
 
