@@ -64,7 +64,7 @@
                             </div>
                         </ul>
                         <a ng-hide={{isMyEvent}} ng-repeat="activity in day.activities" href="#/edit-activity">
-                            <button ng-click="editActivity(day, $index)" href="#/edit-activity" class="btn activity magenta-text-1">{{activity.name}}</button>
+                            <button style="background-color: {{activity.activityColor}}" ng-click="editActivity(day, $index)" href="#/edit-activity" class="btn activity magenta-text-1">{{activity.name}}</button>
                         </a>
                     </div>
                 </div>
