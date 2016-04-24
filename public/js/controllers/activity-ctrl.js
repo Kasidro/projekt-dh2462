@@ -117,6 +117,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
         $scope.duration = intToTime(activity.length);
         $scope.type = activity.type;
         $scope.description = activity.description;
+        $scope.color = activity.activityColor;
 
         $scope.formatedTime = dateToHoursAndMinutes($scope.duration);
 

@@ -472,7 +472,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             events[ei].days[di].activities[pos].length = length;
             events[ei].days[di].activities[pos].type = type;
             events[ei].days[di].activities[pos].description = description;
-            events[ei].days[di].activities[pos].color = color;
+            events[ei].days[di].activities[pos].activityColor = color;
             putEventToDB(eID, events[ei]);
             return 0;
         }
