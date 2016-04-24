@@ -21,7 +21,6 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     }
 
     $scope.saveActivity = function() {
-<<<<<<< HEAD
 
     	var day = Planner.getDay($scope.eventId, $scope.date);
     	var timeLeft = calculateTimeLeft(day);
@@ -39,21 +38,6 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 	    else {
 	    	Status.setStatusMsg("Not enough remaining time");
 	    }
-
-
-=======
-        var res = Planner.editActivity($scope.eventId, $scope.date, $scope.title, dateToDuration($scope.duration),
-            $scope.type, $scope.description, $scope.activityPosition);
-
-        if (res === 0) {
-            Status.setStatusMsg("Saved activity");
-            $window.location.href = '/#/event-details';
-        } else if (res === 1) {
-            Status.setStatusMsg("Not enough remaining time");
-        } else {
-            Status.setStatusMsg("Error saving activity");
-        }
->>>>>>> 5cde627658138b2cf0abea152c3d2a1ff5cafa80
     };
 
     $scope.removeActivity = function() {
