@@ -18,12 +18,16 @@ magenta.controller('BrowseCtrl', function($scope, $window, Planner) {
 				name = name + "..";
 			}
 			return name;
-		}
+		};
 
 		$scope.getFormatedDate = function(days) {
 			if (days.length === 0)
 				return "No date";
 
 			return days[0].date;
-		}
+		};
+
+		$scope.isMyEvent = function(eventId) {
+			return (Planner.getMe().id === Planner.getEvent(eventId).owner);
+		};
 });
