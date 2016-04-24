@@ -317,6 +317,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
             };
 
             if (pos == null) {
+                activity.length = 0;
                 events[ei].days[di].activities.push(activity);
             } else {
                 events[ei].days[di].activities.splice(pos, 0, activity);

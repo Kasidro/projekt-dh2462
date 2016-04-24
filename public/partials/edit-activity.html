@@ -11,7 +11,7 @@
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">DURATION: </span>
-		<input type="time" step="60" ng-model="duration" class="magenta-input col-md-3"></input>
+		<input type="time" step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
@@ -41,7 +41,7 @@
 </form>
 <div class="col-md-12">
 	<div class="col-md-2"></div>
-	<a class="btn col-md-3 btn-save" ng-click="saveActivity()" ng-show={{isMyActivity}} href="#/event-details">SAVE</a>
+	<a class="btn col-md-3 btn-save" ng-click="saveActivity()" ng-show={{isMyActivity}}>SAVE</a>
 	<div class="col-md-2"></div>
 	<a class="btn col-md-3 btn-cancel" ng-click="removeActivity()" ng-show={{isMyActivity}} href="#/event-details">REMOVE</a>
 	<div class="col-md-"></div>
