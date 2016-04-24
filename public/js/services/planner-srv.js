@@ -358,6 +358,19 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     };
 
     // eID: String event ID
+    // returns: 0 on success, -1 otherwise
+    this.editActivities = function(eID) {
+        var index = findEventIndex(eID);
+        if (index !== -1 &&
+            events[index].owner === me.id
+        ) {
+            putEventToDB(eID, events[index]);
+            return 0;
+        }
+        return -1;
+    };
+
+    // eID: String event ID
     // titel: String
     // guests: Array of guests
     // returns: 0 on success, -1 otherwise
@@ -368,6 +381,18 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         ) {
             events[index].name = title;
             events[index].guests = guests;
+            putEventToDB(eID, events[index]);
+            return 0;
+        }
+        return -1;
+    };
+
+
+    this.editEventActivities = function() {
+        var index = findEventIndex(eID);
+        if (index !== -1 &&
+            events[index].owner === me.id
+        ) {
             putEventToDB(eID, events[index]);
             return 0;
         }

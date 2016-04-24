@@ -8,8 +8,35 @@
 <form>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
-		<input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-5" placeholder="Title"></input>
+		<input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-6" placeholder="Title"></input>
 		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{title}}</span>
+	</div>
+	<div class="col-md-12">
+		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
+		<input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
+		<span ng-hide={{isMyActivity}} class="magenta-label col-md-7" style="text-align:left;">{{type}}</span>
+		<div class="col-md-1"></div>
+		<div class="col-md-2" id="dropdown_container-act">
+			<nav>
+		        <ul class="cf">
+		            <li >
+		            	<p class="dropdown" href="#">COLOR</p>
+		                <ul>
+		                    <li><a class="dd-alt" href="#/event">RED</a></li>
+		                    <li><a class="dd-alt" href="#/edit-event">BLUE</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">GREEN</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">YELLOW</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">PURPLE</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">TEAL</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">ORANGE</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">MARRON</a></li>
+		                    <li><a class="dd-alt" href="#/browse-events">NAVY</a></li>
+		               		<li><a class="dd-alt" href="#/browse-events">GREY</a></li>
+		                </ul>
+		                </li>
+		        </ul>
+		    </nav>
+		</div>
 	</div>
 	<div class="col-md-12">
 		<span class="magenta-label col-md-4">DURATION: </span>
@@ -21,31 +48,9 @@
 		<span class="magenta-label col-md-8" style="text-align:left;">{{relativeStartTime}}</span>
 	</div>
 	<div class="col-md-12">
-		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
-		<input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
-		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{type}}</span>
-		<!--Dropdown for typ feels weird? -->	
-		<!--
-		<div class="col-md-4" id="dropdown_container-act">
-			<nav>
-		        <ul class="cf">
-		            <li >
-		            	<p class="dropdown" href="#">CHOSE TYPE</p>
-		                <ul>
-		                    <li><a class="dd-alt" href="#/event">MEETING</a></li>
-		                    <li><a class="dd-alt" href="#/edit-event">LUNCH</a></li>
-		                    <li><a class="dd-alt" href="#/browse-events">TEAM BUILDING</a></li>
-		                </ul>
-		                </li>
-		        </ul>
-		    </nav>
-		    -->
-		</div>
-	</div>
-	<div class="col-md-12">
 		<span class="magenta-label col-md-4">DESCRIPTION: </span>
-		<textarea ng-show={{isMyActivity}} id="description-field" ng-model="description" class="col-md-5" type="text"></textarea>
-		<textarea disabled ng-hide={{isMyActivity}} id="description-field-locked" ng-model="description" class="col-md-5" type="text"></textarea>
+		<textarea ng-show={{isMyActivity}} id="description-field" ng-model="description" class="col-md-6" type="text"></textarea>
+		<textarea disabled ng-hide={{isMyActivity}} id="description-field-locked" ng-model="description" class="col-md-6" type="text"></textarea>
 	</div>
 </form>
 <div class="col-md-12">

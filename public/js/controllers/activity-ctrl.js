@@ -1,13 +1,13 @@
 magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
 
-    $scope.mEvent;
+	$scope.mEvent;
     $scope.title = "";
     $scope.duration;
     $scope.type = "";
     $scope.description = "";
     $scope.isMyActivity;
-    $scope.date = Planner.getCurrentDate();
-    $scope.eventId = Planner.getCurrentEvent();
+ 	$scope.date = Planner.getCurrentDate();
+   	$scope.eventId = Planner.getCurrentEvent();
     $scope.activityPosition = Planner.getCurrentActivityPosition();
     $scope.maxDuration;
     $scope.formatedTime;
