@@ -1,11 +1,13 @@
 magenta.factory('Facebook', function($q) {
 
-    // internal helper function
+    // Helper function =================================
     var fbIdToImgUrl = function(fbId) {
         var imgUrlHead = 'http://graph.facebook.com/';
         var imgUrlTail = '/picture?type=large';
         return imgUrlHead + fbId + imgUrlTail;
     };
+
+    // Service functions ==============================
 
     return {
         getLoginStatus: function() {

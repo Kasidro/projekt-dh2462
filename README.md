@@ -17,3 +17,6 @@ Project in Interaction Programing (DH2462), contains the amazing code for an eve
 
 1. Start the server: `npm start`
 2. View in browser at `http://localhost:8000`
+
+## Recomendation
+1. For best experience use Chrome

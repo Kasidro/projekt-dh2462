@@ -15,14 +15,14 @@
     </div>
     <div class="col-md-12" ng-show={{isMyEvent}}>
         <span class="magenta-label col-md-4">ADD PARTICIPANT: </span>
-        <div class="col-md-5" id="dropdown_container-act">  
-        <nav>
-            <ul class="cf">
-                <li >
-                    <p class="dropdown" href="#">PARTICIPANT</p>
-                    <ul>
-                        <li><a ng-click="add(f.id);" ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</a></li>
-                    </ul>
+        <div class="col-md-5" id="dropdown_container-act">
+            <nav>
+                <ul class="cf">
+                    <li>
+                        <p class="dropdown" href="#">PARTICIPANT</p>
+                        <ul>
+                            <li><a ng-click="add(f.id);" ng-repeat="f in friends" value="{{f.id}}">{{f.name}}</a></li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

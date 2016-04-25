@@ -1,56 +1,58 @@
 <div class="header-container">
-	<ng-include src="'partials/header.html'"></ng-include>
+    <ng-include src="'partials/header.html'"></ng-include>
 </div>
 <div class="title-holder col-md-12">
-	<p ng-show={{isMyActivity}} class="magenta-title">EDIT ACTIVITY</p>
-	<p ng-hide={{isMyActivity}} class="magenta-title">ACTIVITY OVERVIEW</p>
+    <p ng-show={{isMyActivity}} class="magenta-title">EDIT ACTIVITY</p>
+    <p ng-hide={{isMyActivity}} class="magenta-title">ACTIVITY OVERVIEW</p>
 </div>
 <form>
-	<div class="col-md-12">
-		<span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
-		<input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-6" placeholder="Title"></input>
-		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{title}}</span>
-	</div>
-	<div class="col-md-12">
-		<span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
-		<input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
-		<span ng-hide={{isMyActivity}} class="magenta-label col-md-7" style="text-align:left;">{{type}}</span>
-		<div class="col-md-1"></div>
-		<div class="col-md-2" id="dropdown_container-act" ng-show={{isMyActivity}}>
-				<nav>
-            <ul class="cf">
-                <li >
-                    <p class="dropdown" href="#" style="background-color: {{color}};">COLOR</p>
-                    <ul>
-                        <li><a ng-click="setColor(color);" style="background-color: {{color}}" ng-repeat="color in colors" value="{{color}"></a></li>
-                    </ul>
-                </li>
-             </ul>
-    		</nav>
-     </div>
-		</div>
-	</div>
-	<div class="col-md-12">
-		<span class="magenta-label col-md-4">DURATION: </span>
-		<input type="time" ng-show={{isMyActivity}} step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
-		<span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{formatedTime}}</span>
-	</div>
-	<div class="col-md-12">
-		<span class="magenta-label col-md-4">START TIME: </span>
-		<span class="magenta-label col-md-8" style="text-align:left;">{{relativeStartTime}}</span>
-	</div>
-	<div class="col-md-12">
-		<span class="magenta-label col-md-4">DESCRIPTION: </span>
-		<textarea ng-show={{isMyActivity}} id="description-field" ng-model="description" class="col-md-6" type="text"></textarea>
-		<textarea disabled ng-hide={{isMyActivity}} id="description-field-locked" ng-model="description" class="col-md-6" type="text"></textarea>
-	</div>
+    <div class="col-md-12">
+        <span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
+        <input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-6" placeholder="Title"></input>
+        <span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{title}}</span>
+    </div>
+    <div class="col-md-12">
+        <span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
+        <input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
+        <span ng-hide={{isMyActivity}} class="magenta-label col-md-7" style="text-align:left;">{{type}}</span>
+        <div class="col-md-1"></div>
+        <div class="col-md-2" id="dropdown_container-act" ng-show={{isMyActivity}}>
+            <nav>
+                <ul class="cf">
+                    <li>
+                        <p class="dropdown" href="#" style="background-color: {{color}};">COLOR</p>
+                        <ul>
+                            <li>
+                                <a ng-click="setColor(color);" style="background-color: {{color}}" ng-repeat="color in colors" value="{{color}"></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+        <span class="magenta-label col-md-4">DURATION: </span>
+        <input type="time" ng-show={{isMyActivity}} step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
+        <span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{formatedTime}}</span>
+    </div>
+    <div class="col-md-12">
+        <span class="magenta-label col-md-4">START TIME: </span>
+        <span class="magenta-label col-md-8" style="text-align:left;">{{relativeStartTime}}</span>
+    </div>
+    <div class="col-md-12">
+        <span class="magenta-label col-md-4">DESCRIPTION: </span>
+        <textarea ng-show={{isMyActivity}} id="description-field" ng-model="description" class="col-md-6" type="text"></textarea>
+        <textarea disabled ng-hide={{isMyActivity}} id="description-field-locked" ng-model="description" class="col-md-6" type="text"></textarea>
+    </div>
 </form>
 <div class="col-md-12">
-	<div class="col-md-2"></div>
-	<a class="btn col-md-3 btn-save" ng-click="saveActivity()" ng-show={{isMyActivity}}>SAVE</a>
-	<div class="col-md-2"></div>
-	<a class="btn col-md-3 btn-cancel" ng-click="removeActivity()" ng-show={{isMyActivity}} href="#/event-details">REMOVE</a>
-	<div class="col-md-"></div>
-	<a class="btn col-md-3 btn-save" ng-hide="{{isMyActivity}}" href="#/event-details">BACK</a>
-	<div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <a class="btn col-md-3 btn-save" ng-click="saveActivity()" ng-show={{isMyActivity}}>SAVE</a>
+    <div class="col-md-2"></div>
+    <a class="btn col-md-3 btn-cancel" ng-click="removeActivity()" ng-show={{isMyActivity}} href="#/event-details">REMOVE</a>
+    <div class="col-md-"></div>
+    <a class="btn col-md-3 btn-save" ng-hide="{{isMyActivity}}" href="#/event-details">BACK</a>
+    <div class="col-md-2"></div>
 </div>

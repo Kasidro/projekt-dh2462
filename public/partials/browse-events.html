@@ -1,26 +1,25 @@
 <div class="header-container">
-	<ng-include src="'partials/header.html'"></ng-include>
+    <ng-include src="'partials/header.html'"></ng-include>
 </div>
 <div class="title-holder">
-	<p class="magenta-title col-md-12">MY EVENTS</p>
+    <p class="magenta-title col-md-12">MY EVENTS</p>
 </div>
 
-
 <div id="my-events-container">
-		<div class="saved-event" ng-repeat="event in events">
-			<a href="#/event">
-				<p class="column-1 row-1 magenta-text-2">TITLE</p>
-				<p class="column-2 row-1 magenta-text-2">DATE</p>
-				<p class="column-3 row-1 magenta-text-2	"></p>
-			</a>
-			<a>
-				<p id="title-browser" class="column-1 row-2 magenta-text-2">{{shortenTitle(event.name)}}</p>
-				<p id="date-browser" class="column-2 row-2 magenta-text-2">{{getFormatedDate(event.days)}}</p>
-				<div class="column-3 row-2 magenta-text-2 btn-group-vertical" id="button-row">
-					<a ng-click="gotoDetails(event._id);" id="button-browser-1" class="btn magenta-text-2">EVENT DETAILS</a>
-					<a ng-click="gotoEdit(event._id);" id="button-browser-2" ng-show={{isMyEvent(event._id)}} class="btn magenta-text-2">EDIT EVENT</a>
-					<a ng-click="gotoEdit(event._id);" id="button-browser-2" ng-hide={{isMyEvent(event._id)}} class="btn magenta-text-2">VIEW EVENT</a>
-				</div>
-			</a>
-		</div>
+    <div class="saved-event" ng-repeat="event in events">
+        <a href="#/event">
+            <p class="column-1 row-1 magenta-text-2">TITLE</p>
+            <p class="column-2 row-1 magenta-text-2">DATE</p>
+            <p class="column-3 row-1 magenta-text-2	"></p>
+        </a>
+        <a>
+            <p id="title-browser" class="column-1 row-2 magenta-text-2">{{shortenTitle(event.name)}}</p>
+            <p id="date-browser" class="column-2 row-2 magenta-text-2">{{getFormatedDate(event.days)}}</p>
+            <div class="column-3 row-2 magenta-text-2 btn-group-vertical" id="button-row">
+                <a ng-click="gotoDetails(event._id);" id="button-browser-1" class="btn magenta-text-2">EVENT DETAILS</a>
+                <a ng-click="gotoEdit(event._id);" id="button-browser-2" ng-show={{isMyEvent(event._id)}} class="btn magenta-text-2">EDIT EVENT</a>
+                <a ng-click="gotoEdit(event._id);" id="button-browser-2" ng-hide={{isMyEvent(event._id)}} class="btn magenta-text-2">VIEW EVENT</a>
+            </div>
+        </a>
+    </div>
 </div>

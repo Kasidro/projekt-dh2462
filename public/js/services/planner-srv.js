@@ -24,14 +24,17 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         me = _me;
         $cookieStore.put('me', me);
     };
+
     var setFriends = function(_friends) {
         friends = _friends;
         $cookieStore.put('friends', friends);
     };
+
     var setLoginStatus = function(_loginStatus) {
         loginStatus = _loginStatus;
         $cookieStore.put('loginStatus', loginStatus);
     };
+
     this.setCurrentEvent = function(_currentEvent) {
         currentEvent = _currentEvent;
         $cookieStore.put('currentEvent', currentEvent);
@@ -57,6 +60,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         console.log('Cookies retrived');
         return dbFetch();
     };
+
     var destroyTempData = function() {
         loginStatus = undefined;
         me = {
@@ -146,7 +150,6 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 console.log('DB fetched events');
                 events = res.data;
                 dbFetched = true
-                console.log(res);
             });
     };
 
@@ -273,6 +276,21 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         return me;
     };
 
+    this.getColors = function() {
+        var colors = ['#FF0000',
+            '#800080',
+            '#0000FF',
+            '#008080',
+            '#FF00FF',
+            '#808080',
+            '#008000',
+            '#800000',
+            '#000080',
+            '#00FF00'
+        ];
+        return colors;
+    }
+
     // Setters
     // ========================================================================
 
@@ -327,7 +345,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     // type: int
     // description: String
     // pos: int position of activity in activities
-    // returns: 0 on success, -1 otherwise
+    // returns: 0 on success, 1 on if day is full, -1 otherwise
     this.addActivity = function(eID, date, name, length, type, description, pos) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
@@ -353,8 +371,6 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 'description': description,
                 'activityColor': color
             };
-
-
 
             if (pos == null) {
                 events[ei].days[di].activities.push(activity);
@@ -397,7 +413,6 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         return -1;
     };
 
-
     this.editEventActivities = function() {
         var index = findEventIndex(eID);
         if (index !== -1 &&
@@ -409,26 +424,11 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         return -1;
     };
 
-    this.getColors = function() {
-        var colors = ['#FF0000',
-            '#800080',
-            '#0000FF',
-            '#008080',
-            '#FF00FF',
-            '#808080',
-            '#008000',
-            '#800000',
-            '#000080',
-            '#00FF00'
-        ];
-        return colors;
-    }
-
     // eID: String event ID
     // date: String date of day as "YYYY-MM-DD"
     // newdate: String new date of day as "YYYY-MM-DD"
     // start: String start time as HH:MM
-    // returns: 0 on success, -1 otherwise
+    // returns: 0 on success, 1 on if day is full, -1 otherwise
     this.editDay = function(eID, date, newdate, start) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
@@ -465,7 +465,8 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     // type int
     // description String
     // pos: int position of activity in activities
-    // returns: 0 on success, -1 otherwise
+    // color: String
+    // returns: 0 on success, 1 on if day is full, -1 otherwise
     this.editActivity = function(eID, date, name, length, type, description, pos, color) {
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
@@ -544,40 +545,30 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     // Mover
     // ========================================================================
 
-    // eID: String event ID
-    // date: String date of day as "YYYY-MM-DD"
-    // pos: int position of activity in activities
-    // newpos: int new position of activity in activities
-    // ndate: String new date of day as "YYYY-MM-DD"
-    // description String
-    // returns: 0 on success, -1 otherwise
-    this.moveActivity = function(eID, date, pos, newpos, ndate) {
-        var ei = findEventIndex(eID);
-        var di = findDayIndex(ei, date);
-        var ndi = di;
-        if (date !== ndate) {
-            ndi = findDayIndex(ei, ndate);
+    this.moveActivityCallback = function(event, index, activity, external, type, itemType, day) {
+
+        var totalTime = parseTimeString(day.start);
+        var activities = day.activities;
+
+        //if we try move from and to the same with more objects we dont need to check for space.
+        for (i = 0; i < activities.length; i++) {
+            if (activities[i]._id === activity._id) {
+                return activity;
+            }
         }
 
-        if (ei !== -1 &&
-            di !== -1 &&
-            ndi !== -1 &&
-            events[ei].owner === me.id &&
-            typeof events[ei].days[di].activities[pos] !== 'undefined'
-        ) {
-            if (date === ndate && events[ei].days[di].activities.length === 1) {
-                return 1;
-            }
-            
-            if (newpos > pos && newpos < events[ei].days[di].activities.length - 1) {
-                newpos--;
-            }
-            var activity = events[ei].days[di].activities[pos];
-            events[ei].days[di].activities.splice(pos, 1);
-            events[ei].days[ndi].activities.splice(newpos, 0, activity);
-            putEventToDB(eID, events[ei]);
-            return 0;
+        //Else we need to make sure there is space in the destination day.
+        for (i = 0; i < activities.length; i++) {
+            totalTime += activities[i].length;
         }
-        return -1;
+
+        totalTime += activity.length;
+
+        if (totalTime > 24 * 60) {
+            Status.setStatusMsg("Not enough remaining time");
+            return false;
+        }
+        return activity;
     };
+
 });

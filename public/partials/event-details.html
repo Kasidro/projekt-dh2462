@@ -46,20 +46,14 @@
                 <div class="col-md-12">
                     <div class="activity-field col-md-12">
                         <a href="#/edit-activity"><button ng-click="createActivity(day)" class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
-                        
-                        <ul ng-show={{isMyEvent}} id="dragndrop" dnd-list="day.activities"
-                            dnd-drop="moveActivityCallback(event, index, item, external, type, 'itemType', day)"
-                        >
+
+                        <ul ng-show={{isMyEvent}} id="dragndrop" dnd-list="day.activities" dnd-drop="moveActivityCallback(event, index, item, external, type, 'itemType', day)">
 
                             <!-- The dnd-draggable directive makes an element draggable and will
                                  transfer the object that was assigned to it. If an element was
                                  dragged away, you have to remove it from the original list
                                  yourself using the dnd-moved attribute -->
-                            <div ng-repeat="activity in day.activities"
-                                dnd-effect-allowed="move"
-                                dnd-draggable="activity"
-                                dnd-moved="day.activities.splice($index, 1); reArrangeActivities()"
-                                dnd-effect-allowed="move">
+                            <div ng-repeat="activity in day.activities" dnd-effect-allowed="move" dnd-draggable="activity" dnd-moved="day.activities.splice($index, 1); reArrangeActivities()" dnd-effect-allowed="move">
                                 <button style="background-color: {{activity.activityColor}}" ng-click="editActivity(day, $index)" class="btn activity magenta-text-1">{{activity.name}}</button>
                             </div>
                         </ul>

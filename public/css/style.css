@@ -1,368 +1,429 @@
 /*----------------Styling of site wide elements-----------------*/
 
-#content { /*Holds the rest of the application*/
-	height: 97vh;
+#content {
+    /*Holds the rest of the application*/
+    height: 97vh;
     text-align: center;
 }
-.footer { /*Footer that are used on all pages thru the website */
-	font-family: 'Jura', sans-serif;
-	color: white;
-	font-size: 2vh;
-	background-color: rgba(47,36,44,0.4); 
-	text-align: center;
-	height: 3vh;
-	z-index: 100;
+
+.footer {
+    /*Footer that are used on all pages thru the website */
+    font-family: 'Jura', sans-serif;
+    color: white;
+    font-size: 2vh;
+    background-color: rgba(47, 36, 44, 0.4);
+    text-align: center;
+    height: 3vh;
+    z-index: 100;
 }
 
 .magenta-heading-1 {
-	height: 7vh;
-	font-family: 'Audiowide', cursive;
-	font-size: 5vh;
-	text-shadow: 0px 0px 10px #FFAAFF;
-	transition: 0.5s;
+    height: 7vh;
+    font-family: 'Audiowide', cursive;
+    font-size: 5vh;
+    text-shadow: 0px 0px 10px #FFAAFF;
+    transition: 0.5s;
 }
 
 .magenta-heading-1:hover {
-	text-shadow: 0 0 30px #FF00FF;
+    text-shadow: 0 0 30px #FF00FF;
 }
 
 .magenta-text-1 {
-	color: white;
-	font-family: 'Audiowide', cursive;
-	font-size: 2.3vh;
-	text-align: right;
-	height: 180%;
+    color: white;
+    font-family: 'Audiowide', cursive;
+    font-size: 2.3vh;
+    text-align: right;
+    height: 180%;
 }
-.magenta-text-2 {
-	color: #2A2A2A;
-	font-family: 'Audiowide', cursive;
-	text-align: center;
-}
-.magenta-text-3 {
-	color: black;
-	font-family: 'Audiowide', cursive;
-	font-size: 2.3vh;
-	text-align: left;
-	background-color: white;
-}
-.magenta-title {
-	height: 9vh;
-	font-family: 'Audiowide', cursive;
-	font-size: 6.5vh;
-	text-align: center;
-	transition: 0.5s;
-	margin: 0;
-	padding: 0;
-}
-.magenta-title:hover {
-	text-shadow: 0 0 30px #FF00FF;
-}
-.magenta-divider {
-	margin: 0;
-	padding: 0;
-	width: 98%;
-	margin-left: 1%;
-	margin-top: 1%;
-	margin-bottom: 1vh;
-	background-image: linear-gradient(to right,#994D83, #FF00FF,#994D83);
-	height: 2px;
-}
-.magenta-label {
-	margin-top: 3vh;
-	margin-bottom: 1vh;
-	text-align: right;
-	font-family: 'Audiowide', cursive;
-	font-size: 30pt;
 
+.magenta-text-2 {
+    color: #2A2A2A;
+    font-family: 'Audiowide', cursive;
+    text-align: center;
 }
+
+.magenta-text-3 {
+    color: black;
+    font-family: 'Audiowide', cursive;
+    font-size: 2.3vh;
+    text-align: left;
+    background-color: white;
+}
+
+.magenta-title {
+    height: 9vh;
+    font-family: 'Audiowide', cursive;
+    font-size: 6.5vh;
+    text-align: center;
+    transition: 0.5s;
+    margin: 0;
+    padding: 0;
+}
+
+.magenta-title:hover {
+    text-shadow: 0 0 30px #FF00FF;
+}
+
+.magenta-divider {
+    margin: 0;
+    padding: 0;
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1vh;
+    background-image: linear-gradient(to right, #994D83, #FF00FF, #994D83);
+    height: 2px;
+}
+
+.magenta-label {
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    text-align: right;
+    font-family: 'Audiowide', cursive;
+    font-size: 30pt;
+}
+
 .magenta-input {
-	margin-top: 3vh;
-	margin-bottom: 1vh;
-	font-size: 30pt;
-	font-family: 'Audiowide', cursive;
-	border: 2px solid #D16BB4; 
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    font-size: 30pt;
+    font-family: 'Audiowide', cursive;
+    border: 2px solid #D16BB4;
 }
+
 .magenta-input:hover {
-	box-shadow: 0 0 30px #FF00FF;
-} 
-.btn-delete {
-	margin-left: 2vw;
-	margin-top: 2vh;
-	font-size: 25pt;
-	font-style: bold;
-	height: 6vh;
-	width: 6vh;
+    box-shadow: 0 0 30px #FF00FF;
 }
+
+.btn-delete {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    font-size: 25pt;
+    font-style: bold;
+    height: 6vh;
+    width: 6vh;
+}
+
 .btn-save {
-	text-align: center;
-	font-size: 40pt;
-	font-family: 'Audiowide', cursive;
-	color:black;
-	transition: all 0.5s ease;
-	background-color: white;
-	margin-top: 4vh;
-	border-color: #994D83;
-	border-width: 3px;
+    text-align: center;
+    font-size: 40pt;
+    font-family: 'Audiowide', cursive;
+    color: black;
+    transition: all 0.5s ease;
+    background-color: white;
+    margin-top: 4vh;
+    border-color: #994D83;
+    border-width: 3px;
 }
 
 .btn-save:hover {
-	background-color: #248f24; 
-	color: white;
-	text-shadow: 0 0 30px white;
+    background-color: #248f24;
+    color: white;
+    text-shadow: 0 0 30px white;
 }
+
 .btn-cancel {
-	text-align: center;
-	font-size: 40pt;
-	font-family: 'Audiowide', cursive;
-	color:black;
-	transition: all 0.5s ease;
-	background-color: white;
-	margin-top: 4vh;
-	border-color: #994D83;
-	border-width: 3px;
+    text-align: center;
+    font-size: 40pt;
+    font-family: 'Audiowide', cursive;
+    color: black;
+    transition: all 0.5s ease;
+    background-color: white;
+    margin-top: 4vh;
+    border-color: #994D83;
+    border-width: 3px;
 }
 
 .btn-cancel:hover {
-	background-color: #CC0000; 
-	color: white;
-	text-shadow: 0 0 30px white;
+    background-color: #CC0000;
+    color: white;
+    text-shadow: 0 0 30px white;
 }
+
+
 /*----------------END OF Styling of site wide elements-----------------*/
+
+
 /*-----------------Formating for login page *----------------*/
-#header_start { 
-	padding-top: 15vh;
+
+#header_start {
+    padding-top: 15vh;
     font-family: 'Audiowide', cursive;
     text-align: center;
     font-size: 100pt;
-    color:white;
+    color: white;
     text-shadow: 0 0 15px #FF00FF;
 }
 
 #fb_login_btn {
-	background-color: #3b5998;
-	color: white;
-	font-family: Tahoma, sans-serif;
-	border: 0;
-	font-size: 10pt;
-	margin-top: 10vh;
-	transition: 0.5s;
-	transition-timing-function: ease-out; 	
+    background-color: #3b5998;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    border: 0;
+    font-size: 10pt;
+    margin-top: 10vh;
+    transition: 0.5s;
+    transition-timing-function: ease-out;
 }
 
 #fb_login_btn:hover {
-	font-size: 20pt;
+    font-size: 20pt;
 }
 
+
 /*----------------End of styling for login page-----------------*/
+
+
 /*----------------Styling of start-menu.html-----------------*/
+
 #start-menu-header {
-	background-color: #F4EBD9;
+    background-color: #F4EBD9;
 }
+
 #start-heading {
-	text-align: center;
-	font-size: 75pt;
-	font-family: 'Audiowide', cursive;
-	text-shadow: 0px 0px 10px #FFAAFF;
-	transition: 0.5s
+    text-align: center;
+    font-size: 75pt;
+    font-family: 'Audiowide', cursive;
+    text-shadow: 0px 0px 10px #FFAAFF;
+    transition: 0.5s
 }
 
 #start-heading:hover {
-	text-shadow: 0 0 30px #FF00FF;
+    text-shadow: 0 0 30px #FF00FF;
 }
 
 #start-title {
-	text-align: center;
-	font-size: 40pt;
-	font-family: 'Audiowide', cursive;
+    text-align: center;
+    font-size: 40pt;
+    font-family: 'Audiowide', cursive;
 }
 
 .start-button {
-	text-align: center;
-	font-size: 40pt;
-	font-family: 'Audiowide', cursive;
-	color:black;
-	transition: all 0.5s ease;
-	background-color: white;
-	margin-top: 5vh;
-	border-color: #994D83;
-	border-width: 3px;
+    text-align: center;
+    font-size: 40pt;
+    font-family: 'Audiowide', cursive;
+    color: black;
+    transition: all 0.5s ease;
+    background-color: white;
+    margin-top: 5vh;
+    border-color: #994D83;
+    border-width: 3px;
 }
 
 .start-button:hover {
-	background-color: #992083; 
-	color: white;
-	text-shadow: 0 0 30px white;
+    background-color: #992083;
+    color: white;
+    text-shadow: 0 0 30px white;
 }
+
+
 /*----------------Styling of start-menu.html-----------------*/
+
+
 /*-----------------STYLING FOR BROWSE-EVENTs.HTML-----------------------*/
+
 #my-events-container {
-	height: 79vh;
-	width: 50vw;
-	margin-left: 25vw;
-	border: 4px solid #994D83;
-	border-radius: 10px;
-	overflow-y:auto;
-	overflow-x:hidden;
+    height: 79vh;
+    width: 50vw;
+    margin-left: 25vw;
+    border: 4px solid #994D83;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
 #date-browser {
-	padding-top: 1.3vh;
+    padding-top: 1.3vh;
 }
+
 #title-browser {
-	padding-top: 1.3vh;
+    padding-top: 1.3vh;
 }
+
 #button-row {
-	 
-	padding-top: 0.5vh;
-	padding-left: 1vw;
-	height: 2vh;
-	width: 8vw;
+    padding-top: 0.5vh;
+    padding-left: 1vw;
+    height: 2vh;
+    width: 8vw;
 }
+
 #button-browser-1 {
-	font-size: 8pt;
-	color: black;
-	background-color: white;
-	border-color: #3b5998; 
-	transition: all 0.5s ease;
+    font-size: 8pt;
+    color: black;
+    background-color: white;
+    border-color: #3b5998;
+    transition: all 0.5s ease;
 }
+
 #button-browser-1:hover {
-	background-color: #992083; 
-	color: white; 
+    background-color: #992083;
+    color: white;
 }
+
 #button-browser-2 {
-	font-size: 8pt;
-	color: black;
-	background-color: white;
-	border-color: #3b5998; 
-	transition: all 0.5s ease;
+    font-size: 8pt;
+    color: black;
+    background-color: white;
+    border-color: #3b5998;
+    transition: all 0.5s ease;
 }
+
 #button-browser-2:hover {
-	background-color: #3b5998;
-	color: white; 
+    background-color: #3b5998;
+    color: white;
 }
+
 .saved-event {
-	margin-left: 0.5%;
-	margin-right: 0.5%;
-	width: 99%;
-	height: 10vh;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    width: 99%;
+    height: 10vh;
 }
+
 .column-1 {
-	float: left;
-	width: 50%;
-	margin: 0;
+    float: left;
+    width: 50%;
+    margin: 0;
 }
+
 .column-2 {
-	float: left;
-	width: 25%;
-	margin: 0;
+    float: left;
+    width: 25%;
+    margin: 0;
 }
+
 .column-3 {
-	float: left;
-	width: 25%;
-	margin: 0;
+    float: left;
+    width: 25%;
+    margin: 0;
 }
+
 .row-1 {
-	background-color: #DCB4DC;
-	font-size: 16pt;
-	height: 3vh;
+    background-color: #DCB4DC;
+    font-size: 16pt;
+    height: 3vh;
 }
+
 .row-2 {
-	font-size: 20pt;
-	height: 7vh;
+    font-size: 20pt;
+    height: 7vh;
 }
+
+
 /*-----------------END STYLING FOR BROWSE-EVENTs.HTML-----------------------*/
+
+
 /*---------------------edit-event.html styling-------------------------*/
+
 #title-input {
-	width: 50vw;
+    width: 50vw;
 }
+
 #date-input {
-	width: 22vw;
+    width: 22vw;
 }
+
 #participant-input {
-	width: 40vw;
+    width: 40vw;
 }
 
 #invited-field {
-	overflow-y:auto;
-	margin-top: 4vh;
-	height: 40vh;
-	border: 2px solid #D16BB4;
+    overflow-y: auto;
+    margin-top: 4vh;
+    height: 40vh;
+    border: 2px solid #D16BB4;
 }
+
 #pic-holder {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 #pic {
-	margin: 0;
-	padding: 0;
-	width: 100px;
-	height: 100px;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
 }
+
 #participant {
-	background-color: #DCB4DC;
-	margin-top: 1vh;
-	padding: 0;
-	margin-left: 0;
+    background-color: #DCB4DC;
+    margin-top: 1vh;
+    padding: 0;
+    margin-left: 0;
 }
+
 #participant-label {
-	margin-top: 2vh;
-	text-align: left;
-	font-family: 'Audiowide', cursive;
-	font-size: 30pt;
+    margin-top: 2vh;
+    text-align: left;
+    font-family: 'Audiowide', cursive;
+    font-size: 30pt;
 }
+
+
 /*---------------------end of edit-event.html styling-------------------------*/
+
+
 /*---------------------Styling for edit-activity.html---------------------------*/
+
 #description-field {
-	text-align: left;
-	vertical-align: top;
-	font-family: 'Audiowide', cursive;
-	font-size: 200%;
-	margin-top: 4vh;
-	height: 20vh;
-	border: 2px solid #D16BB4;
-	transition: all 0.5s ease;
+    text-align: left;
+    vertical-align: top;
+    font-family: 'Audiowide', cursive;
+    font-size: 200%;
+    margin-top: 4vh;
+    height: 20vh;
+    border: 2px solid #D16BB4;
+    transition: all 0.5s ease;
 }
+
 #description-field:hover {
-	box-shadow: 0 0 30px #FF00FF;
+    box-shadow: 0 0 30px #FF00FF;
 }
 
 #description-field-locked {
-	text-align: left;
-	vertical-align: top;
-	font-family: 'Audiowide', cursive;
-	font-size: 200%;
-	margin-top: 4vh;
-	height: 20vh;
-	border: 2px solid #D16BB4;
-	transition: all 0.5s ease;
+    text-align: left;
+    vertical-align: top;
+    font-family: 'Audiowide', cursive;
+    font-size: 200%;
+    margin-top: 4vh;
+    height: 20vh;
+    border: 2px solid #D16BB4;
+    transition: all 0.5s ease;
 }
 
 #dropdown_container-act {
-	margin-top: 2.8vh;
-	height: 7vh;
-	font-family: 'Audiowide', cursive;
-	font-size: 4vh;
-	text-align: center;
-	color: #999999;
-	background-color: white;
-	border: 2px solid #D16BB4; 
-	transition: 0.5s;
-	padding: 0;
-	padding-top: 0.5vh;
-	z-index: 100;
+    margin-top: 2.8vh;
+    height: 7vh;
+    font-family: 'Audiowide', cursive;
+    font-size: 4vh;
+    text-align: center;
+    color: #999999;
+    background-color: white;
+    border: 2px solid #D16BB4;
+    transition: 0.5s;
+    padding: 0;
+    padding-top: 0.5vh;
+    z-index: 100;
 }
+
 #dropdown_container-act:hover {
-	box-shadow: 0 0 30px #FF00FF;
+    box-shadow: 0 0 30px #FF00FF;
 }
+
+
 /*---------------Styling for event-details.html-----------------------*/
+
 #dragndrop {
     padding: 0;
     list-style-type: none;
- 	 	min-height: 38.5vh;
+    min-height: 38.5vh;
 }
 
 .activity-field ul[dnd-list],
 .activity-field ul[dnd-list] > li {
-	position: relative;
+    position: relative;
 }
 
 .activity-field ul[dnd-list] .dndPlaceholder {
@@ -372,142 +433,164 @@
 }
 
 #arrow {
-	width: 3vw;
-	padding-top: 38vh;
+    width: 3vw;
+    padding-top: 38vh;
 }
+
 #title-holder {
-	margin: none;
-	height: 9vh;
+    margin: none;
+    height: 9vh;
 }
+
 .btn-title-holder {
-	margin: none;
-	height: 9vh;
+    margin: none;
+    height: 9vh;
 }
+
 .btn-title {
-	height: 5vh;
-	width: 10vw;
-	margin-left: 0;
-	text-align: center;
-	font-size: 2.5vh;
-	margin-top: 2vh; 
-	color: black;
-	background-color: white;
+    height: 5vh;
+    width: 10vw;
+    margin-left: 0;
+    text-align: center;
+    font-size: 2.5vh;
+    margin-top: 2vh;
+    color: black;
+    background-color: white;
 }
 
 .arrow-holder {
-
-	height: 81vh;
-	width: 5vw;
-	float: left;
+    height: 81vh;
+    width: 5vw;
+    float: left;
 }
+
 .day-container {
+    height: 81vh;
+    width: 90vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    float: left;
+}
 
-	height: 81vh;
-	width: 90vw;
-	padding-left: 1vw;
-	padding-right: 1vw; 
-	float: left;
-}
 .day {
-	background-color: #2B355C;
-	height:79vh;
-	border-radius: 4px;
+    background-color: #2B355C;
+    height: 79vh;
+    border-radius: 4px;
 }
+
 .activity-field {
-	border-radius: 5px;
-	height: 46vh;
-	margin-top: 0.8vh;
-	background-color: white;
-	padding: none;
-	overflow-y:auto;
-	overflow-x:hidden; 
+    border-radius: 5px;
+    height: 46vh;
+    margin-top: 0.8vh;
+    background-color: white;
+    padding: none;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
 .add-activity {
-	margin: none;
-	margin-top: 0.5vh;
-	height: 6vh;
-	width: 100%;
-	font-size: 24pt;
-	background-color: #6D98BA;
-	text-align: center;
-	transition: all 0.5s ease;
+    margin: none;
+    margin-top: 0.5vh;
+    height: 6vh;
+    width: 100%;
+    font-size: 24pt;
+    background-color: #6D98BA;
+    text-align: center;
+    transition: all 0.5s ease;
 }
 
 .add-activity:hover {
-	background-color: #386FA4;
+    background-color: #386FA4;
 }
+
 .activity {
-	margin: none;
-	margin-top: 0.5vh;
-	width: 100%;
-	height: 9vh;
-	font-size: 24pt;
-	background-color: #554CA5;
-	color: white;
-	text-align: center;
+    margin: none;
+    margin-top: 0.5vh;
+    width: 100%;
+    height: 9vh;
+    font-size: 24pt;
+    background-color: #554CA5;
+    color: white;
+    text-align: center;
 }
+
 .remove {
-	border-radius: 4px;
-	margin: 0;
-	width: 15vw;
-	height: 4vh;
-	font-size: 16pt;
-	text-align: center;
-	margin-top: 1.5vh;
+    border-radius: 4px;
+    margin: 0;
+    width: 15vw;
+    height: 4vh;
+    font-size: 16pt;
+    text-align: center;
+    margin-top: 1.5vh;
 }
+
+
 /*----------------END OF Styling of event-details-----------------*/
+
+
 /*-------------Styiling of header (not used on login and start menu)-----------*/
+
 #dropdown_container {
-	height: 7vh;
-	font-family: 'Audiowide', cursive;
-	font-size: 3vh;
-	text-align: left;
-	color: white;
-	background-color: #994D83; 
-	transition: 0.5s;
-	padding: 0;
-	z-index: 100;
+    height: 7vh;
+    font-family: 'Audiowide', cursive;
+    font-size: 3vh;
+    text-align: left;
+    color: white;
+    background-color: #994D83;
+    transition: 0.5s;
+    padding: 0;
+    z-index: 100;
 }
+
 #dropdown_container:hover {
-	background-color: #992083;
+    background-color: #992083;
 }
-#user-feedback{
-	color: green;
-	font-family: 'Audiowide', cursive;
-	font-size: 4vh;
-	height: 5vh;
-	margin-top:1vh; 
+
+#user-feedback {
+    color: green;
+    font-family: 'Audiowide', cursive;
+    font-size: 4vh;
+    height: 5vh;
+    margin-top: 1vh;
 }
+
 #header-profile-pic {
-	height: 7vh;
+    height: 7vh;
 }
 
 #log-out-btn {
-	height: 4vh;
-	background-color: transparent;
-	border:2px solid #cc0000;
-	font-size: 2vh;
-	color: black;
-	font-family: 'Audiowide', cursive;
-	margin-top: 1.5vh;
-	transition: 0.5s;
+    height: 4vh;
+    background-color: transparent;
+    border: 2px solid #cc0000;
+    font-size: 2vh;
+    color: black;
+    font-family: 'Audiowide', cursive;
+    margin-top: 1.5vh;
+    transition: 0.5s;
 }
+
 #log-out-btn:hover {
-	color: white;
-	background-color: #cc0000;
+    color: white;
+    background-color: #cc0000;
 }
+
 .header-container {
-	height: 7vh;
+    height: 7vh;
 }
-.header{
-	height: 7vh;
-	background-color: #F4EBD9;
+
+.header {
+    height: 7vh;
+    background-color: #F4EBD9;
 }
+
+
 /*-------------end of Styiling for header (not used on login and start menu)-----------*/
+
+
 /*---------------Dropdown styling---------------*/
 
 nav ul {
-	-webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing: antialiased;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -516,34 +599,38 @@ nav ul {
 }
 
 #topp_list {
-	margin-top: 1.5vh;
+    margin-top: 1.5vh;
 }
 
 nav a {
-    color:black;
+    color: black;
     text-shadow: 0 0 10px #FFAAFF;
     display: block;
     padding: 0 25px;
     height: 5.5vh;
     text-align: center;
     text-decoration: none;
-  	transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
+
 nav .dropdown:after {
     content: ' ▶';
 }
-nav .dropdown:hover:after{
-	content:'\25bc'
+
+nav .dropdown:hover:after {
+    content: '\25bc'
 }
+
 nav li:hover a {
     background: #2D3142;
     color: white;
 }
+
 #topp {
-	background: transparent;
-	color: white;
-	text-shadow: none;
-	text-align: center;
+    background: transparent;
+    color: white;
+    text-shadow: none;
+    text-align: center;
 }
 
 nav li ul {
@@ -552,32 +639,39 @@ nav li ul {
     visibility: hidden;
     transition: all 0.5s ease;
 }
+
 nav li:hover ul {
     opacity: 1;
     top: 50px;
     visibility: visible;
 }
+
 nav li ul li {
     float: none;
     width: 100%;
 }
+
 nav li ul a:hover {
     background: #4F5D75;
     color: white;
 }
 
+
 /* Clearfix */
 
-.cf:after, .cf:before {
-    content:"";
-    display:table;
+.cf:after,
+.cf:before {
+    content: "";
+    display: table;
 }
-.cf:after {
-    clear:both;
-}
-.cf {
-    zoom:1;
-}​
 
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    zoom: 1;
+}
+
+​
 /*----------------END OF HEADER CSS-----------------*/
-/*----------------TEST */
