@@ -15,6 +15,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     var currentPosition;
     var events = [];
     var dbFetched = false;
+    this.eventCLastIdxMap = {}; // saves position in event-details
 
     // Cookie stuff
     // ========================================================================

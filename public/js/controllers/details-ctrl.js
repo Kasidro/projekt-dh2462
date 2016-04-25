@@ -146,13 +146,15 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
 
     $scope.nextPage = function() {
         if (cLastIdx + 1 < $scope.nDays) {
-            cLastIdx++
+            cLastIdx++;
+            Planner.eventCLastIdxMap[$scope.mEvent._id] = cLastIdx;
         }
     };
 
     $scope.prevPage = function() {
         if (cLastIdx > maxDaysPerPage - 1) {
-            cLastIdx--
+            cLastIdx--;
+            Planner.eventCLastIdxMap[$scope.mEvent._id] = cLastIdx;
         }
     };
 
@@ -230,6 +232,8 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
 
     $scope.$watch(function() {
         if (!Planner.isDbFetched()) return;
+        if (Planner.eventCLastIdxMap[$scope.mEvent._id] !== undefined)
+            cLastIdx = Planner.eventCLastIdxMap[$scope.mEvent._id];
         $scope.cPage = [];
         $scope.nDays = $scope.mEvent.days.length;
         for (var i = cLastIdx - 2; i <= cLastIdx && i < $scope.nDays; i++) {

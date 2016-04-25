@@ -5,22 +5,6 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
     $scope.guests = [];
     $scope.isMyEvent;
 
-    var getFriend = function(id) {
-        for (i in $scope.friends) {
-            if ($scope.friends[i].id === id)
-                return $scope.friends[i];
-        }
-        return null;
-    };
-
-    var getGuest = function(id) {
-        for (i in $scope.guests) {
-            if ($scope.guests[i].id === id)
-                return $scope.guests[i];
-        }
-        return null;
-    };
-
     $scope.add = function(selected) {
         if (getGuest(selected) === null)
             $scope.guests.push(getFriend(selected));
@@ -55,6 +39,22 @@ magenta.controller('EditCtrl', function($scope, $window, Planner, Status) {
         } else {
             Status.setStatusMsg('Error removing event');
         }
+    };
+
+    var getFriend = function(id) {
+        for (i in $scope.friends) {
+            if ($scope.friends[i].id === id)
+                return $scope.friends[i];
+        }
+        return null;
+    };
+
+    var getGuest = function(id) {
+        for (i in $scope.guests) {
+            if ($scope.guests[i].id === id)
+                return $scope.guests[i];
+        }
+        return null;
     };
 
     (function() {
