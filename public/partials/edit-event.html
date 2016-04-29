@@ -5,7 +5,7 @@
     <!-- Owner -->
     <p class="magenta-title" ng-show={{isMyEvent}}>EDIT EVENT</p>
     <!-- Guest -->
-    <p class="magenta-title" ng-hide={{isMyEvent}}>EVENT OVERVIEW</p>
+    <p class="magenta-title" ng-hide={{isMyEvent}}>EVENT DETAILS</p>
 </div>
 <form>
     <div class="col-md-12">
@@ -56,7 +56,7 @@
         <a class="btn col-md-3 btn-cancel" ng-click="removeEvent();" ng-show={{isMyEvent}}>REMOVE</a>
         <!-- Guest -->
         <div class="col-md-2" ng-hide={{isMyEvent}}></div>
-        <a class="btn col-md-4 btn-save" ng-click="viewDetails();" ng-hide={{isMyEvent}}>VIEW DETAILS</a>
+        <a class="btn col-md-4 btn-save" ng-click="viewDetails();" ng-hide={{isMyEvent}}>EVENT SCHEDULE</a>
         <div class="col-md-2" ng-hide={{isMyEvent}}></div>
 
         <div class="col-md-2"></div>
