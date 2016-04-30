@@ -9,28 +9,24 @@
     <div class="col-md-12">
         <span class="magenta-label col-md-4">TITLE OF ACTIVITY: </span>
         <input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-6" placeholder="Title"></input>
-        <span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{title}}</span>
     </div>
     <div class="col-md-12">
         <span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
-        <input ng-show={{isMyActivity}} type="text" step="60" ng-model="type" placeholder="Type" class="magenta-input col-md-3"></input>
         <span ng-hide={{isMyActivity}} class="magenta-label col-md-7" style="text-align:left;">{{type}}</span>
-        <div class="col-md-1"></div>
-        <div class="col-md-2" id="dropdown_container-act" ng-show={{isMyActivity}}>
+        <div class="col-md-3" id="dropdown_container-act" ng-show={{isMyActivity}}>
             <nav>
                 <ul class="cf">
                     <li>
-                        <p class="dropdown" href="#" style="background-color: {{color}};">COLOR</p>
+                        <p class="dropdown" href="#" style="background-color: {{color}};">{{type}}</p>
                         <ul>
-                            <li>
-                                <a ng-click="setColor(color);" style="background-color: {{color}}" ng-repeat="color in colors" value="{{color}"></a>
+                            <li ng-repeat="t in types">
+                                <a ng-click="setType(t.name, t.color);" style="background-color: {{t.color}}">{{t.name}}</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-    </div>
     </div>
     <div class="col-md-12">
         <span class="magenta-label col-md-4">DURATION: </span>

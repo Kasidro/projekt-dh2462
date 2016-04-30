@@ -4,6 +4,7 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     $scope.title = "";
     $scope.duration;
     $scope.type = "";
+    $scope.color = "";
     $scope.description = "";
     $scope.isMyActivity = false;
     $scope.date = Planner.getCurrentDate();
@@ -12,11 +13,11 @@ magenta.controller('ActivityCtrl', function($scope, Planner, Status, $window) {
     $scope.maxDuration;
     $scope.formatedTime;
     $scope.relativeStartTime;
-    $scope.color = "#000080";
-    $scope.colors = Planner.getColors();
+    $scope.types = Planner.getTypes();
 
 
-    $scope.setColor = function(color) {
+    $scope.setType = function(type, color) {
+        $scope.type = type;
         $scope.color = color;
     }
 

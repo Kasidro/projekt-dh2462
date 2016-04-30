@@ -15,6 +15,19 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     var currentPosition;
     var events = [];
     var dbFetched = false;
+    var types = [{
+        'name': 'Presentation',
+        'color': '#FF0000'
+    }, {
+        'name': 'Group Work',
+        'color': '#800080'
+    }, {
+        'name': 'Discussion',
+        'color': '#0000FF'
+    }, {
+        'name': 'Break',
+        'color': '#008080'
+    }];
     this.eventCLastIdxMap = {}; // saves position in event-details
 
     // Cookie stuff
@@ -276,20 +289,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         return me;
     };
 
-    this.getColors = function() {
-        var colors = ['#FF0000',
-            '#800080',
-            '#0000FF',
-            '#008080',
-            '#FF00FF',
-            '#808080',
-            '#008000',
-            '#800000',
-            '#000080',
-            '#00FF00'
-        ];
-        return colors;
-    }
+    this.getTypes = function() {
+        return types;
+    };
 
     // Setters
     // ========================================================================
@@ -362,14 +364,12 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
                 return 1;
             }
 
-            var color = '#554CA5';
-
             var activity = {
                 'name': name,
                 'length': length,
-                'type': type,
+                'type': types[0].name,
                 'description': description,
-                'activityColor': color
+                'activityColor': types[0].color
             };
 
             if (pos == null) {
