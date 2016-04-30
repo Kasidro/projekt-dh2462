@@ -7,7 +7,7 @@
 <div class="btn-title-holder col-md-3">
     <a class="btn btn-success btn-title magenta-text-1" href="" ng-click="addDay()" ng-show="{{isMyEvent}}">+ ADD DAY</a>
     <a class="btn btn-info btn-title magenta-text-1" ng-show={{isMyEvent}} href="#/edit-event/">EDIT EVENT</a>
-    <a class="btn btn-info btn-title magenta-text-1" ng-hide={{isMyEvent}} href="#/edit-event/">VIEW EVENT</a>
+    <a class="btn btn-info btn-title magenta-text-1" ng-hide={{isMyEvent}} href="#/edit-event/">DETAILS</a>
 </div>
 
 <div class="arrow-holder">
@@ -54,7 +54,7 @@
                                  dragged away, you have to remove it from the original list
                                  yourself using the dnd-moved attribute -->
                             <div ng-repeat="activity in day.activities" dnd-effect-allowed="move" dnd-draggable="activity" dnd-moved="day.activities.splice($index, 1); reArrangeActivities()" dnd-effect-allowed="move">
-                                <button style="background-color: {{activity.activityColor}}" ng-click="editActivity(day, $index)" class="btn activity magenta-text-1">{{activity.name}}</button>
+                                <button style="background-color: {{activity.activityColor}}; height: {{activity.length/7}}vh;" ng-click="editActivity(day, $index)" class="btn activity magenta-text-1">{{activity.name}}</button>
                             </div>
                         </ul>
                         <a ng-hide={{isMyEvent}} ng-repeat="activity in day.activities" href="#/edit-activity">
