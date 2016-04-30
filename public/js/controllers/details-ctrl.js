@@ -60,6 +60,37 @@ magenta.controller('DetailsCtrl', function($scope, Planner, Status, $window) {
 
     // Scope functions ============================
 
+    $scope.getActDist = function(date) {
+        var day = Planner.getDay($scope.mEvent._id, date);
+        var distr = {};
+        var colArr = [];
+        var tottime = 0;
+
+        // Makes sure we always have the same ordering of colors
+        for (i = 0; i < Planner.getTypes().length; i++) {
+            distr[Planner.getTypes()[i].color] = 0.0
+        }
+
+        for (i = 0; i < day.activities.length; i++) {
+            distr[day.activities[i].activityColor] += day.activities[i].length;
+            tottime += day.activities[i].length;
+        }
+
+        // Norm
+        if (tottime !== 0) {
+            for (var col in distr) {
+                if (distr.hasOwnProperty(col)) {
+                    var c = {};
+                    c.color = col;
+                    c.size = (distr[col] / tottime)*100;
+                    colArr.push(c);
+                }
+            }
+        }
+
+        return colArr;
+    };
+
     // date: String on format "YYYY-MM-DD"
     $scope.deleteDay = function(date) {
         if (Planner.deleteDay($scope.mEvent._id, date) === 0) {
