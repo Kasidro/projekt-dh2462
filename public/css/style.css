@@ -432,9 +432,10 @@
     min-height: 42px;
 }
 
-.type-distrubution {
+.type-distribution {
     float: left;
-    height: 5vh;
+    height: 100%;
+    z-index: 2;
 }
 
 #arrow {

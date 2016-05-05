@@ -43,8 +43,14 @@
                     <p class="magenta-text-1 col-md-4">LENGTH:</p>
                     <p class="magenta-text-3 col-md-7">{{day.length}} </p>
                 </div>
-                <div class="col-md-12">
-                    <div ng-repeat="c in distarray" class="type-distrubution" style="width:{{c.size}}%;background-color:{{c.color}}">HEJ</div>       
+                <div class="col-md-12" style="height: 5vh;">
+                    <div style="height: 2vh;background-color: white;z-index: 1;">
+                        <div ng-repeat="c in getActDist(day.date)" class="type-distribution" style="width:{{c.size}}%">
+                            <div style="background-color:{{c.color}};height:2vh;"></div>
+                        </div>
+                    </div>
+                    <div style="width: 70%;height: 2vh;float: left;z-index: 3"></div>
+                    <div style="width: 30%;height: 2vh;float: left; background-color: silver;z-index: 3">30%</div>       
                 </div>
                 <div class="col-md-12">
                     <div class="activity-field col-md-12">
