@@ -17,13 +17,13 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     var dbFetched = false;
     var types = [{
         'name': 'Presentation',
-        'color': '#FF0000'
+        'color': '#E83224'
     }, {
         'name': 'Group Work',
-        'color': '#800080'
+        'color': '#F83EAD'
     }, {
         'name': 'Discussion',
-        'color': '#0000FF'
+        'color': '#4F81BD'
     }, {
         'name': 'Break',
         'color': '#008080'

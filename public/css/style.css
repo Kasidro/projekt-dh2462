@@ -432,6 +432,11 @@
     min-height: 42px;
 }
 
+.type-distrubution {
+    float: left;
+    height: 5vh;
+}
+
 #arrow {
     width: 3vw;
     padding-top: 38vh;
@@ -480,7 +485,7 @@
 
 .activity-field {
     border-radius: 5px;
-    height: 46vh;
+    height: 40vh;
     margin-top: 0.8vh;
     background-color: white;
     padding: none;
