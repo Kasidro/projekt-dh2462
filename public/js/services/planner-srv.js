@@ -231,11 +231,9 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     };
 
     var setColArr = function(ei, di) {
-        if (di === undefined) {
-            if (ei !== -1) {
-                for (di = 0; di < events[ei].days.length; di++) {
-                    events[ei].days[di].colorArray = getColArr(ei, di);
-                }
+        if (di === undefined && ei !== -1) {
+            for (di = 0; di < events[ei].days.length; di++) {
+                events[ei].days[di].colorArray = getColArr(ei, di);
             }
         } else if (di !== -1 && ei !== -1) {
             events[ei].days[di].colorArray = getColArr(ei, di);
