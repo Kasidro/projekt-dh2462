@@ -200,6 +200,48 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         return 10 * 60;
     };
 
+    var getColArr = function(ei, di) {
+        var distr = {};
+        var colArr = [];
+        var tottime = 0;
+
+        // Makes sure we always have the same ordering of colors
+        for (i = 0; i < types.length; i++) {
+            distr[types[i].color] = 0.0
+        }
+
+        for (i = 0; i < events[ei].days[di].activities.length; i++) {
+            distr[events[ei].days[di].activities[i].activityColor] += events[ei].days[di].activities[i].length;
+            tottime += events[ei].days[di].activities[i].length;
+        }
+
+        // Norm
+        if (tottime !== 0) {
+            for (var col in distr) {
+                if (distr.hasOwnProperty(col)) {
+                    var c = {};
+                    c.color = col;
+                    c.size = (distr[col] / tottime) * 100;
+                    colArr.push(c);
+                }
+            }
+        }
+
+        return colArr;
+    };
+
+    var setColArr = function(ei, di) {
+        if (di === undefined) {
+            if (ei !== -1) {
+                for (di = 0; di < events[ei].days.length; di++) {
+                    events[ei].days[di].colorArray = getColArr(ei, di);
+                }
+            }
+        } else if (di !== -1 && ei !== -1) {
+            events[ei].days[di].colorArray = getColArr(ei, di);
+        }
+    };
+
     // Login/out
     // ========================================================================
 
@@ -227,6 +269,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     };
 
     this.getCurrentEvent = function() {
+        setColArr(findEventIndex(currentEvent));
         return currentEvent;
     };
 
@@ -239,6 +282,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
     this.getEvent = function(eID) {
         var ei = findEventIndex(eID);
         if (ei !== -1) {
+            setColArr(ei);
             return events[ei];
         }
         return null;
@@ -251,6 +295,7 @@ magenta.service('Planner', function($q, $cookieStore, Facebook, Storage, Status)
         var ei = findEventIndex(eID);
         var di = findDayIndex(ei, date);
         if (ei !== -1 && di !== -1) {
+            setColArr(ei, di);
             return events[ei].days[di];
         }
         return null;

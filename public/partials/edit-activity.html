@@ -11,6 +11,15 @@
         <input type="text" ng-show={{isMyActivity}} ng-model="title" class="magenta-input col-md-6" placeholder="Title"></input>
     </div>
     <div class="col-md-12">
+        <span class="magenta-label col-md-4">DURATION: </span>
+        <input type="time" ng-show={{isMyActivity}} step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
+        <span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{formatedTime}}</span>
+    </div>
+    <div class="col-md-12">
+        <span class="magenta-label col-md-4">START TIME: </span>
+        <span class="magenta-label col-md-8" style="text-align:left;">{{relativeStartTime}}</span>
+    </div>
+    <div class="col-md-12">
         <span class="magenta-label col-md-4">TYPE OF ACTIVTY: </span>
         <span ng-hide={{isMyActivity}} class="magenta-label col-md-7" style="text-align:left;">{{type}}</span>
         <div class="col-md-3" id="dropdown_container-act" ng-show={{isMyActivity}}>
@@ -27,15 +36,6 @@
                 </ul>
             </nav>
         </div>
-    </div>
-    <div class="col-md-12">
-        <span class="magenta-label col-md-4">DURATION: </span>
-        <input type="time" ng-show={{isMyActivity}} step="60" min="00:00" ng-model="duration" class="magenta-input col-md-3"></input>
-        <span ng-hide={{isMyActivity}} class="magenta-label col-md-8" style="text-align:left;">{{formatedTime}}</span>
-    </div>
-    <div class="col-md-12">
-        <span class="magenta-label col-md-4">START TIME: </span>
-        <span class="magenta-label col-md-8" style="text-align:left;">{{relativeStartTime}}</span>
     </div>
     <div class="col-md-12">
         <span class="magenta-label col-md-4">DESCRIPTION: </span>

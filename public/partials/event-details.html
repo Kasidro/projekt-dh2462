@@ -45,13 +45,13 @@
                 </div>
                 <div class="col-md-12" style="height: 5vh;">
                     <div style="height: 2vh;background-color: white;z-index: 1;">
-                        <div ng-repeat="c in getActDist(day.date)" class="type-distribution" style="width:{{c.size}}%">
+                        <div ng-repeat="c in day.colorArray" class="type-distribution" style="width:{{c.size}}%">
                             <div style="background-color:{{c.color}};height:2vh;"></div>
                         </div>
                     </div>
                     <div style="width: 70%;height: 2vh;float: left;z-index: 3"></div>
                     <div style="width: 30%;height: 2vh;float: left; background-color: silver;z-index: 3">30%</div>       
-                </div>
+</div>
                 <div class="col-md-12">
                     <div class="activity-field col-md-12">
                         <a href="#/edit-activity"><button ng-click="createActivity(day)" class="btn add-activity magenta-text-1" ng-show="{{isMyEvent}}">+ ADD ACTIVITY</button></a>
