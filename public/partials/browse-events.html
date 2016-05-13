@@ -11,7 +11,7 @@
             <!-- IF OWNER OF EVENT -->
             <p class="column-1 row-1 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="color:white;background-color: magenta;">TITLE</p>
             <p class="column-2 row-1 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="color:white;background-color: magenta;">DATE</p>
-            <p class="column-3 row-1 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="color:red;background-color: magenta;">ADMIN</p>
+            <p class="column-3 row-1 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="color:white;background-color: magenta;"</p>
             <!-- IF NOT OWNER OF EVENT -->
             <p class="column-1 row-1 magenta-text-2" ng-hide={{isMyEvent(event._id)}}>TITLE</p>
             <p class="column-2 row-1 magenta-text-2" ng-hide={{isMyEvent(event._id)}}>DATE</p>
@@ -19,11 +19,11 @@
         </a>
         <a>
             <!-- IF OWNER OF EVENT -->
-            <p id="title-browser" class="column-1 row-2 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="background-color: #8C93A8">{{shortenTitle(event.name)}}</p>
-            <p id="date-browser" class="column-2 row-2 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="background-color: #8C93A8">{{getFormatedDate(event.days)}}</p>
-            <div class="column-3 row-2 magenta-text-2 btn-group-vertical" id="button-row" ng-show={{isMyEvent(event._id)}} >
-                <a ng-click="gotoDetails(event._id);" id="button-browser-1" class="btn magenta-text-2" ng-show={{isMyEvent(event._id)}}>EVENT SCHEDULE</a>
-                <a ng-click="gotoEdit(event._id);" id="button-browser-2" ng-show={{isMyEvent(event._id)}} class="btn magenta-text-2">EDIT EVENT</a>
+            <p id="title-browser" class="column-1 row-2 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="background-color: #DCB4DC">{{shortenTitle(event.name)}}</p>
+            <p id="date-browser" class="column-2 row-2 magenta-text-2" ng-show={{isMyEvent(event._id)}} style="background-color: #DCB4DC">{{getFormatedDate(event.days)}}</p>
+            <div class="column-3 row-2 magenta-text-2 btn-group-vertical" id="button-row" ng-show={{isMyEvent(event._id)}} style="background-color: #DCB4DC; height: 7vh; width: 25%" >
+                <a ng-click="gotoDetails(event._id);" id="button-browser-1" class="btn magenta-text-2" ng-show={{isMyEvent(event._id)}} style="width: 62%">EVENT SCHEDULE</a>
+                <a ng-click="gotoEdit(event._id);" id="button-browser-2" ng-show={{isMyEvent(event._id)}} class="btn magenta-text-2" style="width: 62%">EDIT EVENT</a>
             </div>
             <!-- IF NOT OWNER OF EVENT -->
             <p id="title-browser" class="column-1 row-2 magenta-text-2" ng-hide={{isMyEvent(event._id)}}    >{{shortenTitle(event.name)}}</p>
